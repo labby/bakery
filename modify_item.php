@@ -398,7 +398,7 @@ if ($show_item_mover) {
 			<input type="text" name="images[<?php echo $img_id; ?>][alt]" style="width: 150px;" maxlength="255" value="<?php echo $image['alt']; ?>" />
 		  </td>
 		  <td>
-		    <textarea name="images[<?php echo $img_id; ?>][caption]" rows="3" style="width: 200px;"><?php echo $image['caption']; ?></textarea>
+		    <textarea id="no_wysiwyg" name="images[<?php echo $img_id; ?>][caption]" rows="3" style="width: 200px;"><?php echo $image['caption']; ?></textarea>
 		  </td>
 		  <td>
 		    <select name="images[<?php echo $img_id; ?>][attribute]" style="width: 90px;">
