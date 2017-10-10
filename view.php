@@ -18,15 +18,15 @@
 
 
 // Prevent this file from being accessed directly
-if (defined('WB_PATH') == false) {
+if (defined('LEPTON_PATH') == false) {
 	exit("Cannot access this file directly"); 
 }
 
 // Look for language file
 if (LANGUAGE_LOADED) {
-    include(WB_PATH.'/modules/bakery/languages/EN.php');
-    if (file_exists(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
-        include(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
+    include(LEPTON_PATH.'/modules/bakery/languages/EN.php');
+    if (file_exists(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
+        include(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
     }
 }
 
@@ -140,7 +140,7 @@ if ($query_page_settings->numRows() > 0) {
 $query_continue_url = $database->query("SELECT p.link FROM ".TABLE_PREFIX."pages p INNER JOIN ".TABLE_PREFIX."mod_bakery_page_settings ps ON p.page_id = ps.page_id WHERE p.page_id = ps.continue_url AND ps.section_id = '$section_id'");
 if ($query_continue_url->numRows() > 0) {
 	$fetch_continue_url   = $query_continue_url->fetchRow();
-	$setting_continue_url = WB_URL.PAGES_DIRECTORY.stripslashes($fetch_continue_url['link']).PAGE_EXTENSION;
+	$setting_continue_url = LEPTON_URL.PAGES_DIRECTORY.stripslashes($fetch_continue_url['link']).PAGE_EXTENSION;
 }
 
 // Add a wrapper for Bakery to help with layout
@@ -516,8 +516,8 @@ elseif (isset($_POST['summary']) && isset($_SESSION['bakery']['order_id']) && !e
 
 elseif (isset($_POST['checkout']) && isset($_SESSION['bakery']['order_id']) && !empty($_SESSION['bakery']['order_id'])) {
 	$payment_method = $_SESSION['bakery']['payment_method'];
-	if (is_file(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/check_payment.php')) {
-		include(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/check_payment.php');
+	if (is_file(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/check_payment.php')) {
+		include(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/check_payment.php');
 		echo $end_of_wrapper;  // End of bakery wrapper
 	}
 }
@@ -542,13 +542,13 @@ elseif (isset($_SESSION['bakery']['order_id']) && !empty($_SESSION['bakery']['or
 
 	// Check the status of the payment (error/canceled/success/pending)
 	if ($payment_method == $_SESSION['bakery']['payment_method']) {
-		require(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/check_payment.php');
+		require(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/check_payment.php');
 	} else {
 		$payment_status = 'error';
 	}
 
 	// Display error/canceled message OR in case of success/pending display confirmation and send emails
-	require(WB_PATH.'/modules/bakery/view_confirmation.php');
+	require(LEPTON_PATH.'/modules/bakery/view_confirmation.php');
 
 	// Assign page filename for tracking with Google Analytics _trackPageview() function
 	global $ga_page;

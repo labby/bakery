@@ -21,7 +21,7 @@ require('../../config.php');
 
 // Include WB admin wrapper script
 $update_when_modified = true; // Tells script to update when this page was last updated
-require(WB_PATH.'/modules/admin.php');
+require(LEPTON_PATH.'/modules/admin.php');
 
 
 if (!empty($_POST['option_name'])) {
@@ -37,15 +37,15 @@ if (!empty($_POST['option_name'])) {
 		$database->query("UPDATE ".TABLE_PREFIX."mod_bakery_options SET option_name = '$option_name' WHERE option_id = '$option_id'");
 	}
 } else {
-	$admin->print_error($MESSAGE['MEDIA']['BLANK_NAME'], WB_URL.'/modules/bakery/modify_options.php?page_id='.$page_id);
+	$admin->print_error($MESSAGE['MEDIA']['BLANK_NAME'], LEPTON_URL.'/modules/bakery/modify_options.php?page_id='.$page_id);
 }
 
 
 // Check if there is a db error, otherwise say successful
 if ($database->is_error()) {
-	$admin->print_error($database->get_error(), WB_URL.'/modules/bakery/modify_options.php?page_id='.$page_id);
+	$admin->print_error($database->get_error(), LEPTON_URL.'/modules/bakery/modify_options.php?page_id='.$page_id);
 } else {
-	$admin->print_success($TEXT['SUCCESS'], WB_URL.'/modules/bakery/modify_options.php?page_id='.$page_id);
+	$admin->print_success($TEXT['SUCCESS'], LEPTON_URL.'/modules/bakery/modify_options.php?page_id='.$page_id);
 }
 
 

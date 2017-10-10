@@ -26,9 +26,9 @@ if (!defined('THEME_URL')) {
 
 // Look for language File
 if (LANGUAGE_LOADED) {
-	require_once(WB_PATH.'/modules/bakery/languages/EN.php');
-	if (file_exists(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
-		require_once(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
+	require_once(LEPTON_PATH.'/modules/bakery/languages/EN.php');
+	if (file_exists(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
+		require_once(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
 	}
 }
 
@@ -47,7 +47,7 @@ if (isset($_GET['from']) AND $_GET['from'] == 'add_item') {
 
 
 // Include WB admin wrapper script
-require(WB_PATH.'/modules/admin.php');
+require(LEPTON_PATH.'/modules/admin.php');
 
 
 // Get item
@@ -57,7 +57,7 @@ $fetch_item = array_map('stripslashes', $fetch_item);
 $fetch_item = array_map('htmlspecialchars', $fetch_item);
 
 // Get some default values
-require_once(WB_PATH.'/modules/bakery/config.php');
+require_once(LEPTON_PATH.'/modules/bakery/config.php');
 
 // Get general settings
 $query_settings = $database->query("SELECT * FROM ".TABLE_PREFIX."mod_bakery_general_settings");
@@ -91,7 +91,7 @@ if (isset($_SESSION['bakery']['item']) && is_array($_SESSION['bakery']['item']))
 ?>
 <h2>1. <?php echo $TEXT['ADD'].'/'.$TEXT['MODIFY'].' '.$MOD_BAKERY['TXT_ITEM']; ?></h2>
 
-<form name="modify" action="<?php echo WB_URL; ?>/modules/bakery/save_item.php" method="post" enctype="multipart/form-data" style="margin: 0;">
+<form name="modify" action="<?php echo LEPTON_URL; ?>/modules/bakery/save_item.php" method="post" enctype="multipart/form-data" style="margin: 0;">
 
 <input type="hidden" name="section_id" value="<?php echo $section_id; ?>" />
 <input type="hidden" name="page_id" value="<?php echo $page_id; ?>" />
@@ -147,7 +147,7 @@ if (isset($_SESSION['bakery']['item']) && is_array($_SESSION['bakery']['item']))
 			// Show error message if no tax rate has been set
 			if ($settings_tax_rate == 0 && $settings_tax_rate1 == 0 && $settings_tax_rate2 == 0) {
 				$top = "valign='top'";
-				$no_tax_rate = "<span style='color: red;'>{$MOD_BAKERY['TXT_SET_TAX_RATE']}:</span> <a href='".WB_URL."/modules/bakery/modify_general_settings.php?page_id=$page_id&amp;section_id=$section_id'> &gt; {$MOD_BAKERY['TXT_GENERAL_SETTINGS']}</a><br />";
+				$no_tax_rate = "<span style='color: red;'>{$MOD_BAKERY['TXT_SET_TAX_RATE']}:</span> <a href='".LEPTON_URL."/modules/bakery/modify_general_settings.php?page_id=$page_id&amp;section_id=$section_id'> &gt; {$MOD_BAKERY['TXT_GENERAL_SETTINGS']}</a><br />";
 			}
 			echo "<td width='20%' align='right' $top>{$MOD_BAKERY['TXT_TAX_RATE']}:</td>";
 			echo "<td>$no_tax_rate";
@@ -278,13 +278,13 @@ if ($show_item_mover) {
 			$id      = "full_desc";
 			$width   = "98%";
 			$height  = "300px";
-			if (!defined('WYSIWYG_EDITOR') OR WYSIWYG_EDITOR=="none" OR !file_exists(WB_PATH.'/modules/'.WYSIWYG_EDITOR.'/include.php')) {
+			if (!defined('WYSIWYG_EDITOR') OR WYSIWYG_EDITOR=="none" OR !file_exists(LEPTON_PATH.'/modules/'.WYSIWYG_EDITOR.'/include.php')) {
 				function show_wysiwyg_editor($name,$id,$content,$width,$height) {
 					echo '<textarea name="'.$name.'" id="'.$id.'" style="width: '.$width.'; height: '.$height.';">'.$content.'</textarea>';
 				}
 			} else {
 				$id_list=array("full_desc");
-				require(WB_PATH.'/modules/'.WYSIWYG_EDITOR.'/include.php');
+				require(LEPTON_PATH.'/modules/'.WYSIWYG_EDITOR.'/include.php');
 			}		
 			show_wysiwyg_editor($name,$id,$content,$width,$height);
 			?>
@@ -336,9 +336,9 @@ if ($show_item_mover) {
 	$main_img = '<b>'.$MOD_BAKERY['TXT_MAIN_IMAGE'].'</b><br />';
 
 	// Prepare image / thumb url and thumb path
-	$img_url    = WB_URL.MEDIA_DIRECTORY.'/'.$img_dir.'/images/item'.$item_id.'/';
-	$thumb_url  = WB_URL.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$item_id.'/';
-	$thumb_path = WB_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$item_id.'/';
+	$img_url    = LEPTON_URL.MEDIA_DIRECTORY.'/'.$img_dir.'/images/item'.$item_id.'/';
+	$thumb_url  = LEPTON_URL.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$item_id.'/';
+	$thumb_path = LEPTON_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$item_id.'/';
 
 	// Get image top position for this item
 	$top_img = $database->get_one("SELECT MAX(position) FROM ".TABLE_PREFIX."mod_bakery_images WHERE item_id = '$item_id'");
@@ -407,14 +407,14 @@ if ($show_item_mover) {
 		  </td>
 		  <td align="right">
 		  <?php if ($image['position'] != 1) { ?>
-		    <a href="<?php echo WB_URL; ?>/modules/bakery/move_img_up.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;item_id=<?php echo $item_id; ?>&amp;img_id=<?php echo $img_id; ?>" title="<?php echo $TEXT['MOVE_UP']; ?>">
+		    <a href="<?php echo LEPTON_URL; ?>/modules/bakery/move_img_up.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;item_id=<?php echo $item_id; ?>&amp;img_id=<?php echo $img_id; ?>" title="<?php echo $TEXT['MOVE_UP']; ?>">
 		      <img src="<?php echo THEME_URL; ?>/images/up_16.png" border="0" alt="/\" />
 		    </a>
 		  <?php } ?>
 		  </td>
 		  <td align="left">
 		  <?php if ($image['position'] != $top_img) { ?>
-		    <a href="<?php echo WB_URL; ?>/modules/bakery/move_img_down.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;item_id=<?php echo $item_id; ?>&amp;img_id=<?php echo $img_id; ?>" title="<?php echo $TEXT['MOVE_DOWN']; ?>">
+		    <a href="<?php echo LEPTON_URL; ?>/modules/bakery/move_img_down.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;item_id=<?php echo $item_id; ?>&amp;img_id=<?php echo $img_id; ?>" title="<?php echo $TEXT['MOVE_DOWN']; ?>">
 		      <img src="<?php echo THEME_URL; ?>/images/down_16.png" border="0" alt="\/" />
 		    </a>
 		  <?php } ?>
@@ -565,12 +565,12 @@ if ($query_items_attributes->numRows() > 0) {
 	  <td align="right"><?php echo $option['operator'].' '.$fetch_settings['shop_currency'].' '.$option['price']; ?></td>
 	  <td>&nbsp;</td>
 	  <td align="center" width="22">
-		<a href="<?php echo WB_URL; ?>/modules/bakery/modify_item.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;item_id=<?php echo $item_id; ?>&amp;attribute_id=<?php echo $option['attribute_id']; ?>#options" title="<?php echo $TEXT['MODIFY']; ?>">
+		<a href="<?php echo LEPTON_URL; ?>/modules/bakery/modify_item.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;item_id=<?php echo $item_id; ?>&amp;attribute_id=<?php echo $option['attribute_id']; ?>#options" title="<?php echo $TEXT['MODIFY']; ?>">
 			<img src="<?php echo THEME_URL; ?>/images/modify_16.png" alt="<?php echo $TEXT['MODIFY'].' '.$MOD_BAKERY['TXT_OPTION_NAME']; ?>" border="0" />
 		</a>
 	  </td>
 	  <td align="left" width="22">
-		<a href="javascript: confirm_link('<?php echo $TEXT['ARE_YOU_SURE']; ?>', '<?php echo WB_URL; ?>/modules/bakery/delete_item_attribute.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>&item_id=<?php echo $item_id; ?>&attribute_id=<?php echo $option['attribute_id'] ?>');" title="<?php echo $TEXT['DELETE']; ?>">
+		<a href="javascript: confirm_link('<?php echo $TEXT['ARE_YOU_SURE']; ?>', '<?php echo LEPTON_URL; ?>/modules/bakery/delete_item_attribute.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>&item_id=<?php echo $item_id; ?>&attribute_id=<?php echo $option['attribute_id'] ?>');" title="<?php echo $TEXT['DELETE']; ?>">
 			<img src="<?php echo THEME_URL; ?>/images/delete_16.png" border="0" alt="<?php echo $TEXT['DELETE'].' '.$MOD_BAKERY['TXT_OPTION_NAME']; ?>" />
 		</a>
 	  </td>
@@ -603,7 +603,7 @@ if ($query_options->numRows() > 0) {
 	}
 	echo "</select>";
 } else {
-	echo "{$TEXT['NONE_FOUND']}&nbsp;&nbsp;<a href='".WB_URL."/modules/bakery/modify_options.php?page_id=$page_id&amp;section_id=$section_id'>&gt; {$TEXT['ADD']}/<span style='text-transform: lowercase;'>{$TEXT['MODIFY']}/{$TEXT['DELETE']}</span></a>";
+	echo "{$TEXT['NONE_FOUND']}&nbsp;&nbsp;<a href='".LEPTON_URL."/modules/bakery/modify_options.php?page_id=$page_id&amp;section_id=$section_id'>&gt; {$TEXT['ADD']}/<span style='text-transform: lowercase;'>{$TEXT['MODIFY']}/{$TEXT['DELETE']}</span></a>";
 }
 ?>
 	  </td>

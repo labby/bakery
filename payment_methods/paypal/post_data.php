@@ -18,18 +18,18 @@
 
 
 // Prevent this file from being accessed directly
-if (defined('WB_PATH') == false) {
+if (defined('LEPTON_PATH') == false) {
 	exit("Cannot access this file directly"); 
 }
 
 // Include info file
-include(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/info.php');
+include(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/info.php');
 
 // Look for payment method language file
 if (LANGUAGE_LOADED) {
-    include(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/EN.php');
-    if (file_exists(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php')) {
-        include(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php');
+    include(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/EN.php');
+    if (file_exists(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php')) {
+        include(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php');
     }
 }
 
@@ -85,7 +85,7 @@ $post_data = array(
 	'zip'           => $cust_zip,
 	'night_phone_b' => $cust_phone,
 	'return'        => $setting_continue_url.'?pm='.$payment_method,
-	'notify_url'    => WB_URL . '/modules/bakery/payment_methods/' . $payment_method . '/ipn.php',
+	'notify_url'    => LEPTON_URL . '/modules/bakery/payment_methods/' . $payment_method . '/ipn.php',
 	'cancel_return' => $setting_continue_url.'?pm='.$payment_method.'&status=canceled'
 );
 
@@ -111,7 +111,7 @@ $post_data = array(
 	'zip'           => $cust_zip,
 	'night_phone_b' => $cust_phone,
 	'return'        => $setting_continue_url.'?pm='.$payment_method,
-	'notify_url'    => WB_URL . '/modules/bakery/payment_methods/' . $payment_method . '/ipn.php',
+	'notify_url'    => LEPTON_URL . '/modules/bakery/payment_methods/' . $payment_method . '/ipn.php',
 	'cancel_return' => $setting_continue_url.'?pm='.$payment_method.'&status=canceled'
 );
 $n = sizeof($items);

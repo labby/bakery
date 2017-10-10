@@ -14,13 +14,13 @@
  */
 
 // Prevent this file from being accessed directly
-if (defined('WB_PATH') == false) {
+if (defined('LEPTON_PATH') == false) {
 	exit("Cannot access this file directly"); 
 }
-include(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/info.php');
-include(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/EN.php');
-if (file_exists(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php')) {
-	include(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php');
+include(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/info.php');
+include(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/EN.php');
+if (file_exists(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php')) {
+	include(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php');
 }
 
 // Check if there has been a payment method error
@@ -75,7 +75,7 @@ switch ($pay_error) {
 					<?php echo $MOD_BAKERY[$payment_method]['TXT_SHIPMENT']; ?>
 				</td>
 				<td>
-					<img align="right" src="<?php echo WB_URL ?>/modules/bakery/payment_methods/molliev2/logo_mollie.png" alt="Mollie" />
+					<img align="right" src="<?php echo LEPTON_URL ?>/modules/bakery/payment_methods/molliev2/logo_mollie.png" alt="Mollie" />
 				<td>
 			</tr>
 		</table>

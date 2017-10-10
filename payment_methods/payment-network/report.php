@@ -19,7 +19,7 @@
 
 // Include WB config.php file and WB admin class
 require('../../../../config.php');
-require_once(WB_PATH.'/framework/class.admin.php');
+require_once(LEPTON_PATH.'/framework/class.admin.php');
 
 // Get the payment method settings from db
 $query_payment_methods = $database->query("SELECT value_1, value_2, value_4 FROM ".TABLE_PREFIX."mod_bakery_payment_methods WHERE directory = 'payment-network'");

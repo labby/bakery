@@ -18,18 +18,18 @@
 
 
 // Prevent this file from being accessed directly
-if (defined('WB_PATH') == false) {
+if (defined('LEPTON_PATH') == false) {
 	exit("Cannot access this file directly"); 
 }
 
 // Include info file
-include(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/info.php');
+include(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/info.php');
 
 // Look for payment method language file
 if (LANGUAGE_LOADED) {
-    include(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/EN.php');
-    if (file_exists(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php')) {
-        include(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php');
+    include(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/EN.php');
+    if (file_exists(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php')) {
+        include(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php');
     }
 }
 ?>

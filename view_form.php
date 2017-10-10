@@ -18,13 +18,13 @@
 
 
 // Prevent this file from being accessed directly
-if (defined('WB_PATH') == false) {
+if (defined('LEPTON_PATH') == false) {
 	exit("Cannot access this file directly"); 
 }
 
 // Include WB template parser and create template object
-require_once(WB_PATH.'/include/phplib/template.inc');
-$tpl = new Template(WB_PATH.'/modules/bakery/templates/form');
+require_once(LEPTON_PATH.'/include/phplib/template.inc');
+$tpl = new Template(LEPTON_PATH.'/modules/bakery/templates/form');
 // Define how to deal with unknown {PLACEHOLDERS} (remove:=default, keep, comment)
 $tpl->set_unknowns('remove');
 // Define debug mode (0:=disabled (default), 1:=variable assignments, 2:=calls to get variable, 4:=debug internals)
@@ -32,19 +32,19 @@ $tpl->debug = 0;
 
 // Include country file depending on the language
 if (LANGUAGE_LOADED) {
-	if (file_exists(WB_PATH.'/modules/bakery/languages/countries/'.LANGUAGE.'.php')) {
-		require_once(WB_PATH.'/modules/bakery/languages/countries/'.LANGUAGE.'.php');
+	if (file_exists(LEPTON_PATH.'/modules/bakery/languages/countries/'.LANGUAGE.'.php')) {
+		require_once(LEPTON_PATH.'/modules/bakery/languages/countries/'.LANGUAGE.'.php');
 	}
 }
 else {
-	require_once(WB_PATH.'/modules/bakery/languages/countries/EN.php');
+	require_once(LEPTON_PATH.'/modules/bakery/languages/countries/EN.php');
 }
 
 // Include state file depending on the shop country
 $select_shop_country = '';
 $use_states = false;
-if (file_exists(WB_PATH.'/modules/bakery/languages/states/'.$setting_shop_country.'.php')) {
-	require_once(WB_PATH.'/modules/bakery/languages/states/'.$setting_shop_country.'.php');
+if (file_exists(LEPTON_PATH.'/modules/bakery/languages/states/'.$setting_shop_country.'.php')) {
+	require_once(LEPTON_PATH.'/modules/bakery/languages/states/'.$setting_shop_country.'.php');
 	$select_shop_country = $setting_shop_country;
 	$use_states = true;
 }
@@ -120,7 +120,7 @@ $ga_page = '/view_form.php';
 // Show form title using template file
 $tpl->set_file('form_title', 'title.htm');
 $tpl->set_var(array(
-	'WB_URL'					=>	WB_URL,
+	'LEPTON_URL'					=>	LEPTON_URL,
 	'TXT_SUBMIT_ORDER'			=>	$MOD_BAKERY['TXT_SUBMIT_ORDER'],
 	'TXT_ADDRESS'				=>	$MOD_BAKERY['TXT_ADDRESS'],
 	'TXT_FILL_IN_ADDRESS'		=>	$MOD_BAKERY['TXT_FILL_IN_ADDRESS'],
@@ -458,8 +458,8 @@ if ($_SESSION['bakery']['ship_form']) {
 if (version_compare(WB_VERSION, '2.8.1') < 0) {
 	
 	// Obtain the settings of the output filter module
-	if (file_exists(WB_PATH.'/modules/output_filter/filter-routines.php')) {
-		include_once(WB_PATH.'/modules/output_filter/filter-routines.php');
+	if (file_exists(LEPTON_PATH.'/modules/output_filter/filter-routines.php')) {
+		include_once(LEPTON_PATH.'/modules/output_filter/filter-routines.php');
 		if (function_exists('getOutputFilterSettings')) {
 			$filter_settings = getOutputFilterSettings();
 		} else {

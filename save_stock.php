@@ -21,7 +21,7 @@ require('../../config.php');
 
 // Include WB admin wrapper script
 $update_when_modified = true; // Tells script to update when this page was last updated
-require(WB_PATH.'/modules/admin.php');
+require(LEPTON_PATH.'/modules/admin.php');
 
 // Get category
 if (isset($_POST['cat'])) {
@@ -40,9 +40,9 @@ foreach ($_POST['stock'] as $item_id => $stock) {
 
 // Check if there is a db error, otherwise say successful
 if ($database->is_error()) {
-	$admin->print_error($database->get_error(), WB_URL.'/modules/bakery/stock.php?page_id='.$page_id.'&cat='.$category);
+	$admin->print_error($database->get_error(), LEPTON_URL.'/modules/bakery/stock.php?page_id='.$page_id.'&cat='.$category);
 } else {
-	$admin->print_success($TEXT['SUCCESS'], WB_URL.'/modules/bakery/stock.php?page_id='.$page_id.'&cat='.$category);
+	$admin->print_success($TEXT['SUCCESS'], LEPTON_URL.'/modules/bakery/stock.php?page_id='.$page_id.'&cat='.$category);
 }
 
 // Print admin footer

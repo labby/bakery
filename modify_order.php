@@ -30,24 +30,24 @@ if (!isset($_GET['page_id']) OR !isset($_GET['section_id']) OR !isset($_GET['ord
 }
 
 // Include WB admin wrapper script
-require(WB_PATH.'/modules/admin.php');
+require(LEPTON_PATH.'/modules/admin.php');
 
 // Look for language file
 if (LANGUAGE_LOADED) {
-    require_once(WB_PATH.'/modules/bakery/languages/EN.php');
-    if (file_exists(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
-        require_once(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
+    require_once(LEPTON_PATH.'/modules/bakery/languages/EN.php');
+    if (file_exists(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
+        require_once(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
     }
 }
 
 // Look for country file
 if (LANGUAGE_LOADED) {
-	if (file_exists(WB_PATH.'/modules/bakery/languages/countries/'.LANGUAGE.'.php')) {
-		require_once(WB_PATH.'/modules/bakery/languages/countries/'.LANGUAGE.'.php');
+	if (file_exists(LEPTON_PATH.'/modules/bakery/languages/countries/'.LANGUAGE.'.php')) {
+		require_once(LEPTON_PATH.'/modules/bakery/languages/countries/'.LANGUAGE.'.php');
 	}
 }
 else {
-	require_once(WB_PATH.'/modules/bakery/languages/countries/EN.php');
+	require_once(LEPTON_PATH.'/modules/bakery/languages/countries/EN.php');
 }
 
 // Get some general settings
@@ -76,7 +76,7 @@ if ($query_customer->numRows() > 0) {
 
 
 
-<form name="modify" action="<?php echo WB_URL; ?>/modules/bakery/save_order.php" method="post" style="margin: 0;">
+<form name="modify" action="<?php echo LEPTON_URL; ?>/modules/bakery/save_order.php" method="post" style="margin: 0;">
 
 <input type="hidden" name="page_id" value="<?php echo $page_id; ?>" />
 <input type="hidden" name="section_id" value="<?php echo $section_id; ?>" />
@@ -143,8 +143,8 @@ if ($query_customer->numRows() > 0) {
 			}
 
 			// Include state file depending on selected customer country
-			if (file_exists(WB_PATH.'/modules/bakery/languages/states/'.$cust_country.'.php')) {
-				require(WB_PATH.'/modules/bakery/languages/states/'.$cust_country.'.php');
+			if (file_exists(LEPTON_PATH.'/modules/bakery/languages/states/'.$cust_country.'.php')) {
+				require(LEPTON_PATH.'/modules/bakery/languages/states/'.$cust_country.'.php');
 
 				// State dropdown menu
 				echo '<tr><td width="25%" align="right">'.$MOD_BAKERY['TXT_CUST_STATE'].':</td><td colspan="4"><select name="cust_state" style="width: 98%">';
@@ -217,8 +217,8 @@ if ($query_customer->numRows() > 0) {
 			}
 
 			// Include state file depending on selected shipping country
-			if (file_exists(WB_PATH.'/modules/bakery/languages/states/'.$ship_country.'.php')) {
-				require(WB_PATH.'/modules/bakery/languages/states/'.$ship_country.'.php');
+			if (file_exists(LEPTON_PATH.'/modules/bakery/languages/states/'.$ship_country.'.php')) {
+				require(LEPTON_PATH.'/modules/bakery/languages/states/'.$ship_country.'.php');
 
 				// State dropdown menu
 				echo '<tr><td width="25%" align="right">'.$MOD_BAKERY['TXT_CUST_STATE'].':</td><td colspan="4"><select name="ship_state" style="width: 98%">';
@@ -273,7 +273,7 @@ if ($query_customer->numRows() > 0) {
 						<input name="save" type="submit" value="<?php echo $TEXT['SAVE'].' &amp; '.$TEXT['BACK']; ?>" style="width: 240px; margin-left: 20px;">
 					</td>
 					<td align="right" style="padding-right: 12px;">
-						<input type="button" value="<?php echo $TEXT['CANCEL']; ?>" onclick="javascript: window.location = '<?php echo WB_URL; ?>/modules/bakery/modify_orders.php?page_id=<?php echo $page_id; ?>';" style="width: 160px; margin-top: 10px;">
+						<input type="button" value="<?php echo $TEXT['CANCEL']; ?>" onclick="javascript: window.location = '<?php echo LEPTON_URL; ?>/modules/bakery/modify_orders.php?page_id=<?php echo $page_id; ?>';" style="width: 160px; margin-top: 10px;">
 					</td>
 				</tr>
 			</table>

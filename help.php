@@ -20,14 +20,14 @@
 require('../../config.php');
 
 // Include WB admin wrapper script
-require(WB_PATH.'/modules/admin.php');
-require_once(WB_PATH.'/framework/class.admin.php');
+require(LEPTON_PATH.'/modules/admin.php');
+require_once(LEPTON_PATH.'/framework/class.admin.php');
 
 // Look for language file
 if (LANGUAGE_LOADED) {
-    require_once(WB_PATH.'/modules/bakery/languages/EN.php');
-    if (file_exists(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
-        require_once(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
+    require_once(LEPTON_PATH.'/modules/bakery/languages/EN.php');
+    if (file_exists(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
+        require_once(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
     }
 }
 
@@ -154,8 +154,8 @@ if ($general_settings['stock_mode'] == "number") {
 <br />
 <table width="100%" cellpadding="5" cellspacing="0"  id="mod_bakery_placeholders_b">
   <tr>
-    <td height="30" align="right"><input name="button" type="button" style="margin-right: 20px;" onclick="javascript: window.location = '<?php echo WB_URL; ?>/modules/bakery/modify_page_settings.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>';" value="&lt;&lt; <?php echo $MOD_BAKERY['TXT_PAGE_SETTINGS']; ?>" />
-        <input name="button2" type="button" style="margin-right: 20px;" onclick="javascript: window.location = '<?php echo WB_URL; ?>/modules/bakery/modify_payment_methods.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>';" value="&lt;&lt; <?php echo $MOD_BAKERY['TXT_PAYMENT_METHODS']; ?>" />
+    <td height="30" align="right"><input name="button" type="button" style="margin-right: 20px;" onclick="javascript: window.location = '<?php echo LEPTON_URL; ?>/modules/bakery/modify_page_settings.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>';" value="&lt;&lt; <?php echo $MOD_BAKERY['TXT_PAGE_SETTINGS']; ?>" />
+        <input name="button2" type="button" style="margin-right: 20px;" onclick="javascript: window.location = '<?php echo LEPTON_URL; ?>/modules/bakery/modify_payment_methods.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>';" value="&lt;&lt; <?php echo $MOD_BAKERY['TXT_PAYMENT_METHODS']; ?>" />
 	</td>
   </tr>
 </table>
@@ -192,7 +192,7 @@ if ($general_settings['stock_mode'] == "number") {
     <td>IH</td>
     <td class="mod_bakery_placeholders_column_b">IF</td>
     <td>URL to the current (overview) page</td>
-    <td class="mod_bakery_placeholders_page_b"><?php echo (isset($page['link']) ? WB_URL."<wbr>".PAGES_DIRECTORY.$page['link'].PAGE_EXTENSION : '&nbsp;'); ?></td>
+    <td class="mod_bakery_placeholders_page_b"><?php echo (isset($page['link']) ? LEPTON_URL."<wbr>".PAGES_DIRECTORY.$page['link'].PAGE_EXTENSION : '&nbsp;'); ?></td>
   </tr>
   <tr valign="top">
     <td>[CURRENCY]</td>
@@ -313,7 +313,7 @@ if ($general_settings['stock_mode'] == "number") {
     <td>&nbsp;</td>
     <td class="mod_bakery_placeholders_column_b">&nbsp;</td>
     <td>Link to the item (detail)</td>
-    <td class="mod_bakery_placeholders_items_b"><?php echo (isset($item['link']) ? WB_URL.PAGES_DIRECTORY."<wbr>".$item['link'].PAGE_EXTENSION : '&nbsp;'); ?></td>
+    <td class="mod_bakery_placeholders_items_b"><?php echo (isset($item['link']) ? LEPTON_URL.PAGES_DIRECTORY."<wbr>".$item['link'].PAGE_EXTENSION : '&nbsp;'); ?></td>
   </tr>
   <tr valign="top">
     <td>[NEXT]</td>
@@ -474,7 +474,7 @@ if ($general_settings['stock_mode'] == "number") {
     <td>IH</td>
     <td class="mod_bakery_placeholders_column_b">IF</td>
     <td>Continue shopping URL (page setting) = URL to the current (overview) page</td>
-    <td class="mod_bakery_placeholders_page_settings_b"><?php echo (isset($continue_url) ? WB_URL.PAGES_DIRECTORY."<wbr>".$continue_url.PAGE_EXTENSION : '&nbsp;'); ?></td>
+    <td class="mod_bakery_placeholders_page_settings_b"><?php echo (isset($continue_url) ? LEPTON_URL.PAGES_DIRECTORY."<wbr>".$continue_url.PAGE_EXTENSION : '&nbsp;'); ?></td>
   </tr>
   <tr valign="top">
     <td>[SKU]</td>
@@ -728,7 +728,7 @@ if ($general_settings['stock_mode'] == "number") {
   </tr>
   <tr valign="bottom">
     <td colspan="8" height="30" align="right">
-	  <input type="button" value="&lt;&lt; <?php echo $MOD_BAKERY['TXT_PAGE_SETTINGS']; ?>" onclick="javascript: window.location = '<?php echo WB_URL; ?>/modules/bakery/modify_page_settings.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>';" style="margin-right: 20px;" /></td>
+	  <input type="button" value="&lt;&lt; <?php echo $MOD_BAKERY['TXT_PAGE_SETTINGS']; ?>" onclick="javascript: window.location = '<?php echo LEPTON_URL; ?>/modules/bakery/modify_page_settings.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>';" style="margin-right: 20px;" /></td>
   </tr>
   <tr class="mod_bakery_placeholders_header_b">
     <td colspan="8"><p><strong><a name="email"></a>Email Templates</strong> &nbsp;&nbsp;&nbsp;( &gt; Payment Methods &gt; E-Mail Settings )</p></td>
@@ -799,7 +799,7 @@ if ($general_settings['stock_mode'] == "number") {
   </tr>
   <tr valign="bottom">
     <td colspan="8" height="30" align="right">
-	  <input type="button" value="&lt;&lt; <?php echo $MOD_BAKERY['TXT_PAYMENT_METHODS']; ?>" onclick="javascript: window.location = '<?php echo WB_URL; ?>/modules/bakery/modify_payment_methods.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>&payment_method=<?php echo $payment_method; ?>';" style="margin-right: 20px;" /></td>
+	  <input type="button" value="&lt;&lt; <?php echo $MOD_BAKERY['TXT_PAYMENT_METHODS']; ?>" onclick="javascript: window.location = '<?php echo LEPTON_URL; ?>/modules/bakery/modify_payment_methods.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>&payment_method=<?php echo $payment_method; ?>';" style="margin-right: 20px;" /></td>
   </tr>
   <tr class="mod_bakery_placeholders_header_b">
     <td colspan="8"><p><strong><a name="invoice"></a>Invoice Template</strong> &nbsp;&nbsp;&nbsp;( &gt; Payment Methods &gt; select Invoice &gt; Layout Settings )</p></td>
@@ -917,9 +917,9 @@ It is used for shipping only.</td>
     <td class="mod_bakery_placeholders_localisation_b"><?php echo $MOD_BAKERY['TXT_INVOICE']; ?><br /><?php echo $MOD_BAKERY['TXT_DELIVERY_NOTE']; ?><br /><?php echo $MOD_BAKERY['TXT_REMINDER']; ?></td>
   </tr>
   <tr valign="top">
-    <td>[WB_URL]</td>
+    <td>[LEPTON_URL]</td>
     <td colspan="6">WebsiteBaker URL (used for invoice logo)</td>
-    <td><?php echo WB_URL; ?></td>
+    <td><?php echo LEPTON_URL; ?></td>
   </tr>
   <tr valign="bottom">
     <td colspan="8" height="30"><p><strong>PLEASE NOTE</strong>:<br />
@@ -927,7 +927,7 @@ It is used for shipping only.</td>
   </tr>
   <tr valign="bottom">
     <td colspan="8" height="30" align="right">
-	  <input type="button" value="&lt;&lt; <?php echo $MOD_BAKERY['TXT_PAYMENT_METHODS']; ?>" onclick="javascript: window.location = '<?php echo WB_URL; ?>/modules/bakery/modify_payment_methods.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>&payment_method=invoice';" style="margin-right: 20px;" /></td>
+	  <input type="button" value="&lt;&lt; <?php echo $MOD_BAKERY['TXT_PAYMENT_METHODS']; ?>" onclick="javascript: window.location = '<?php echo LEPTON_URL; ?>/modules/bakery/modify_payment_methods.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>&payment_method=invoice';" style="margin-right: 20px;" /></td>
   </tr>
 </table>
 

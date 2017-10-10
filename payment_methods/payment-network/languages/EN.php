@@ -21,7 +21,7 @@
 // ******************************
 
 // Get the current url scheme
-$url = parse_url(WB_URL);
+$url = parse_url(LEPTON_URL);
 
 // SETTINGS - USED BY BACKEND
 $MOD_BAKERY[$payment_method]['TXT_NAME'] = 'SOFORT Banking';
@@ -39,7 +39,7 @@ Copy&amp;paste the full url as shown below to the field &quot;Abort link&quot;:<
 
 <b>Non changeable parameters:</b> Activate &quot;Amount&quot; und &quot;Purpose&quot;.<br /><br />
 
-<b>Notifications:</b> Add an email notification <u>and</u> a HTTP notification using the <i>POST</i>-methode and the full url as shown below:<input type='text' value='".WB_URL."/modules/bakery/payment_methods/payment-network/report.php' readonly='true' onclick='this.select();' style='width: 98%;' /><br /><br />
+<b>Notifications:</b> Add an email notification <u>and</u> a HTTP notification using the <i>POST</i>-methode and the full url as shown below:<input type='text' value='".LEPTON_URL."/modules/bakery/payment_methods/payment-network/report.php' readonly='true' onclick='this.select();' style='width: 98%;' /><br /><br />
 
 <b>Passwords and hash algorithm:</b> Create a project password and a notification password <u>and</u> activate the input check using the hash algorithm <i>SHA1</i>.";
 

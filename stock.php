@@ -20,7 +20,7 @@
 require('../../config.php');
 
 // Include WB admin wrapper script
-require(WB_PATH.'/modules/admin.php');
+require(LEPTON_PATH.'/modules/admin.php');
 
 // Make use of the skinable backend themes of WB > 2.7
 // Check if THEME_URL is supported otherwise use ADMIN_URL
@@ -30,9 +30,9 @@ if (!defined('THEME_URL')) {
 
 // Look for language file
 if (LANGUAGE_LOADED) {
-    require_once(WB_PATH.'/modules/bakery/languages/EN.php');
-    if (file_exists(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
-        require_once(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
+    require_once(LEPTON_PATH.'/modules/bakery/languages/EN.php');
+    if (file_exists(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
+        require_once(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
     }
 }
 
@@ -85,7 +85,7 @@ if ($get_pages->numRows() > 0) {
 }
 
 // Title and section select   ?>
-<form name="category" action="<?php echo WB_URL; ?>/modules/bakery/stock.php" method="post" style="margin: 0;">
+<form name="category" action="<?php echo LEPTON_URL; ?>/modules/bakery/stock.php" method="post" style="margin: 0;">
 <input type="hidden" name="page_id" value="<?php echo $page_id; ?>" />
 <h2 style="display: inline;"><?php echo $MOD_BAKERY['TXT_STOCK_ADMIN']; ?></h2>
 <select name="cat" onchange="javascript: document.category.submit();" style="width: 360px; margin: 0 0 15px 100px;">
@@ -111,19 +111,19 @@ $query_items = $database->query("SELECT * FROM ".TABLE_PREFIX."mod_bakery_items 
 if ($query_items->numRows() > 0) {
 
 	// Items table header   ?>
-	<form name="modify" action="<?php echo WB_URL; ?>/modules/bakery/save_stock.php" method="post" style="margin: 0;">
+	<form name="modify" action="<?php echo LEPTON_URL; ?>/modules/bakery/save_stock.php" method="post" style="margin: 0;">
 	<input type="hidden" name="section_id" value="<?php echo $section_id; ?>" />
 	<input type="hidden" name="page_id" value="<?php echo $page_id; ?>" />
 	<input type="hidden" name="cat" value="<?php echo $category; ?>" />
 	<table cellpadding="4" cellspacing="0" border="0" width="98%" align="center">
 	<tr height="30" valign="bottom" class="mod_bakery_submit_row_b">
-      <th align="left"><a href="<?php echo WB_URL; ?>/modules/bakery/stock.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;order_by=sku&amp;order=<?php echo $order; ?>&amp;cat=<?php echo $category; ?>" title="<?php echo $text_order; ?>"><?php echo $MOD_BAKERY['TXT_SKU']; ?></a></th>
-      <th align="center"><a href="<?php echo WB_URL; ?>/modules/bakery/stock.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;order_by=modified_when&amp;order=<?php echo $order; ?>&amp;cat=<?php echo $category; ?>" title="<?php echo $text_order; ?>"><?php echo $TEXT['DATE']; ?></a></th>
-      <th align="left"><a href="<?php echo WB_URL; ?>/modules/bakery/stock.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;order_by=title&amp;order=<?php echo $order; ?>&amp;cat=<?php echo $category; ?>" title="<?php echo $text_order; ?>"><?php echo $MOD_BAKERY['TXT_NAME']; ?></a></th>
-      <th align="left"><a href="<?php echo WB_URL; ?>/modules/bakery/stock.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;order_by=price&amp;order=<?php echo $order; ?>&amp;cat=<?php echo $category; ?>" title="<?php echo $text_order; ?>"><?php echo $MOD_BAKERY['TXT_PRICE']; ?></a></th>
-      <th align="left"><a href="<?php echo WB_URL; ?>/modules/bakery/stock.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;order_by=shipping&amp;order=<?php echo $order; ?>&amp;cat=<?php echo $category; ?>" title="<?php echo $text_order; ?>"><?php echo $MOD_BAKERY['TXT_SHIPPING']; ?></a></th>
-      <th align="center"><a href="<?php echo WB_URL; ?>/modules/bakery/stock.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;order_by=stock&amp;order=<?php echo $order; ?>&amp;cat=<?php echo $category; ?>" title="<?php echo $text_order; ?>"><?php echo $MOD_BAKERY['TXT_IN_STOCK']; ?></a></th>
-      <th align="left"><a href="<?php echo WB_URL; ?>/modules/bakery/stock.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;order_by=active&amp;order=<?php echo $order; ?>&amp;cat=<?php echo $category; ?>" title="<?php echo $text_order; ?>"><?php echo $TEXT['ACTIVE']; ?></a></th>
+      <th align="left"><a href="<?php echo LEPTON_URL; ?>/modules/bakery/stock.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;order_by=sku&amp;order=<?php echo $order; ?>&amp;cat=<?php echo $category; ?>" title="<?php echo $text_order; ?>"><?php echo $MOD_BAKERY['TXT_SKU']; ?></a></th>
+      <th align="center"><a href="<?php echo LEPTON_URL; ?>/modules/bakery/stock.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;order_by=modified_when&amp;order=<?php echo $order; ?>&amp;cat=<?php echo $category; ?>" title="<?php echo $text_order; ?>"><?php echo $TEXT['DATE']; ?></a></th>
+      <th align="left"><a href="<?php echo LEPTON_URL; ?>/modules/bakery/stock.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;order_by=title&amp;order=<?php echo $order; ?>&amp;cat=<?php echo $category; ?>" title="<?php echo $text_order; ?>"><?php echo $MOD_BAKERY['TXT_NAME']; ?></a></th>
+      <th align="left"><a href="<?php echo LEPTON_URL; ?>/modules/bakery/stock.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;order_by=price&amp;order=<?php echo $order; ?>&amp;cat=<?php echo $category; ?>" title="<?php echo $text_order; ?>"><?php echo $MOD_BAKERY['TXT_PRICE']; ?></a></th>
+      <th align="left"><a href="<?php echo LEPTON_URL; ?>/modules/bakery/stock.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;order_by=shipping&amp;order=<?php echo $order; ?>&amp;cat=<?php echo $category; ?>" title="<?php echo $text_order; ?>"><?php echo $MOD_BAKERY['TXT_SHIPPING']; ?></a></th>
+      <th align="center"><a href="<?php echo LEPTON_URL; ?>/modules/bakery/stock.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;order_by=stock&amp;order=<?php echo $order; ?>&amp;cat=<?php echo $category; ?>" title="<?php echo $text_order; ?>"><?php echo $MOD_BAKERY['TXT_IN_STOCK']; ?></a></th>
+      <th align="left"><a href="<?php echo LEPTON_URL; ?>/modules/bakery/stock.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;order_by=active&amp;order=<?php echo $order; ?>&amp;cat=<?php echo $category; ?>" title="<?php echo $text_order; ?>"><?php echo $TEXT['ACTIVE']; ?></a></th>
       <th colspan="2" align="left"><?php echo $TEXT['ACTIONS']; ?></th>
 	</tr>
 	<?php
@@ -136,18 +136,18 @@ if ($query_items->numRows() > 0) {
 		<tr class="row_<?php echo $row; ?>" height="20">
 			<td width="7%" align="right" nowrap="nowrap"><?php echo $item['sku']; ?></td>
 			<td width="115" align="center"><?php echo gmdate(DEFAULT_DATE_FORMAT, $item['modified_when']+TIMEZONE); ?></td>
-			<td align="left"><a href="<?php echo WB_URL; ?>/modules/bakery/modify_item.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;item_id=<?php echo $item['item_id']; ?>" title="<?php echo $TEXT['MODIFY']; ?>"><?php echo $item['title']; ?></a></td>
+			<td align="left"><a href="<?php echo LEPTON_URL; ?>/modules/bakery/modify_item.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;item_id=<?php echo $item['item_id']; ?>" title="<?php echo $TEXT['MODIFY']; ?>"><?php echo $item['title']; ?></a></td>
 			<td width="30" align="right"><?php echo $item['price']; ?></td>
 			<td width="30" align="right"><?php echo $item['shipping']; ?></td>
 			<td width="70" align="center"><input type="text" name="stock[<?php echo $item['item_id']; ?>]" value="<?php echo $item['stock']; ?>" style="width: 50px; text-align: right;" /></td>
 			<td width="20" align="center"><input type="checkbox" name="active[<?php echo $item['item_id']; ?>]" value="1"<?php if ($item['active'] == '1') {echo ' checked="checked"';} ?> /></td>
 			<td width="20" align="center">
-				<a href="<?php echo WB_URL; ?>/modules/bakery/modify_item.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;item_id=<?php echo $item['item_id']; ?>" title="<?php echo $TEXT['MODIFY']; ?>">
+				<a href="<?php echo LEPTON_URL; ?>/modules/bakery/modify_item.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;item_id=<?php echo $item['item_id']; ?>" title="<?php echo $TEXT['MODIFY']; ?>">
 					<img src="<?php echo THEME_URL; ?>/images/modify_16.png" border="0" alt="<?php echo $TEXT['MODIFY']; ?>" />
 				</a>
 			</td>
 			<td width="20" align="right">
-				<a href="javascript: confirm_link('<?php echo $TEXT['ARE_YOU_SURE']; ?>', '<?php echo WB_URL; ?>/modules/bakery/delete_item.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>&item_id=<?php echo $item['item_id']; ?>');" title="<?php echo $TEXT['DELETE']; ?>">
+				<a href="javascript: confirm_link('<?php echo $TEXT['ARE_YOU_SURE']; ?>', '<?php echo LEPTON_URL; ?>/modules/bakery/delete_item.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>&item_id=<?php echo $item['item_id']; ?>');" title="<?php echo $TEXT['DELETE']; ?>">
 					<img src="<?php echo THEME_URL; ?>/images/delete_16.png" border="0" alt="<?php echo $TEXT['DELETE']; ?>" />
 				</a>
 			</td>
@@ -174,7 +174,7 @@ if ($query_items->numRows() > 0) {
 	  <td height="30" align="left"  style="padding-left: 12px;">
 	  <input name="save" type="submit" value="<?php echo $TEXT['SAVE']; ?>" style="width: 100px; margin-top: 5px;" /></td>
 	  <td height="30" align="center">
-	  <input type="button" value="<?php echo $TEXT['RELOAD']; ?>" onclick="javascript: window.location = '<?php echo WB_URL; ?>/modules/bakery/stock.php?page_id=<?php echo $page_id; ?>&cat=<?php echo $category; ?>';" style="width: 100px; margin-top: 5px;" /></td>
+	  <input type="button" value="<?php echo $TEXT['RELOAD']; ?>" onclick="javascript: window.location = '<?php echo LEPTON_URL; ?>/modules/bakery/stock.php?page_id=<?php echo $page_id; ?>&cat=<?php echo $category; ?>';" style="width: 100px; margin-top: 5px;" /></td>
 	  <td height="30" align="right"  style="padding-right: 12px;">
 	  <input type="button" value="<?php echo $TEXT['CANCEL']; ?>" onclick="javascript: window.location = '<?php echo ADMIN_URL; ?>/pages/modify.php?page_id=<?php echo $page_id; ?>';" style="width: 100px; margin-top: 5px;" /></td>
 	</tr>

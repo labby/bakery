@@ -18,18 +18,18 @@
 
 
 // Prevent this file from being accessed directly
-if (defined('WB_PATH') == false) {
+if (defined('LEPTON_PATH') == false) {
 	exit("Cannot access this file directly"); 
 }
 
 // Get some default values
-require_once(WB_PATH.'/modules/bakery/config.php');
+require_once(LEPTON_PATH.'/modules/bakery/config.php');
 
 // Look for language file
 if (LANGUAGE_LOADED) {
-    include(WB_PATH.'/modules/bakery/languages/EN.php');
-    if (file_exists(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
-        include(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
+    include(LEPTON_PATH.'/modules/bakery/languages/EN.php');
+    if (file_exists(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
+        include(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
     }
 }
 

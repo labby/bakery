@@ -21,7 +21,7 @@
 // ******************************
 
 // Get the current url scheme
-$url = parse_url(WB_URL);
+$url = parse_url(LEPTON_URL);
 
 // SETTINGS - USED BY BACKEND
 $MOD_BAKERY[$payment_method]['TXT_NAME'] = 'SOFORT &Uuml;berweisung';
@@ -39,7 +39,7 @@ Geben Sie unter &quot;Abbruch-Link&quot; die folgende vollst&auml;ndige URL ein:
 
 <b>Nicht änderbare Eingabeparameter:</b> Aktivieren Sie &quot;Betrag&quot; und &quot;Verwendungszweck&quot;.<br /><br />
 
-<b>Benachrichtigungen:</b> Erstellen Sie eine E-Mail Benachrichtigung <u>und</u> eine HTTP Benachrichtigung mit der <i>POST</i>-Methode an die folgende vollst&auml;ndige URL:<input type='text' value='".WB_URL."/modules/bakery/payment_methods/payment-network/report.php' readonly='true' onclick='this.select();' style='width: 98%;' /><br /><br />
+<b>Benachrichtigungen:</b> Erstellen Sie eine E-Mail Benachrichtigung <u>und</u> eine HTTP Benachrichtigung mit der <i>POST</i>-Methode an die folgende vollst&auml;ndige URL:<input type='text' value='".LEPTON_URL."/modules/bakery/payment_methods/payment-network/report.php' readonly='true' onclick='this.select();' style='width: 98%;' /><br /><br />
 
 <b>Passw&ouml;rter und Hash-Algorithmus:</b> Legen Sie ein Projekt-Passwort und ein Benachrichtigungspasswort fest <u>und</u> aktivieren Sie die Input-Pr&uuml;fung mit dem Hash-Algorithmus <i>SHA1</i>.";
 

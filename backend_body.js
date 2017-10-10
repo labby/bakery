@@ -122,7 +122,7 @@ $.extend(
 
 if(!jQuery().sortable){ 
 	// load_jQ_UI;			
-	$.include('../../include/jquery/jquery-ui-min.js');
+	$.include('../lib_jquery/jquery-ui/jquery-ui-min.js');
 }
 
 $(window).load(function(){

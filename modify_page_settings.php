@@ -20,15 +20,15 @@
 require('../../config.php');
 
 // Include WB admin wrapper script
-require(WB_PATH.'/modules/admin.php');
+require(LEPTON_PATH.'/modules/admin.php');
 // Get some default values
-require_once(WB_PATH.'/modules/bakery/config.php');
+require_once(LEPTON_PATH.'/modules/bakery/config.php');
 
 // Look for language File
 if (LANGUAGE_LOADED) {
-    require_once(WB_PATH.'/modules/bakery/languages/EN.php');
-    if (file_exists(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
-        require_once(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
+    require_once(LEPTON_PATH.'/modules/bakery/languages/EN.php');
+    if (file_exists(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
+        require_once(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
     }
 }
 
@@ -71,7 +71,7 @@ if ($get_pages->numRows() > 0) {
 			$can_modify = false;
 		}
 		// Options
-		$continue_url         = WB_URL.PAGES_DIRECTORY.$page['link'].PAGE_EXTENSION;
+		$continue_url         = LEPTON_URL.PAGES_DIRECTORY.$page['link'].PAGE_EXTENSION;
 		$continue_url_select .= '<option value="'.$page['page_id'].'"';
 		$continue_url_select .= $cur_continue_url == $page['page_id'] ? ' selected="selected"' : '';
 		$continue_url_select .= $can_modify == false ? " disabled='disabled' style='color: #aaa;'" : '';
@@ -83,7 +83,7 @@ if ($get_pages->numRows() > 0) {
 
 
 
-<form name="modify" action="<?php echo WB_URL; ?>/modules/bakery/save_page_settings.php" method="post" style="margin: 0;">
+<form name="modify" action="<?php echo LEPTON_URL; ?>/modules/bakery/save_page_settings.php" method="post" style="margin: 0;">
 
 <input type="hidden" name="section_id" value="<?php echo $section_id; ?>" />
 <input type="hidden" name="page_id" value="<?php echo $page_id; ?>" />
@@ -116,7 +116,7 @@ if ($get_pages->numRows() > 0) {
 <!-- Layout -->
 	<tr valign="bottom">
 	  <td width="25%" height="32" align="right"><strong><?php echo $MOD_BAKERY['TXT_LAYOUT'].' '.$MOD_BAKERY['TXT_SETTINGS']; ?>:</strong></td>
-	  <td height="32" colspan="2"><input type="button" value="<?php echo $MENU['HELP']; ?>" onclick="javascript: window.location = '<?php echo WB_URL; ?>/modules/bakery/help.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>';" style="width: 100px;" /></td>
+	  <td height="32" colspan="2"><input type="button" value="<?php echo $MENU['HELP']; ?>" onclick="javascript: window.location = '<?php echo LEPTON_URL; ?>/modules/bakery/help.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>';" style="width: 100px;" /></td>
     </tr>
 	<tr>
 		<td width="25%" align="right" valign="top"><?php echo $MOD_BAKERY['TXT_OVERVIEW'].' ('.$TEXT['HEADER']; ?>):</td>

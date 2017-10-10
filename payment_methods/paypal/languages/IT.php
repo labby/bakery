@@ -31,7 +31,7 @@ $MOD_BAKERY[$payment_method]['TXT_NOTICE'] = '
 Log in to your PayPal account: Go to &quot;My Account&quot; &gt; &quot;Profile&quot; &gt; &quot;My selling tools&quot; &gt; &quot;Website preferences&quot;.<br />
 
 <b>Auto Return:</b> Click the &quot;Auto Return&quot; radio button <i>On</i>.<br />
-<b>Return URL:</b> Enter the url as shown below in the field &quot;Return URL&quot;:<input type="text" value="' . WB_URL . '" readonly="true" onclick="this.select();" style="width: 98%;" /><br /><br />
+<b>Return URL:</b> Enter the url as shown below in the field &quot;Return URL&quot;:<input type="text" value="' . LEPTON_URL . '" readonly="true" onclick="this.select();" style="width: 98%;" /><br /><br />
 
 <b>Payment Data Transfer:</b> Click the &quot;Payment Data Transfer (PDT)&quot; radio button <i>On</i> and then click <i>Save</i>.<br />
 Your Identity Token is shown below the PDT On/Off radio buttons. Copy&amp;paste your Identity Token to the textfield right above this yellow box.<br /><br />
@@ -39,7 +39,7 @@ Your Identity Token is shown below the PDT On/Off radio buttons. Copy&amp;paste 
 <b>Instant Payment Notification Preferences</b><br />
 Go to &quot;My Account&quot; &gt; &quot;Profile&quot; &gt; &quot;My selling tools&quot; &gt; &quot;Instant payment notifications&quot;.<br />
 Click the &quot;Choose IPN Settings&quot; button and you will be taken to the configuration page.<br />
-Copy&amp;paste the full url as shown below to the field &quot;Notification URL&quot;:<input type="text" value="' . WB_URL . '/modules/bakery/payment_methods/paypal/ipn.php" readonly="true" onclick="this.select();" style="width: 98%;" />
+Copy&amp;paste the full url as shown below to the field &quot;Notification URL&quot;:<input type="text" value="' . LEPTON_URL . '/modules/bakery/payment_methods/paypal/ipn.php" readonly="true" onclick="this.select();" style="width: 98%;" />
 Click the &quot;Receive IPN messages (Enabled)&quot; radio button and save your changes.<br />';
 
 // USED BY FILE bakery/payment_methods/paypal/gateway.php

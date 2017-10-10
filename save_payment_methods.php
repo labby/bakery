@@ -21,7 +21,7 @@ require('../../config.php');
 
 // Include WB admin wrapper script
 $update_when_modified = true; // Tells script to update when this page was last updated
-require(WB_PATH.'/modules/admin.php');
+require(LEPTON_PATH.'/modules/admin.php');
 
 
 // Remove any tags and add slashes
@@ -56,7 +56,7 @@ if ($database->is_error()) {
 } else {
 	// If a payment method has been selected go back to the payment method page
 	if ($reload) {
-		$admin->print_success($TEXT['SUCCESS'], WB_URL.'/modules/bakery/modify_payment_methods.php?page_id='.$page_id.'&section_id='.$section_id.'&payment_method='.$modify_payment_method);
+		$admin->print_success($TEXT['SUCCESS'], LEPTON_URL.'/modules/bakery/modify_payment_methods.php?page_id='.$page_id.'&section_id='.$section_id.'&payment_method='.$modify_payment_method);
 	} else {
 		$admin->print_success($TEXT['SUCCESS'], ADMIN_URL.'/pages/modify.php?page_id='.$page_id);
 	}

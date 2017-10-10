@@ -18,7 +18,7 @@
 
 
 //Prevent this file from being accessed directly
-if (defined('WB_PATH') == false) {
+if (defined('LEPTON_PATH') == false) {
 	exit("Cannot access this file directly"); 
 }
 
@@ -28,7 +28,7 @@ $avaiable_payment_methods = array();
 $load_payment_methods     = array();
 
 // Load all payment methods/gateways
-$directory = WB_PATH.'/modules/bakery/payment_methods';
+$directory = LEPTON_PATH.'/modules/bakery/payment_methods';
 // Open the payment_methods directory then loop through its contents
 $dir = dir($directory);
 while (false !== $payment_method_dir = $dir->read()) {
@@ -77,9 +77,9 @@ if (!empty($load_payment_methods)) {
 		// Look for payment method language file
 		$payment_method = $payment_method_dir;
 		if (LANGUAGE_LOADED) {
-			include(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/EN.php');
-			if (file_exists(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php')) {
-				include(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php');
+			include(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/EN.php');
+			if (file_exists(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php')) {
+				include(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php');
 			}
 		}
 
@@ -93,8 +93,8 @@ if (!empty($load_payment_methods)) {
 			$database->query("UPDATE ".TABLE_PREFIX."mod_bakery_payment_methods SET name = '$payment_method_name', version = '$payment_method_version', author = '$payment_method_author', requires = '$requires_bakery_module', field_1 = '$field_1', field_2 = '$field_2', field_3 = '$field_3', field_4 = '$field_4', field_5 = '$field_5', field_6 = '$field_6' WHERE directory = '$payment_method_dir'");
 
 			// Include upgrade.php if exists
-			if (file_exists(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/upgrade.php')) {
-				include(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/upgrade.php');
+			if (file_exists(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/upgrade.php')) {
+				include(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/upgrade.php');
 			}
 
 		} else {
@@ -115,8 +115,8 @@ if (!empty($load_payment_methods)) {
 			}
 
 			// Include install.php if exists
-			if (file_exists(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/install.php')) {
-				include(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/install.php');
+			if (file_exists(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/install.php')) {
+				include(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/install.php');
 			}
 		}
 	}

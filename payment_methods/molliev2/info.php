@@ -23,7 +23,7 @@ $field_5 = '';
 $field_6 = '';
 
 // Payment method info
-$payment_gateway_url = WB_URL."/modules/bakery/payment_methods/molliev2/redirect.php";
+$payment_gateway_url = LEPTON_URL."/modules/bakery/payment_methods/molliev2/redirect.php";
 $payment_method_name = 'Mollie (API version)';
 $payment_method_version = '1.1';
 $payment_method_author = 'Dev4me - Ruud';

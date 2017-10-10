@@ -18,12 +18,12 @@
 
 
 // Prevent this file from being accessed directly
-if (defined('WB_PATH') == false) {
+if (defined('LEPTON_PATH') == false) {
 	exit("Cannot access this file directly"); 
 }
 
 // Get some default values
-require_once(WB_PATH.'/modules/bakery/config.php');
+require_once(LEPTON_PATH.'/modules/bakery/config.php');
 
 // Get module pages directory from general setting table
 $query_general_settings = $database->query("SELECT pages_directory FROM ".TABLE_PREFIX."mod_bakery_general_settings");
@@ -45,14 +45,14 @@ $database->query("DROP TABLE ".TABLE_PREFIX."mod_bakery_page_settings");
 $database->query("DROP TABLE ".TABLE_PREFIX."mod_bakery_payment_methods");
 
 // Include WB functions file
-require_once(WB_PATH.'/framework/summary.functions.php');
+require_once(LEPTON_PATH.'/framework/summary.functions.php');
 
-$directory = WB_PATH.PAGES_DIRECTORY.$module_pages_directory;
+$directory = LEPTON_PATH.PAGES_DIRECTORY.$module_pages_directory;
 if (is_dir($directory)) {
 	rm_full_dir($directory);
 }
 
-$directory = WB_PATH.MEDIA_DIRECTORY.'/'.$img_dir;
+$directory = LEPTON_PATH.MEDIA_DIRECTORY.'/'.$img_dir;
 if (is_dir($directory)) {
 	rm_full_dir($directory);
 }

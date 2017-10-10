@@ -20,7 +20,7 @@
 require('../../config.php');
 
 // Include WB admin wrapper script
-require(WB_PATH.'/modules/admin.php');
+require(LEPTON_PATH.'/modules/admin.php');
 
 // Make use of the skinable backend themes of WB > 2.7
 // Check if THEME_URL is supported otherwise use ADMIN_URL
@@ -30,9 +30,9 @@ if (!defined('THEME_URL')) {
 
 // Look for language file
 if (LANGUAGE_LOADED) {
-    require_once(WB_PATH.'/modules/bakery/languages/EN.php');
-    if (file_exists(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
-        require_once(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
+    require_once(LEPTON_PATH.'/modules/bakery/languages/EN.php');
+    if (file_exists(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
+        require_once(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
     }
 }
 
@@ -53,7 +53,7 @@ $option_select = array();
 
 // Form and table header
 ?>
-<form name="modify" action="<?php echo WB_URL; ?>/modules/bakery/save_option.php" method="post" style="margin: 0;">
+<form name="modify" action="<?php echo LEPTON_URL; ?>/modules/bakery/save_option.php" method="post" style="margin: 0;">
 <input type="hidden" name="section_id" value="<?php echo $section_id; ?>" />
 <input type="hidden" name="page_id" value="<?php echo $page_id; ?>" />
 <table cellpadding="2" cellspacing="0" border="0" width="98%" align="center">
@@ -83,12 +83,12 @@ if ($query_options->numRows() > 0) {
 		<tr class="row_<?php echo $row; ?>" height="20">
 			<td width="300" align="left"><span style="margin-left: 5px;"><?php echo $option['option_name']; ?></span></td>
 			<td align="center" width="22">
-				<a href="<?php echo WB_URL; ?>/modules/bakery/modify_options.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;option_id=<?php echo $option['option_id']; ?>" title="<?php echo $TEXT['MODIFY']; ?>">
+				<a href="<?php echo LEPTON_URL; ?>/modules/bakery/modify_options.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;option_id=<?php echo $option['option_id']; ?>" title="<?php echo $TEXT['MODIFY']; ?>">
 					<img src="<?php echo THEME_URL; ?>/images/modify_16.png" alt="<?php echo $TEXT['MODIFY'].' '.$MOD_BAKERY['TXT_OPTION_NAME']; ?>" border="0" />
 				</a>
 			</td>
 			<td width="22">
-				<a href="javascript: confirm_link('<?php echo $TEXT['ARE_YOU_SURE']; ?>', '<?php echo WB_URL; ?>/modules/bakery/delete_option.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>&option_id=<?php echo $option['option_id']; ?>');" title="<?php echo $TEXT['DELETE']; ?>">
+				<a href="javascript: confirm_link('<?php echo $TEXT['ARE_YOU_SURE']; ?>', '<?php echo LEPTON_URL; ?>/modules/bakery/delete_option.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>&option_id=<?php echo $option['option_id']; ?>');" title="<?php echo $TEXT['DELETE']; ?>">
 					<img src="<?php echo THEME_URL; ?>/images/delete_16.png" border="0" alt="<?php echo $TEXT['DELETE'].' '.$MOD_BAKERY['TXT_OPTION_NAME']; ?>" />
 				</a>
 			</td>
@@ -141,7 +141,7 @@ $attribute_name = '';
 
 // Form and table header
 ?>
-<form name="modify" action="<?php echo WB_URL; ?>/modules/bakery/save_attribute.php" method="post" style="margin: 0;">
+<form name="modify" action="<?php echo LEPTON_URL; ?>/modules/bakery/save_attribute.php" method="post" style="margin: 0;">
 <input type="hidden" name="section_id" value="<?php echo $section_id; ?>" />
 <input type="hidden" name="page_id" value="<?php echo $page_id; ?>" />
 <table cellpadding="2" cellspacing="0" border="0" width="98%" align="center">
@@ -171,12 +171,12 @@ if ($query_attributes->numRows() > 0) {
 			<td width="200" align="left"><span style="margin-left: 5px;"><?php echo $attribute['option_name']; ?></span></td>
 			<td align="left"><span style="margin-left: 12px;"><?php echo $attribute['attribute_name']; ?></span></td>
 			<td align="center" width="22">
-				<a href="<?php echo WB_URL; ?>/modules/bakery/modify_options.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;option_id=<?php echo $attribute['option_id']; ?>&amp;attribute_id=<?php echo $attribute['attribute_id']; ?>" title="<?php echo $TEXT['MODIFY']; ?>">
+				<a href="<?php echo LEPTON_URL; ?>/modules/bakery/modify_options.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;option_id=<?php echo $attribute['option_id']; ?>&amp;attribute_id=<?php echo $attribute['attribute_id']; ?>" title="<?php echo $TEXT['MODIFY']; ?>">
 					<img src="<?php echo THEME_URL; ?>/images/modify_16.png" alt="<?php echo $TEXT['MODIFY'].' '.$MOD_BAKERY['TXT_OPTION_NAME']; ?>" border="0" />
 				</a>
 			</td>
 			<td align="left" width="22">
-				<a href="javascript: confirm_link('<?php echo $TEXT['ARE_YOU_SURE']; ?>', '<?php echo WB_URL; ?>/modules/bakery/delete_attribute.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>&attribute_id=<?php echo $attribute['attribute_id']; ?>');" title="<?php echo $TEXT['DELETE']; ?>">
+				<a href="javascript: confirm_link('<?php echo $TEXT['ARE_YOU_SURE']; ?>', '<?php echo LEPTON_URL; ?>/modules/bakery/delete_attribute.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>&attribute_id=<?php echo $attribute['attribute_id']; ?>');" title="<?php echo $TEXT['DELETE']; ?>">
 					<img src="<?php echo THEME_URL; ?>/images/delete_16.png" border="0" alt="<?php echo $TEXT['DELETE'].' '.$MOD_BAKERY['TXT_OPTION_NAME']; ?>" />	
 				</a>
 			</td>

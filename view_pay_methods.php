@@ -18,20 +18,20 @@
 
 
 // Prevent this file from being accessed directly
-if (defined('WB_PATH') == false) {
+if (defined('LEPTON_PATH') == false) {
 	exit("Cannot access this file directly"); 
 }
 
 // Include WB template parser and create template object
-require_once(WB_PATH.'/include/phplib/template.inc');
-$tpl = new Template(WB_PATH.'/modules/bakery/templates/pay_methods');
+require_once(LEPTON_PATH.'/include/phplib/template.inc');
+$tpl = new Template(LEPTON_PATH.'/modules/bakery/templates/pay_methods');
 // Define how to deal with unknown {PLACEHOLDERS} (remove:=default, keep, comment)
 $tpl->set_unknowns('remove');
 // Define debug mode (0:=disabled (default), 1:=variable assignments, 2:=calls to get variable, 4:=debug internals)
 $tpl->debug = 0;
 
 // Include WB functions file
-require_once(WB_PATH.'/framework/summary.functions.php');
+require_once(LEPTON_PATH.'/framework/summary.functions.php');
 
 // Assign page filename for tracking with Google Analytics _trackPageview() function
 global $ga_page;
@@ -68,7 +68,7 @@ if ($setting_no_revocation == 'e-goods') {
 // Show title, customers message and terms & conditions using template file
 $tpl->set_file('pay_methods_title', 'title.htm');
 $tpl->set_var(array(
-	'WB_URL'					=>	WB_URL,
+	'LEPTON_URL'					=>	LEPTON_URL,
 	'SETTING_CONTINUE_URL'		=>	$setting_continue_url,
 	'TXT_TAC_AND_PAY_METHOD'	=>	$MOD_BAKERY['TXT_TAC_AND_PAY_METHOD'],
 	'DISPLAY_AGREE'				=>  $display_agree,
@@ -93,8 +93,8 @@ $tpl->pparse('output', 'pay_methods_title');
 // Only show payment method/payment gateway if we have to
 if ($num_payment_methods > 0) {
 	foreach ($setting_payment_methods as $payment_method) {
-		if (is_file(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/gateway.php')) {
-			include(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/gateway.php');
+		if (is_file(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/gateway.php')) {
+			include(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/gateway.php');
 		}
 	}
 } else {

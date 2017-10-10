@@ -27,26 +27,26 @@ if (!isset($_POST['item_id']) OR !is_numeric($_POST['item_id'])) {
 
 // Includes
 require('../../config.php');
-require(WB_PATH.'/modules/bakery/resize_img.php');
-require(WB_PATH.'/modules/bakery/pngthumb.php');
+require(LEPTON_PATH.'/modules/bakery/resize_img.php');
+require(LEPTON_PATH.'/modules/bakery/pngthumb.php');
 // Get some default values
-require_once(WB_PATH.'/modules/bakery/config.php');
+require_once(LEPTON_PATH.'/modules/bakery/config.php');
 // Include WB functions file
-require(WB_PATH.'/framework/summary.functions.php');
+require(LEPTON_PATH.'/framework/summary.functions.php');
 // Include WB admin wrapper script
 $update_when_modified = true; // Tells script to update when this page was last updated
-require(WB_PATH.'/modules/admin.php');
+require(LEPTON_PATH.'/modules/admin.php');
 
 // Look for language file
 if (LANGUAGE_LOADED) {
-    include(WB_PATH.'/modules/bakery/languages/EN.php');
-    if (file_exists(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
-        include(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
+    include(LEPTON_PATH.'/modules/bakery/languages/EN.php');
+    if (file_exists(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
+        include(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
     }
 }
 
 // Create new order object
-require(WB_PATH.'/framework/class.order.php');
+require(LEPTON_PATH.'/framework/class.order.php');
 $item_order = new order(TABLE_PREFIX.'mod_bakery_items', 'position', 'item_id', 'section_id');
 
 
@@ -119,7 +119,7 @@ if (empty($admin->get_post('title'))) {
 	$_SESSION['bakery']['item']['new_section_id']    = $new_section_id;
 	$_SESSION['bakery']['item']['action']            = $action;
 	// Show error message and go back
-	$admin->print_error($MESSAGE['GENERIC_FILL_IN_ALL'], WB_URL.'/modules/bakery/modify_item.php?page_id='.$page_id.'&section_id='.$section_id.'&item_id='.$id);
+	$admin->print_error($MESSAGE['GENERIC_FILL_IN_ALL'], LEPTON_URL.'/modules/bakery/modify_item.php?page_id='.$page_id.'&section_id='.$section_id.'&item_id='.$id);
 }
 
 // For currency inputs convert decimal comma to decimal point
@@ -227,17 +227,17 @@ else {
 
 // Make sure the item link is set and exists
 // Make new item access files dir
-make_dir(WB_PATH.PAGES_DIRECTORY.$module_pages_directory);
-if (!is_writable(WB_PATH.PAGES_DIRECTORY.$module_pages_directory)) {
+make_dir(LEPTON_PATH.PAGES_DIRECTORY.$module_pages_directory);
+if (!is_writable(LEPTON_PATH.PAGES_DIRECTORY.$module_pages_directory)) {
 	$admin->print_error($MESSAGE['PAGES']['CANNOT_CREATE_ACCESS_FILE']);
-} elseif ($old_link != $item_link OR !file_exists(WB_PATH.PAGES_DIRECTORY.$item_link.PAGE_EXTENSION) OR $moved) {
+} elseif ($old_link != $item_link OR !file_exists(LEPTON_PATH.PAGES_DIRECTORY.$item_link.PAGE_EXTENSION) OR $moved) {
 	// We need to create a new file
 	// First, delete old file if it exists
-	if (file_exists(WB_PATH.PAGES_DIRECTORY.$old_link.PAGE_EXTENSION) && $action != 'duplicate') {
-		unlink(WB_PATH.PAGES_DIRECTORY.$old_link.PAGE_EXTENSION);
+	if (file_exists(LEPTON_PATH.PAGES_DIRECTORY.$old_link.PAGE_EXTENSION) && $action != 'duplicate') {
+		unlink(LEPTON_PATH.PAGES_DIRECTORY.$old_link.PAGE_EXTENSION);
 	}
 	// Specify the filename
-	$filename = WB_PATH.PAGES_DIRECTORY.$item_link.PAGE_EXTENSION;
+	$filename = LEPTON_PATH.PAGES_DIRECTORY.$item_link.PAGE_EXTENSION;
 	// The depth of the page directory in the directory hierarchy
 	// 'PAGES_DIRECTORY' is at depth 1
 	$pages_dir_depth = count(explode('/',PAGES_DIRECTORY))-1;
@@ -254,7 +254,7 @@ $section_id = '.$section_id.';
 $item_id = '.$item_id.';
 define("ITEM_ID", $item_id);
 require("'.$index_location.'config.php");
-require(WB_PATH."/index.php");
+require(LEPTON_PATH."/index.php");
 ?>';
 	$handle = fopen($filename, 'w');
 	fwrite($handle, $content);
@@ -278,7 +278,7 @@ $directories = array(
 
 // Try and make the directories
 foreach ($directories as $directory) {
-	$directory_path = WB_PATH.MEDIA_DIRECTORY.'/'.$img_dir.$directory;
+	$directory_path = LEPTON_PATH.MEDIA_DIRECTORY.'/'.$img_dir.$directory;
 	make_dir($directory_path);
 
 	// Add index.php files if not existing yet
@@ -303,17 +303,17 @@ foreach ($images as $img_id  => $image) {
 		$img_file = $image['delete_image'];
 
 		// Try unlinking image
-		if (file_exists(WB_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/images/item'.$item_id.'/'.$img_file)) {
-			unlink(WB_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/images/item'.$item_id.'/'.$img_file);
+		if (file_exists(LEPTON_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/images/item'.$item_id.'/'.$img_file)) {
+			unlink(LEPTON_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/images/item'.$item_id.'/'.$img_file);
 		}
 		// Try unlinking thumb
-		if (file_exists(WB_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$item_id.'/'.$img_file)) {
-			unlink(WB_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$item_id.'/'.$img_file);
+		if (file_exists(LEPTON_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$item_id.'/'.$img_file)) {
+			unlink(LEPTON_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$item_id.'/'.$img_file);
 		} else {
 			// Check if png image has a jpg thumb (version < 1.7.6 used jpg thumbs only)
 			$img_file = str_replace('.png', '.jpg', $img_file);
-			if (file_exists(WB_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$item_id.'/'.$img_file)) {
-				unlink(WB_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$item_id.'/'.$img_file);
+			if (file_exists(LEPTON_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$item_id.'/'.$img_file)) {
+				unlink(LEPTON_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$item_id.'/'.$img_file);
 			}
 		}
 		// Delete image in database
@@ -347,7 +347,7 @@ for ($i = 0; $i < $num_images; $i++) {
 		$fileext    = strtolower($fileext);
 		
 		// Path to the new file
-		$new_file = WB_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/images/item'.$item_id.'/'.$filename.'.'.$fileext;
+		$new_file = LEPTON_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/images/item'.$item_id.'/'.$filename.'.'.$fileext;
 
 		// Make sure the image is a jpg or png file
 		if (!($fileext == 'jpg' || $fileext == 'jpeg' || $fileext == 'png')) {
@@ -378,7 +378,7 @@ for ($i = 0; $i < $num_images; $i++) {
 		if ($resize != 0) {
 		
 			// Thumbnail destination
-			$thumb_destination = WB_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$item_id.'/'.$filename.'.'.$fileext;
+			$thumb_destination = LEPTON_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$item_id.'/'.$filename.'.'.$fileext;
 			
 			// Check thumbnail type
 			if ($fileext == 'png') {
@@ -394,7 +394,7 @@ for ($i = 0; $i < $num_images; $i++) {
 		if ($imgresize == 'yes' && file_exists($new_file)) {
 
 			// Image destination
-			$img_destination = WB_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/images/item'.$item_id.'/'.$filename.'.'.$fileext;
+			$img_destination = LEPTON_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/images/item'.$item_id.'/'.$filename.'.'.$fileext;
 
 			// Check image type
 			if ($fileext == 'png') {
@@ -488,12 +488,12 @@ if ($action == 'duplicate') {
 
 	// Make sure the item link is set and exists
 	// Make new item access files dir
-	if (!is_writable(WB_PATH.PAGES_DIRECTORY.$module_pages_directory)) {
+	if (!is_writable(LEPTON_PATH.PAGES_DIRECTORY.$module_pages_directory)) {
 		$admin->print_error($MESSAGE['PAGES']['CANNOT_CREATE_ACCESS_FILE']);
 	} else {
 		// We need to create a new file
 		// Specify the filename
-		$filename = WB_PATH.PAGES_DIRECTORY.$item_link.PAGE_EXTENSION;
+		$filename = LEPTON_PATH.PAGES_DIRECTORY.$item_link.PAGE_EXTENSION;
 		// The depth of the page directory in the directory hierarchy
 		// '/pages' is at depth 1
 		$pages_dir_depth = count(explode('/',PAGES_DIRECTORY))-1;
@@ -510,7 +510,7 @@ $section_id = '.$section_id.';
 $item_id = '.$item_id.';
 define("ITEM_ID", $item_id);
 require("'.$index_location.'config.php");
-require(WB_PATH."/index.php");
+require(LEPTON_PATH."/index.php");
 ?>';
 		$handle = fopen($filename, 'w');
 		fwrite($handle, $content);
@@ -532,12 +532,12 @@ require(WB_PATH."/index.php");
 	}
 
 	// Prepare pathes to the source image and thumb directories
-	$img_source_dir   = WB_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/images/item'.$orig_item_id;
-	$thumb_source_dir = WB_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$orig_item_id;
+	$img_source_dir   = LEPTON_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/images/item'.$orig_item_id;
+	$thumb_source_dir = LEPTON_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$orig_item_id;
 
 	// Make sure the target directories exist
-	$img_destination_dir   = WB_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/images/item'.$item_id;
-	$thumb_destination_dir = WB_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$item_id;
+	$img_destination_dir   = LEPTON_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/images/item'.$item_id;
+	$thumb_destination_dir = LEPTON_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$item_id;
 	make_dir($img_destination_dir);
 	make_dir($thumb_destination_dir);
 
@@ -580,7 +580,7 @@ header('Location: ../');
 
 			// Path to the image source and destination
 			$img_source      = $img_source_dir.'/'.$image_file;
-			$img_destination = WB_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/images/item'.$item_id.'/'.$image_file;
+			$img_destination = LEPTON_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/images/item'.$item_id.'/'.$image_file;
 
 			// Check if png image has a jpg thumb (version < 1.7.6 used jpg thumbs only)
 			if (!file_exists($thumb_source_dir.'/'.$image_file)) {
@@ -588,7 +588,7 @@ header('Location: ../');
 			}
 			// Path to the thumb source and destination
 			$thumb_source      = $thumb_source_dir.'/'.$image_file;
-			$thumb_destination = WB_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$item_id.'/'.$image_file;
+			$thumb_destination = LEPTON_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$item_id.'/'.$image_file;
 
 			// Try duplicating image and thumb
 			if (file_exists($img_source)) {
@@ -626,13 +626,13 @@ if ($file_type_error || !empty($errors)) {
 
 // Different targets depending on the save action
 if ($return_to_options) {
-	$return_url = WB_URL.'/modules/bakery/modify_item.php?page_id='.$page_id.'&section_id='.$section_id.'&item_id='.$id.'#options';
+	$return_url = LEPTON_URL.'/modules/bakery/modify_item.php?page_id='.$page_id.'&section_id='.$section_id.'&item_id='.$id.'#options';
 }
 elseif (!empty($_POST['save_and_return_to_images'])) {
-	$return_url = WB_URL.'/modules/bakery/modify_item.php?page_id='.$page_id.'&section_id='.$section_id.'&item_id='.$item_id.'#images';
+	$return_url = LEPTON_URL.'/modules/bakery/modify_item.php?page_id='.$page_id.'&section_id='.$section_id.'&item_id='.$item_id.'#images';
 }
 elseif (!empty($_POST['save_and_return']) OR $error) {
-	$return_url = WB_URL.'/modules/bakery/modify_item.php?page_id='.$page_id.'&section_id='.$section_id.'&item_id='.$item_id;
+	$return_url = LEPTON_URL.'/modules/bakery/modify_item.php?page_id='.$page_id.'&section_id='.$section_id.'&item_id='.$item_id;
 }
 else {
 	$return_url = ADMIN_URL.'/pages/modify.php?page_id='.$page_id;

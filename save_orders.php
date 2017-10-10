@@ -21,7 +21,7 @@ require('../../config.php');
 
 // Include WB admin wrapper script
 $update_when_modified = true; // Tells script to update when this page was last updated
-require(WB_PATH.'/modules/admin.php');
+require(LEPTON_PATH.'/modules/admin.php');
 
 // Loop through the orders... 
 foreach ($_POST['status'] as $order_id => $status) {
@@ -46,9 +46,9 @@ foreach ($_POST['status'] as $order_id => $status) {
 
 // Check if there is a db error, otherwise say successful
 if ($database->is_error()) {
-	$admin->print_error($database->get_error(), WB_URL.'/modules/bakery/modify_orders.php?page_id='.$page_id);
+	$admin->print_error($database->get_error(), LEPTON_URL.'/modules/bakery/modify_orders.php?page_id='.$page_id);
 } else {
-	$admin->print_success($TEXT['SUCCESS'], WB_URL.'/modules/bakery/modify_orders.php?page_id='.$page_id);
+	$admin->print_success($TEXT['SUCCESS'], LEPTON_URL.'/modules/bakery/modify_orders.php?page_id='.$page_id);
 }
 
 // Print admin footer

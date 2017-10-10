@@ -18,7 +18,7 @@
 
 
 // Prevent this file from being accessed directly
-if (defined('WB_PATH') == false) {
+if (defined('LEPTON_PATH') == false) {
 	exit("Cannot access this file directly"); 
 }
 
@@ -30,20 +30,20 @@ if (!defined('THEME_URL')) {
 
 //Look for language File
 if (LANGUAGE_LOADED) {
-    require_once(WB_PATH.'/modules/bakery/languages/EN.php');
-    if (file_exists(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
-        require_once(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
+    require_once(LEPTON_PATH.'/modules/bakery/languages/EN.php');
+    if (file_exists(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
+        require_once(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
     }
 }
 
 // Get some default values
-require_once(WB_PATH.'/modules/bakery/config.php');
+require_once(LEPTON_PATH.'/modules/bakery/config.php');
 // Include WB functions file
-require_once(WB_PATH.'/framework/summary.functions.php');
+require_once(LEPTON_PATH.'/framework/summary.functions.php');
 
 // Include core functions of WB 2.7 to edit the optional module CSS files (frontend.css, backend.css)
-if (file_exists(WB_PATH.'/framework/summary.module_edit_css.php') && file_exists(WB_PATH.'/modules/edit_module_files.php')) {
-	include_once(WB_PATH.'/framework/summary.module_edit_css.php');
+if (file_exists(LEPTON_PATH.'/framework/summary.module_edit_css.php') && file_exists(LEPTON_PATH.'/modules/edit_module_files.php')) {
+	include_once(LEPTON_PATH.'/framework/summary.module_edit_css.php');
 }
 
 // Delete empty Database records
@@ -70,15 +70,15 @@ if ($query_general_settings->numRows() > 0) {
 
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 	<tr height="25">
-		<td><input type="button" onclick="javascript: window.location = '<?php echo WB_URL; ?>/modules/bakery/modify_options.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>';" value="<?php echo $MOD_BAKERY['TXT_ITEM_OPTIONS']; ?>" style="width: 200px; " /></td>
-		<td><input type="button" onclick="javascript: window.location = '<?php echo WB_URL; ?>/modules/bakery/modify_orders.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>';" value="<?php echo $MOD_BAKERY['TXT_ORDER_ADMIN']; ?>" style="width: 200px; " /></td>
-		<td><input type="button" value="<?php echo $MOD_BAKERY['TXT_GENERAL_SETTINGS']; ?>" onclick="javascript: window.location = '<?php echo WB_URL; ?>/modules/bakery/modify_general_settings.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>';" style="width: 200px; display: <?php echo $display_settings; ?>;" /></td>
-		<td><input type="button" onclick="javascript: window.location = '<?php echo WB_URL; ?>/modules/bakery/modify_payment_methods.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>';" value="<?php echo $MOD_BAKERY['TXT_PAYMENT_METHODS']; ?>" style="float:right;width: 200px; display: <?php echo $display_settings; ?>;" /></td>
+		<td><input type="button" onclick="javascript: window.location = '<?php echo LEPTON_URL; ?>/modules/bakery/modify_options.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>';" value="<?php echo $MOD_BAKERY['TXT_ITEM_OPTIONS']; ?>" style="width: 200px; " /></td>
+		<td><input type="button" onclick="javascript: window.location = '<?php echo LEPTON_URL; ?>/modules/bakery/modify_orders.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>';" value="<?php echo $MOD_BAKERY['TXT_ORDER_ADMIN']; ?>" style="width: 200px; " /></td>
+		<td><input type="button" value="<?php echo $MOD_BAKERY['TXT_GENERAL_SETTINGS']; ?>" onclick="javascript: window.location = '<?php echo LEPTON_URL; ?>/modules/bakery/modify_general_settings.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>';" style="width: 200px; display: <?php echo $display_settings; ?>;" /></td>
+		<td><input type="button" onclick="javascript: window.location = '<?php echo LEPTON_URL; ?>/modules/bakery/modify_payment_methods.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>';" value="<?php echo $MOD_BAKERY['TXT_PAYMENT_METHODS']; ?>" style="float:right;width: 200px; display: <?php echo $display_settings; ?>;" /></td>
 	</tr>
 	<tr>
-		<td><input type="button" value="[+] <?php echo $MOD_BAKERY['TXT_ADD_ITEM']; ?>" onclick="javascript: window.location = '<?php echo WB_URL; ?>/modules/bakery/add_item.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>';" style="width: 200px; " /></td>
-		<td><input type="button" value="<?php echo $MOD_BAKERY['TXT_STOCK_ADMIN']; ?>" onclick="javascript: window.location = '<?php echo WB_URL; ?>/modules/bakery/stock.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>';" style="width: 200px; " /></td>
-		<td><input type="button" value="<?php echo $MOD_BAKERY['TXT_PAGE_SETTINGS']; ?>" onclick="javascript: window.location = '<?php echo WB_URL; ?>/modules/bakery/modify_page_settings.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>';" style="width: 200px; display: <?php echo $display_settings; ?>;" /></td>
+		<td><input type="button" value="[+] <?php echo $MOD_BAKERY['TXT_ADD_ITEM']; ?>" onclick="javascript: window.location = '<?php echo LEPTON_URL; ?>/modules/bakery/add_item.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>';" style="width: 200px; " /></td>
+		<td><input type="button" value="<?php echo $MOD_BAKERY['TXT_STOCK_ADMIN']; ?>" onclick="javascript: window.location = '<?php echo LEPTON_URL; ?>/modules/bakery/stock.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>';" style="width: 200px; " /></td>
+		<td><input type="button" value="<?php echo $MOD_BAKERY['TXT_PAGE_SETTINGS']; ?>" onclick="javascript: window.location = '<?php echo LEPTON_URL; ?>/modules/bakery/modify_page_settings.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>';" style="width: 200px; display: <?php echo $display_settings; ?>;" /></td>
 		<td><?php
 			if (function_exists('edit_module_css')) {
 				if ($display_settings == "inline") {
@@ -127,8 +127,8 @@ if ($query_items->numRows() > 0) {
 		while ($post = $query_items->fetchRow()):
 
 			// Prepare thumb path and url
-			$thumb_path = WB_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$post['item_id'].'/';
-			$thumb_url  = WB_URL.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$post['item_id'].'/';
+			$thumb_path = LEPTON_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$post['item_id'].'/';
+			$thumb_url  = LEPTON_URL.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$post['item_id'].'/';
 
 			// Get main thumb (image with position == 1)
 			$main_image = FALSE;
@@ -157,13 +157,13 @@ if ($query_items->numRows() > 0) {
                 <?php else: 
                 // else show the "noimage" icon --> 
                 ?>                   
-                   <img src="<?php echo WB_URL; ?>/modules/bakery/images/nopic.png" alt="<?php echo $TEXT['NONE_FOUND']; ?>" title="<?php echo $TEXT['NONE_FOUND']; ?>" height="48" width="48" border="0" />
+                   <img src="<?php echo LEPTON_URL; ?>/modules/bakery/images/nopic.png" alt="<?php echo $TEXT['NONE_FOUND']; ?>" title="<?php echo $TEXT['NONE_FOUND']; ?>" height="48" width="48" border="0" />
                 <?php endif; ?>
                 </div>     
 			</td>
 			
 			<td style="width: 60%">
-				<a href="<?php echo WB_URL; ?>/modules/bakery/modify_item.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;item_id=<?php echo $post['item_id']; ?>" title="<?php echo $TEXT['MODIFY']; ?>">
+				<a href="<?php echo LEPTON_URL; ?>/modules/bakery/modify_item.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;item_id=<?php echo $post['item_id']; ?>" title="<?php echo $TEXT['MODIFY']; ?>">
 					<strong><?php echo stripslashes($post['title']); ?></strong>
 				</a>
 			</td>
@@ -173,14 +173,14 @@ if ($query_items->numRows() > 0) {
 			</td>
 			
 			<td style="width: 10%" align="center">
-				<a href="javascript: confirm_link('<?php echo $TEXT['ARE_YOU_SURE']; ?>', '<?php echo WB_URL; ?>/modules/bakery/delete_item.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>&item_id=<?php echo $post['item_id']; ?>');" title="<?php echo $TEXT['DELETE']; ?>">
+				<a href="javascript: confirm_link('<?php echo $TEXT['ARE_YOU_SURE']; ?>', '<?php echo LEPTON_URL; ?>/modules/bakery/delete_item.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>&item_id=<?php echo $post['item_id']; ?>');" title="<?php echo $TEXT['DELETE']; ?>">
 					<img src="<?php echo THEME_URL; ?>/images/delete_16.png" border="0" alt="[x]" />
 				</a>
 			</td>
 			
 			<td style="width: 18px" class="move_up">
 			<?php if ($post['position'] != 1) { ?>
-				<a href="<?php echo WB_URL; ?>/modules/bakery/move_up.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;item_id=<?php echo $post['item_id']; ?>" title="<?php echo $TEXT['MOVE_UP']; ?>">
+				<a href="<?php echo LEPTON_URL; ?>/modules/bakery/move_up.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;item_id=<?php echo $post['item_id']; ?>" title="<?php echo $TEXT['MOVE_UP']; ?>">
 					<img src="<?php echo THEME_URL; ?>/images/up_16.png" border="0" alt="/\" />
 				</a>
 			<?php } ?>
@@ -188,7 +188,7 @@ if ($query_items->numRows() > 0) {
 			
 			<td style="width: 118px" class="move_down">
 			<?php if ($post['position'] != $num_items) { ?>
-				<a href="<?php echo WB_URL; ?>/modules/bakery/move_down.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;item_id=<?php echo $post['item_id']; ?>" title="<?php echo $TEXT['MOVE_DOWN']; ?>">
+				<a href="<?php echo LEPTON_URL; ?>/modules/bakery/move_down.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;item_id=<?php echo $post['item_id']; ?>" title="<?php echo $TEXT['MOVE_DOWN']; ?>">
 					<img src="<?php echo THEME_URL; ?>/images/down_16.png" border="0" alt="\/" />
 				</a>
 			<?php } ?>

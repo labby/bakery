@@ -29,7 +29,7 @@ if (!isset($_GET['order_id']) OR !is_numeric($_GET['order_id'])) {
 
 // Include WB admin wrapper script
 $update_when_modified = true; // Tells script to update when this page was last updated
-require(WB_PATH.'/modules/admin.php');
+require(LEPTON_PATH.'/modules/admin.php');
 
 
 // Delete order
@@ -39,9 +39,9 @@ $database->query("DELETE FROM ".TABLE_PREFIX."mod_bakery_order WHERE order_id = 
 
 // Check if there is a db error, otherwise say successful
 if ($database->is_error()) {
-	$admin->print_error($database->get_error(), WB_URL.'/modules/bakery/modify_orders.php?page_id='.$page_id.'&view='.$_GET['view']);
+	$admin->print_error($database->get_error(), LEPTON_URL.'/modules/bakery/modify_orders.php?page_id='.$page_id.'&view='.$_GET['view']);
 } else {
-	$admin->print_success($TEXT['SUCCESS'], WB_URL.'/modules/bakery/modify_orders.php?page_id='.$page_id.'&view='.$_GET['view']);
+	$admin->print_success($TEXT['SUCCESS'], LEPTON_URL.'/modules/bakery/modify_orders.php?page_id='.$page_id.'&view='.$_GET['view']);
 }
 
 // Print admin footer

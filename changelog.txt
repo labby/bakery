@@ -95,7 +95,7 @@
 
    v1.72  (Christoph Marti; 05/04/2015)
 	 + [languages/states/GB.php] Updated GB countries list
-	 + Bugfix: Fixed some PHP include pathes using full path: WB_PATH.'/modules/bakery/'
+	 + Bugfix: Fixed some PHP include pathes using full path: LEPTON_PATH.'/modules/bakery/'
 	 + [save_item.php] Bugfix: If png image file is not resized do not change extension to .jpg
 	 + [save_item.php] Bugfix: When incrementing image position and item had no image yet,
 	   db function returned NULL instead of 0
@@ -368,7 +368,7 @@
 	       reduces the chance for breakage
 	 + Email data is now saved in the db instead of the session var in case
 	   the email sending is triggered in the background (eg. by PayPal IPN)
-	 + Bugfix: Replaced <?php echo WB_URL; ?>/admin by <?php echo ADMIN_URL; ?> (thanks to MurgtalNet)
+	 + Bugfix: Replaced <?php echo LEPTON_URL; ?>/admin by <?php echo ADMIN_URL; ?> (thanks to MurgtalNet)
 	 + [view_summary.php] Bugfix (invented in v1.40): The $count_items var is not calculated
 	   (thanks to Mase)
 	 + Improved invoice template to use shipping address - if provided by customer - for delivery notes
@@ -388,7 +388,7 @@
 	 + Changed string "dunning letter" to "reminder"
 	 + Modified payment method 'invoice' (version v0.2)
 	   Added payment deadline feature to alert the shop admin if an invoice has not been payed in time
-	 + Added placeholder [WB_URL] to the invoice template
+	 + Added placeholder [LEPTON_URL] to the invoice template
 	 + [view.php] Splitted view.php into view.php, view_overview.php and view_item.php
 	 + Added feature to skip cart view after adding an item to the cart
 	 + Outsourced html code to template files in order to ease design modification and
@@ -664,7 +664,7 @@
 	 + Payment method (pay in advance / paypal) can now be selected
 	 + Email to shop is not sent as bcc: any more but as a second email
 	 + Changed the default value for item quantity to 1
-	 + [uninstall.php]: Now deletes the WB_PATH.MEDIA_DIRECTORY./bakery directory when Bakery gets uninstalled
+	 + [uninstall.php]: Now deletes the LEPTON_PATH.MEDIA_DIRECTORY./bakery directory when Bakery gets uninstalled
 
    v0.61  (Christoph Marti; 11/16/2007)
 	 + [upgrade.php]: Added an upgrade script
@@ -694,7 +694,7 @@
 	   - Update settings of current shop page only
 	   - Update settings except of the "Proceed Shopping URL" of all shop pages
 	   - Update all settings of all shop pages
-	 + [uninstall.php]: Now deletes the WB_PATH.PAGES_DIRECTORY./bakery directory when Bakery gets uninstalled
+	 + [uninstall.php]: Now deletes the LEPTON_PATH.PAGES_DIRECTORY./bakery directory when Bakery gets uninstalled
 
    v0.50  (Christoph Marti; 09/28/2007)
 	 + [install.php]: Fixed a bug in the SQL syntax which avoided adding

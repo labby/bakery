@@ -21,9 +21,9 @@ require('../../config.php');
 
 // Include WB admin wrapper script
 $update_when_modified = true; // Tells script to update when this page was last updated
-require(WB_PATH.'/modules/admin.php');
+require(LEPTON_PATH.'/modules/admin.php');
 // Include WB functions file
-require_once(WB_PATH.'/framework/summary.functions.php');
+require_once(LEPTON_PATH.'/framework/summary.functions.php');
 
 // Remove any tags and add slashes
 $reload = $_POST['reload'] == 'true' ? true : false;
@@ -82,7 +82,7 @@ $shop_name = str_replace('https://', '', $shop_name);
 
 
 // If no state file exists for the selected country...
-if (!file_exists(WB_PATH.'/modules/bakery/languages/states/'.$shop_country.'.php')) {
+if (!file_exists(LEPTON_PATH.'/modules/bakery/languages/states/'.$shop_country.'.php')) {
 	// ...set shop state to blank
 	$shop_state = '';
 	// ...change tax by from state to country
@@ -110,8 +110,8 @@ if ($general_settings['tax_rate2'] != $tax_rate2) {
 // Rename Bakery pages directory
 
 // Old and new directory pathes
-$old_pages_dir = WB_PATH.PAGES_DIRECTORY.'/'.$general_settings['pages_directory'].'/';
-$new_pages_dir = WB_PATH.PAGES_DIRECTORY.'/'.$pages_directory.'/';
+$old_pages_dir = LEPTON_PATH.PAGES_DIRECTORY.'/'.$general_settings['pages_directory'].'/';
+$new_pages_dir = LEPTON_PATH.PAGES_DIRECTORY.'/'.$pages_directory.'/';
 
 // Make sure the old directory exists
 make_dir($old_pages_dir);
@@ -120,7 +120,7 @@ make_dir($old_pages_dir);
 if ($general_settings['pages_directory'] != $pages_directory) {
 	// Check if the pages directory name does not exist yet
 	if (is_dir($new_pages_dir)) {
-		$admin->print_error($MESSAGE['MEDIA']['DIR_EXISTS'], WB_URL.'/modules/bakery/modify_general_settings.php?page_id='.$page_id.'&section_id='.$section_id);
+		$admin->print_error($MESSAGE['MEDIA']['DIR_EXISTS'], LEPTON_URL.'/modules/bakery/modify_general_settings.php?page_id='.$page_id.'&section_id='.$section_id);
 	}
 	// Rename directory
 	if (rename($old_pages_dir, $new_pages_dir)) {
@@ -142,7 +142,7 @@ if ($database->is_error()) {
 } else {
 	// If a country has been selected go back to the general settings page
 	if ($reload) {
-		$admin->print_success($TEXT['SUCCESS'], WB_URL.'/modules/bakery/modify_general_settings.php?page_id='.$page_id.'&section_id='.$section_id);
+		$admin->print_success($TEXT['SUCCESS'], LEPTON_URL.'/modules/bakery/modify_general_settings.php?page_id='.$page_id.'&section_id='.$section_id);
 	} else {
 		$admin->print_success($TEXT['SUCCESS'], ADMIN_URL.'/pages/modify.php?page_id='.$page_id);
 	}

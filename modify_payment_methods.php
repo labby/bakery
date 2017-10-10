@@ -20,18 +20,18 @@
 require('../../config.php');
 
 // Include WB admin wrapper script
-require(WB_PATH.'/modules/admin.php');
+require(LEPTON_PATH.'/modules/admin.php');
 
 // Look for language file
 if (LANGUAGE_LOADED) {
-    require_once(WB_PATH.'/modules/bakery/languages/EN.php');
-    if (file_exists(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
-        require_once(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
+    require_once(LEPTON_PATH.'/modules/bakery/languages/EN.php');
+    if (file_exists(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
+        require_once(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
     }
 }
 
 // Check installed payment methods and load new ones
-require_once(WB_PATH.'/modules/bakery/payment_methods/load.php');
+require_once(LEPTON_PATH.'/modules/bakery/payment_methods/load.php');
 
 // Get selected payment method
 $payment_method = isset($_GET['payment_method']) ? strip_tags($_GET['payment_method']) : 'advance';
@@ -45,7 +45,7 @@ $payment_method = isset($_GET['payment_method']) ? strip_tags($_GET['payment_met
 	}
 </script>
 
-<form name="modify" action="<?php echo WB_URL; ?>/modules/bakery/save_payment_methods.php" method="post" style="margin: 0;">
+<form name="modify" action="<?php echo LEPTON_URL; ?>/modules/bakery/save_payment_methods.php" method="post" style="margin: 0;">
 <input type="hidden" name="section_id" value="<?php echo $section_id; ?>" />
 <input type="hidden" name="page_id" value="<?php echo $page_id; ?>" />
 <input type="hidden" name="update_payment_method" value="<?php echo $payment_method; ?>" />
@@ -96,13 +96,13 @@ $payment_method = isset($_GET['payment_method']) ? strip_tags($_GET['payment_met
 				if (LANGUAGE_LOADED) {
 
 					// Default english
-					if (file_exists(WB_PATH.'/modules/bakery/payment_methods/'.$directory.'/languages/EN.php')) {
-						include_once(WB_PATH.'/modules/bakery/payment_methods/'.$directory.'/languages/EN.php');
+					if (file_exists(LEPTON_PATH.'/modules/bakery/payment_methods/'.$directory.'/languages/EN.php')) {
+						include_once(LEPTON_PATH.'/modules/bakery/payment_methods/'.$directory.'/languages/EN.php');
 						$no_include = false;
 					}
 					// Current language
-				    if (file_exists(WB_PATH.'/modules/bakery/payment_methods/'.$directory.'/languages/'.LANGUAGE.'.php')) {
-						include_once(WB_PATH.'/modules/bakery/payment_methods/'.$directory.'/languages/'.LANGUAGE.'.php');
+				    if (file_exists(LEPTON_PATH.'/modules/bakery/payment_methods/'.$directory.'/languages/'.LANGUAGE.'.php')) {
+						include_once(LEPTON_PATH.'/modules/bakery/payment_methods/'.$directory.'/languages/'.LANGUAGE.'.php');
 						$no_include = false;
 					}
 					// Warning if no language file has been found at all and skip this method 
@@ -192,9 +192,9 @@ $payment_method = isset($_GET['payment_method']) ? strip_tags($_GET['payment_met
 
 		// Look for payment method language file
 		if (LANGUAGE_LOADED) {
-		    include(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/EN.php');
-		    if (file_exists(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php')) {
-		        include(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php');
+		    include(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/EN.php');
+		    if (file_exists(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php')) {
+		        include(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php');
 		    }
 		}
 
@@ -225,7 +225,7 @@ $payment_method = isset($_GET['payment_method']) ? strip_tags($_GET['payment_met
 			elseif ($field == 'invoice_template') {
 				$setting_table .= '<tr valign="bottom">
 	  <td width="30%" height="32" align="right"><strong>'.$MOD_BAKERY['TXT_LAYOUT'].' '.$MOD_BAKERY['TXT_SETTINGS'].':</strong></td>
-	  <td height="32" colspan="4"><input type="button" value="'.$MENU['HELP'].'" onclick="javascript: window.location = \''.WB_URL.'/modules/bakery/help.php?page_id='.$page_id.'&section_id='.$section_id.'#invoice\';" style="width: 100px;" /></td>
+	  <td height="32" colspan="4"><input type="button" value="'.$MENU['HELP'].'" onclick="javascript: window.location = \''.LEPTON_URL.'/modules/bakery/help.php?page_id='.$page_id.'&section_id='.$section_id.'#invoice\';" style="width: 100px;" /></td>
 	</tr>
 	<tr>
 	  <td width="30%" align="right" valign="top">'.$MOD_BAKERY[$payment_method]['TXT_INVOICE_TEMPLATE'].':</td>
@@ -259,7 +259,7 @@ $payment_method = isset($_GET['payment_method']) ? strip_tags($_GET['payment_met
 	// Emails to customer and shop ?>
 	<tr valign="bottom">
 	  <td width="30%" height="32" align="right"><strong><?php echo $MOD_BAKERY['TXT_EMAIL']; ?>:</strong></td>
-	  <td height="32" colspan="4"><input type="button" value="<?php echo $MENU['HELP']; ?>" onclick="javascript: window.location = '<?php echo WB_URL; ?>/modules/bakery/help.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>&payment_method=<?php echo $payment_method; ?>#email';" style="width: 100px;" /></td>
+	  <td height="32" colspan="4"><input type="button" value="<?php echo $MENU['HELP']; ?>" onclick="javascript: window.location = '<?php echo LEPTON_URL; ?>/modules/bakery/help.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>&payment_method=<?php echo $payment_method; ?>#email';" style="width: 100px;" /></td>
     </tr>
 
 	<tr>

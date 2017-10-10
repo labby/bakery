@@ -18,25 +18,25 @@
 
 
 // Prevent this file from being accessed directly
-if (defined('WB_PATH') == false) {
+if (defined('LEPTON_PATH') == false) {
 	exit('Cannot access this file directly'); 
 }
 
 // Include WB functions file
-require_once(WB_PATH.'/framework/summary.functions.php');
+require_once(LEPTON_PATH.'/framework/summary.functions.php');
 
 // Include WB template parser
-require_once(WB_PATH.'/include/phplib/template.inc');
+require_once(LEPTON_PATH.'/include/phplib/template.inc');
 
 // Create template object for screen output
-$tpl_so = new Template(WB_PATH.'/modules/bakery/templates/summary');
+$tpl_so = new Template(LEPTON_PATH.'/modules/bakery/templates/summary');
 // Define how to deal with unknown {PLACEHOLDERS} (remove:=default, keep, comment)
 $tpl_so->set_unknowns('keep');
 // Define debug mode (0:=disabled (default), 1:=variable assignments, 2:=calls to get variable, 4:=debug internals)
 $tpl_so->debug = 0;
 
 // Create template object for invoice print
-$tpl_ip = new Template(WB_PATH.'/modules/bakery/templates/invoice');
+$tpl_ip = new Template(LEPTON_PATH.'/modules/bakery/templates/invoice');
 // Define how to deal with unknown {PLACEHOLDERS} (remove:=default, keep, comment)
 $tpl_ip->set_unknowns('keep');
 // Define debug mode (0:=disabled (default), 1:=variable assignments, 2:=calls to get variable, 4:=debug internals)
@@ -204,20 +204,20 @@ if (defined('DEFAULT_CHARSET')) { $charset = DEFAULT_CHARSET; } else { $charset 
 
 // Include country file depending on the language
 if (LANGUAGE_LOADED) {
-    if (file_exists(WB_PATH.'/modules/bakery/languages/countries/'.LANGUAGE.'.php')) {
-        require_once(WB_PATH.'/modules/bakery/languages/countries/'.LANGUAGE.'.php');
+    if (file_exists(LEPTON_PATH.'/modules/bakery/languages/countries/'.LANGUAGE.'.php')) {
+        require_once(LEPTON_PATH.'/modules/bakery/languages/countries/'.LANGUAGE.'.php');
     }
 }
 else {
-	require_once(WB_PATH.'/modules/bakery/languages/countries/EN.php');
+	require_once(LEPTON_PATH.'/modules/bakery/languages/countries/EN.php');
 }
 
 // Set default state for countries without a state file
 $MOD_BAKERY['TXT_STATE_CODE'][1] = '';
 $MOD_BAKERY['TXT_STATE_NAME'][1] = '';
 // Include state file depending on the shop country
-if (file_exists(WB_PATH.'/modules/bakery/languages/states/'.$setting_shop_country.'.php')) {
-	require_once(WB_PATH.'/modules/bakery/languages/states/'.$setting_shop_country.'.php');
+if (file_exists(LEPTON_PATH.'/modules/bakery/languages/states/'.$setting_shop_country.'.php')) {
+	require_once(LEPTON_PATH.'/modules/bakery/languages/states/'.$setting_shop_country.'.php');
 }
 
 
@@ -439,7 +439,7 @@ $tpl_so->set_var(array(
 	'TXT_ORDER_SUMMARY'		=>	$MOD_BAKERY['TXT_ORDER_SUMMARY'],
 	'TXT_ORDER_ID'			=>	$MOD_BAKERY['TXT_ORDER_ID'],
 	'ORDER_ID'				=>	$order_id,
-	'WB_URL'				=>	WB_URL,
+	'LEPTON_URL'				=>	LEPTON_URL,
 	'SETTING_CONTINUE_URL'	=>	$setting_continue_url,
 	'TXT_ADDRESS'			=>	$MOD_BAKERY['TXT_ADDRESS'],
 	'CUST_ADDRESS'			=>	$cust_address,
@@ -459,9 +459,9 @@ $tpl_so->pparse('output', 'summary_address');
 
 // Look for payment method language file
 if (LANGUAGE_LOADED) {
-    include(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/EN.php');
-    if (file_exists(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php')) {
-        include(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php');
+    include(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/EN.php');
+    if (file_exists(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php')) {
+        include(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php');
     }
 }
 
@@ -854,8 +854,8 @@ $database->query("UPDATE ".TABLE_PREFIX."mod_bakery_customer SET shipping_fee = 
 // **********************************************
 
 // Include info file
-if (file_exists(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/info.php')) {
-    include(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/info.php');
+if (file_exists(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/info.php')) {
+    include(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/info.php');
 }
 
 // Get checkout url for either onsite payment method or payment gateway 
@@ -863,8 +863,8 @@ $checkout_url = isset($payment_gateway_url) ? $payment_gateway_url : $setting_co
 
 // Get hidden gateway data
 $pay_gateway_data = '';
-if (is_file(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/post_data.php')) {
-	include(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/post_data.php');
+if (is_file(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/post_data.php')) {
+	include(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/post_data.php');
 }
 
 
@@ -979,8 +979,8 @@ if (version_compare(WB_VERSION, '2.8.1') < 0) {
 	
 	// AVOID OUTPUT FILTER
 	// Obtain the settings of the output filter module
-	if (file_exists(WB_PATH.'/modules/output_filter/filter-routines.php')) {
-		include_once(WB_PATH.'/modules/output_filter/filter-routines.php');
+	if (file_exists(LEPTON_PATH.'/modules/output_filter/filter-routines.php')) {
+		include_once(LEPTON_PATH.'/modules/output_filter/filter-routines.php');
 		if (function_exists('getOutputFilterSettings')) {
 			$filter_settings = getOutputFilterSettings();
 		} else {

@@ -25,7 +25,7 @@ $max_width = 600;
 
 // Include WB admin wrapper script
 require('../../config.php');
-require(WB_PATH.'/modules/admin.php');
+require(LEPTON_PATH.'/modules/admin.php');
 
 // Check if GET and SESSION vars are set
 if (!isset($_GET['page_id']) OR !isset($_GET['section_id']) OR !isset($_GET['order_id']) OR !is_numeric($_GET['page_id']) OR !is_numeric($_GET['section_id']) OR !is_numeric($_GET['order_id']) OR !isset($_SESSION['USER_ID']) OR !isset($_SESSION['GROUP_ID'])) {
@@ -45,9 +45,9 @@ if ($admin->get_page_permission($page_id, $action='admin') === false) {
 
 // Look for language file
 if (LANGUAGE_LOADED) {
-	require_once(WB_PATH.'/modules/bakery/languages/EN.php');
-	if (file_exists(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
-		require_once(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
+	require_once(LEPTON_PATH.'/modules/bakery/languages/EN.php');
+	if (file_exists(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
+		require_once(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
 	}
 }
 
@@ -117,9 +117,9 @@ if ($query_customer->numRows() > 0) {
 		$payment_method = $submitted_method;
 		// Look for payment method language file
 		if (LANGUAGE_LOADED) {
-		    include_once(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/EN.php');
-		    if (file_exists(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php')) {
-		        include_once(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php');
+		    include_once(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/EN.php');
+		    if (file_exists(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php')) {
+		        include_once(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php');
 		    }
 		}
 
@@ -129,14 +129,14 @@ if ($query_customer->numRows() > 0) {
 
 
 		// Replace invoice placeholders by values
-		$vars = array('[WB_URL]', '[ORDER_ID]', '[INVOICE_ID]', '[SHOP_NAME]', '[BANK_ACCOUNT]', '[CUSTOMER_NAME]', '[ADDRESS]', '[CUST_ADDRESS]', '[SHIPPING_ADDRESS]', '[CUST_EMAIL]', '[ITEM_LIST]', '[ORDER_DATE]', '[CURRENT_DATE]', '[TITLE]', '[DISPLAY_INVOICE]', '[DISPLAY_DELIVERY_NOTE]', '[DISPLAY_REMINDER]', '[CUST_TAX_NO]', '[PAYMENT_METHOD]');
-		$values = array(WB_URL, $order_id, $invoice_id, $shop_name, $bank_account, $cust_name, $invoice_address, $invoice_cust_address, $invoice_ship_address, $cust_email, $html_item_list, $order_date, $current_date, $title, $display_invoice, $display_delivery_note, $display_reminder, $cust_tax_no, $MOD_BAKERY[$payment_method]['TXT_NAME']);
+		$vars = array('[LEPTON_URL]', '[ORDER_ID]', '[INVOICE_ID]', '[SHOP_NAME]', '[BANK_ACCOUNT]', '[CUSTOMER_NAME]', '[ADDRESS]', '[CUST_ADDRESS]', '[SHIPPING_ADDRESS]', '[CUST_EMAIL]', '[ITEM_LIST]', '[ORDER_DATE]', '[CURRENT_DATE]', '[TITLE]', '[DISPLAY_INVOICE]', '[DISPLAY_DELIVERY_NOTE]', '[DISPLAY_REMINDER]', '[CUST_TAX_NO]', '[PAYMENT_METHOD]');
+		$values = array(LEPTON_URL, $order_id, $invoice_id, $shop_name, $bank_account, $cust_name, $invoice_address, $invoice_cust_address, $invoice_ship_address, $cust_email, $html_item_list, $order_date, $current_date, $title, $display_invoice, $display_delivery_note, $display_reminder, $cust_tax_no, $MOD_BAKERY[$payment_method]['TXT_NAME']);
 		$invoice = str_replace($vars, $values, $invoice_template);
 
 		// Reset header image to a max width
 		$pattern = '#<img src="(.*)" #Uis';
 		if (preg_match($pattern, $invoice, $matches)) {
-			$img_path = str_replace(WB_URL, WB_PATH, $matches[1]);
+			$img_path = str_replace(LEPTON_URL, LEPTON_PATH, $matches[1]);
 			list($width, $height, $type, $attr) = getimagesize($img_path);
 			if (is_numeric($width) && $width > $max_width) {
 				$height  = round($max_width * $height / $width);
@@ -152,7 +152,7 @@ if ($query_customer->numRows() > 0) {
 <head>
 <title>'.$email_subject.'</title>
 <meta http-equiv="Content-Type" content="text/html; charset='.$charset.'" />
-<link href="'.WB_URL.'/modules/bakery/backend.css" rel="stylesheet" type="text/css" />
+<link href="'.LEPTON_URL.'/modules/bakery/backend.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 ';
@@ -184,9 +184,9 @@ if ($query_customer->numRows() > 0) {
 			// On success increment email counter
 			$database->query("UPDATE ".TABLE_PREFIX."mod_bakery_customer SET sent_invoices = sent_invoices + '1' WHERE order_id = '$order_id'");
 			// On success view confirmation
-			$admin->print_success($MOD_BAKERY['TXT_INVOICE_HAS_BEEN_SENT_SUCCESSFULLY'], WB_URL.'/modules/bakery/modify_orders.php?page_id='.$page_id);
+			$admin->print_success($MOD_BAKERY['TXT_INVOICE_HAS_BEEN_SENT_SUCCESSFULLY'], LEPTON_URL.'/modules/bakery/modify_orders.php?page_id='.$page_id);
 		} else {
-			$admin->print_error($database->get_error(), WB_URL.'/modules/bakery/modify_orders.php?page_id='.$page_id);
+			$admin->print_error($database->get_error(), LEPTON_URL.'/modules/bakery/modify_orders.php?page_id='.$page_id);
 		}
 	}
 }

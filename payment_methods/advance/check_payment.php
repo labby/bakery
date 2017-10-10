@@ -18,11 +18,11 @@
 
 
 // Prevent this file from being accessed directly
-if (defined('WB_PATH') == false) {
+if (defined('LEPTON_PATH') == false) {
 	exit("Cannot access this file directly"); 
 }
 
 // Set payment status tu success
 $payment_status = 'success';
-include(WB_PATH.'/modules/bakery/view_confirmation.php');
+include(LEPTON_PATH.'/modules/bakery/view_confirmation.php');
 return;

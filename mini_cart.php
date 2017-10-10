@@ -18,8 +18,8 @@
 
 
 // Include WB template parser and create template object
-require_once(WB_PATH.'/include/phplib/template.inc');
-$tpl = new Template(WB_PATH.'/modules/bakery/templates/mini_cart');
+require_once(LEPTON_PATH.'/include/phplib/template.inc');
+$tpl = new Template(LEPTON_PATH.'/modules/bakery/templates/mini_cart');
 // Define how to deal with unknown {PLACEHOLDERS} (remove:=default, keep, comment)
 $tpl->set_unknowns('keep');
 // Define debug mode (0:=disabled (default), 1:=variable assignments, 2:=calls to get variable, 4:=debug internals)
@@ -27,9 +27,9 @@ $tpl->debug = 0;
 
 // Look for language file
 if (LANGUAGE_LOADED && !isset($MOD_BAKERY)) {
-	include(WB_PATH.'/modules/bakery/languages/EN.php');
-	if (file_exists(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
-		include(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
+	include(LEPTON_PATH.'/modules/bakery/languages/EN.php');
+	if (file_exists(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
+		include(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
 	}
 }
 
@@ -57,7 +57,7 @@ if (isset($_SESSION['bakery']['order_id']) && is_numeric($_SESSION['bakery']['or
 		$query_continue_url = $database->query("SELECT p.link FROM ".TABLE_PREFIX."pages p INNER JOIN ".TABLE_PREFIX."mod_bakery_page_settings ps ON p.page_id = ps.page_id $clause");
 		if ($query_continue_url->numRows() > 0) {
 			$fetch_continue_url = $query_continue_url->fetchRow();
-			$continue_url = WB_URL.PAGES_DIRECTORY.stripslashes($fetch_continue_url['link']).PAGE_EXTENSION;
+			$continue_url = LEPTON_URL.PAGES_DIRECTORY.stripslashes($fetch_continue_url['link']).PAGE_EXTENSION;
 		}
 
 		// Get the general settings
@@ -127,7 +127,7 @@ if (isset($_SESSION['bakery']['order_id']) && is_numeric($_SESSION['bakery']['or
 		$tpl->set_file('mini_cart_summary', 'summary.htm');
 
 		$tpl->set_var(array(
-			'WB_URL'			=>	WB_URL,
+			'LEPTON_URL'			=>	LEPTON_URL,
 			'TXT_CART'			=>	$MOD_BAKERY['TXT_CART'],
 			'CONTINUE_URL'		=>	$continue_url,
 			'TXT_ORDER_ID'		=>	$MOD_BAKERY['TXT_ORDER_ID'],
@@ -149,7 +149,7 @@ if (isset($_SESSION['bakery']['order_id']) && is_numeric($_SESSION['bakery']['or
 		$tpl->set_file('mini_cart_empty', 'empty.htm');
 
 		$tpl->set_var(array(
-			'WB_URL'			=>	WB_URL,
+			'LEPTON_URL'			=>	LEPTON_URL,
 			'TXT_CART'			=>	$MOD_BAKERY['TXT_CART'],
 			'ERR_CART_EMPTY'	=>	$MOD_BAKERY['ERR_CART_EMPTY']
 		));
@@ -163,7 +163,7 @@ else {
 	$tpl->set_file('mini_cart_empty', 'empty.htm');
 
 	$tpl->set_var(array(
-		'WB_URL'			=>	WB_URL,
+		'LEPTON_URL'			=>	LEPTON_URL,
 		'TXT_CART'			=>	$MOD_BAKERY['TXT_CART'],
 		'ERR_CART_EMPTY'	=>	$MOD_BAKERY['ERR_CART_EMPTY']
 	));

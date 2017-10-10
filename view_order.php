@@ -19,7 +19,7 @@
 
 // include WB config.php file and admin class
 require('../../config.php');
-require_once(WB_PATH.'/framework/class.admin.php');
+require_once(LEPTON_PATH.'/framework/class.admin.php');
 
 // Check if GET and SESSION vars are set
 if (!isset($_GET['page_id']) OR !isset($_GET['section_id']) OR !isset($_GET['order_id']) OR !is_numeric($_GET['page_id']) OR !is_numeric($_GET['section_id']) OR !is_numeric($_GET['order_id']) OR !isset($_SESSION['USER_ID']) OR !isset($_SESSION['GROUP_ID'])) {
@@ -41,9 +41,9 @@ if ($admin->get_page_permission($page_id, $action='admin') === false) {
 
 //Look for language File
 if (LANGUAGE_LOADED) {
-    require_once(WB_PATH.'/modules/bakery/languages/EN.php');
-    if (file_exists(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
-        require_once(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
+    require_once(LEPTON_PATH.'/modules/bakery/languages/EN.php');
+    if (file_exists(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
+        require_once(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
     }
 }
 
@@ -54,7 +54,7 @@ if (LANGUAGE_LOADED) {
 <head>
 <title><?php echo $MOD_BAKERY['TXT_ORDER'].' '.$TEXT['VIEW_DETAILS']; ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php if (defined('DEFAULT_CHARSET')) { echo DEFAULT_CHARSET; } else { echo 'utf-8'; }?>" />
-<link href="<?php echo WB_URL; ?>/modules/bakery/backend.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo LEPTON_URL; ?>/modules/bakery/backend.css" rel="stylesheet" type="text/css" />
 </head>
 
 <?php

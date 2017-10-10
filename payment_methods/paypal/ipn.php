@@ -48,7 +48,7 @@ if ($delay) {
 
 // Include WB config.php file and WB admin class
 require('../../../../config.php');
-require_once(WB_PATH.'/framework/class.admin.php');
+require_once(LEPTON_PATH.'/framework/class.admin.php');
 
 // Get setting of magic quotes
 $magic_quotes_on = false;

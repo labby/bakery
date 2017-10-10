@@ -20,7 +20,7 @@
 require('../../config.php');
 
 // Include WB admin wrapper script
-require(WB_PATH.'/modules/admin.php');
+require(LEPTON_PATH.'/modules/admin.php');
 
 // Make use of the skinable backend themes of WB > 2.7
 // Check if THEME_URL is supported otherwise use ADMIN_URL
@@ -30,9 +30,9 @@ if (!defined('THEME_URL')) {
 
 // Look for language file
 if (LANGUAGE_LOADED) {
-    require_once(WB_PATH.'/modules/bakery/languages/EN.php');
-    if (file_exists(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
-    	require_once(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
+    require_once(LEPTON_PATH.'/modules/bakery/languages/EN.php');
+    if (file_exists(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
+    	require_once(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
     }
 }
 
@@ -93,7 +93,7 @@ echo '<h2>'.$MOD_BAKERY['TXT_ORDER_ADMIN'].': <br/>'.$current_page.' <span style
 <table width="98%" align="center" cellpadding="0" cellspacing="0">
   <tr height="30" class="mod_bakery_submit_row_b">
 	<td align="left" width="50%" style="padding-left: 12px;">
-		<input type="button" value="<?php echo $toggle_page; ?>" onclick="javascript: window.location = '<?php echo WB_URL; ?>/modules/bakery/modify_orders.php?page_id=<?php echo $page_id; ?>&view=<?php echo $toggle; ?>';" />
+		<input type="button" value="<?php echo $toggle_page; ?>" onclick="javascript: window.location = '<?php echo LEPTON_URL; ?>/modules/bakery/modify_orders.php?page_id=<?php echo $page_id; ?>&view=<?php echo $toggle; ?>';" />
 	</td>
 	<td align="right" width="50%" style="padding-right: 12px;">
 		<input type="button" value="<?php echo $TEXT['CANCEL']; ?>" onclick="javascript: window.location = '<?php echo ADMIN_URL; ?>/pages/modify.php?page_id=<?php echo $page_id; ?>';" />
@@ -108,7 +108,7 @@ echo '<h2>'.$MOD_BAKERY['TXT_ORDER_ADMIN'].': <br/>'.$current_page.' <span style
 if ($query_customer->numRows() > 0) {
 	// Customer table header
 	?>
-	<form name="modify" action="<?php echo WB_URL; ?>/modules/bakery/save_orders.php" method="post" style="margin: 0;">
+	<form name="modify" action="<?php echo LEPTON_URL; ?>/modules/bakery/save_orders.php" method="post" style="margin: 0;">
 	<input type="hidden" name="section_id" value="<?php echo $section_id; ?>" />
 	<input type="hidden" name="page_id" value="<?php echo $page_id; ?>" />
 	<table cellpadding="2" cellspacing="0" border="0" width="98%" align="center">
@@ -138,9 +138,9 @@ if ($query_customer->numRows() > 0) {
 				// Look for payment method language file
 				if (LANGUAGE_LOADED) {
 					if (empty($MOD_BAKERY[$payment_method]['TXT_TITLE'])) {
-					    include_once(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/EN.php');
-					    if (file_exists(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php')) {
-					        include_once(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php');
+					    include_once(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/EN.php');
+					    if (file_exists(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php')) {
+					        include_once(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php');
 					    }
 					}
 					if (empty($MOD_BAKERY[$payment_method]['TXT_NAME'])) {
@@ -152,7 +152,7 @@ if ($query_customer->numRows() > 0) {
 				}
 
 				// Show icon
-				echo '<img src="'.WB_URL.'/modules/bakery/payment_methods/'.$payment_method.'/icon.png" alt="'.$payment_method_name.'" title="'.$payment_method_name.'" border="0" />';
+				echo '<img src="'.LEPTON_URL.'/modules/bakery/payment_methods/'.$payment_method.'/icon.png" alt="'.$payment_method_name.'" title="'.$payment_method_name.'" border="0" />';
 
 			// Show email, customer name and order date ?>
 			</td>
@@ -162,20 +162,20 @@ if ($query_customer->numRows() > 0) {
 
 
 			<td width="22">
-			<a href="mailto:<?php echo stripslashes($costumer['cust_email']); ?>"><img src="<?php echo WB_URL; ?>/modules/bakery/images/email.png" alt="<?php echo $TEXT['EMAIL']; ?>" title="<?php echo $TEXT['EMAIL'].' '.$TEXT['TO'].' '.stripslashes($costumer['cust_email']); ?>" style="margin-bottom: -3px;" border="0" /></a>
+			<a href="mailto:<?php echo stripslashes($costumer['cust_email']); ?>"><img src="<?php echo LEPTON_URL; ?>/modules/bakery/images/email.png" alt="<?php echo $TEXT['EMAIL']; ?>" title="<?php echo $TEXT['EMAIL'].' '.$TEXT['TO'].' '.stripslashes($costumer['cust_email']); ?>" style="margin-bottom: -3px;" border="0" /></a>
 			</td>
 			<td width="22">
-			<a href="<?php echo WB_URL; ?>/modules/bakery/modify_order.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;order_id=<?php echo $costumer['order_id']; ?>"><img src="<?php echo WB_URL; ?>/modules/bakery/images/user_edit.png" alt="<?php echo $MOD_BAKERY['TXT_EDIT_ORDER']; ?>" title="<?php echo $MOD_BAKERY['TXT_EDIT_ORDER']; ?>" style="margin-bottom: -3px;" border="0" /></a>
+			<a href="<?php echo LEPTON_URL; ?>/modules/bakery/modify_order.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;order_id=<?php echo $costumer['order_id']; ?>"><img src="<?php echo LEPTON_URL; ?>/modules/bakery/images/user_edit.png" alt="<?php echo $MOD_BAKERY['TXT_EDIT_ORDER']; ?>" title="<?php echo $MOD_BAKERY['TXT_EDIT_ORDER']; ?>" style="margin-bottom: -3px;" border="0" /></a>
 			</td>
 			<td>
-			<a href="<?php echo WB_URL; ?>/modules/bakery/modify_order.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;order_id=<?php echo $costumer['order_id']; ?>" title="<?php echo $MOD_BAKERY['TXT_EDIT_ORDER']; ?>"><?php echo stripslashes($costumer['cust_last_name'])." ".stripslashes($costumer['cust_first_name']); ?></a>
+			<a href="<?php echo LEPTON_URL; ?>/modules/bakery/modify_order.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;order_id=<?php echo $costumer['order_id']; ?>" title="<?php echo $MOD_BAKERY['TXT_EDIT_ORDER']; ?>"><?php echo stripslashes($costumer['cust_last_name'])." ".stripslashes($costumer['cust_first_name']); ?></a>
 			</td>
 			<td width="135"><?php echo gmdate(DATE_FORMAT.', '.TIME_FORMAT, $costumer['order_date']+TIMEZONE); ?></td>
 			<td width="22">
 			<?php
 
 			// Show status images
-			$status_img_url   = WB_URL.'/modules/bakery/images/status';
+			$status_img_url   = LEPTON_URL.'/modules/bakery/images/status';
 			$status_img_style = 'style="margin-bottom: -3px;" border="0"';
 			switch (stripslashes($costumer['status'])) {
 
@@ -248,21 +248,21 @@ if ($costumer['sent_invoices'] == 0) {
 
 			</td>
 			<td  width="22">
-				<a href="<?php echo WB_URL; ?>/modules/bakery/view_invoice.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;order_id=<?php echo $costumer['order_id']; ?>" onclick="newInvoice(this.href); return false;"><img src="<?php echo WB_URL; ?>/modules/bakery/images/print.gif" alt="<?php echo $MOD_BAKERY['TXT_PRINT_INVOICE']; ?>" title="<?php echo $MOD_BAKERY['TXT_PRINT_INVOICE']; ?>" border="0" /></a>
+				<a href="<?php echo LEPTON_URL; ?>/modules/bakery/view_invoice.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;order_id=<?php echo $costumer['order_id']; ?>" onclick="newInvoice(this.href); return false;"><img src="<?php echo LEPTON_URL; ?>/modules/bakery/images/print.gif" alt="<?php echo $MOD_BAKERY['TXT_PRINT_INVOICE']; ?>" title="<?php echo $MOD_BAKERY['TXT_PRINT_INVOICE']; ?>" border="0" /></a>
 			</td>
 			<td  width="22">
-				<a href="javascript: confirm_link('<?php echo $MOD_BAKERY['TXT_JS_CONFIRM_SEND_INVOICE']; ?>', '<?php echo WB_URL; ?>/modules/bakery/send_invoice.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>&order_id=<?php echo $costumer['order_id']; ?>');">
-					<img src="<?php echo WB_URL; ?>/modules/bakery/images/email<?php echo $send_invoice_icon; ?>.png" alt="<?php echo $send_invoice_txt; ?>" title="<?php echo $send_invoice_txt; ?>" border="0" /></a>
+				<a href="javascript: confirm_link('<?php echo $MOD_BAKERY['TXT_JS_CONFIRM_SEND_INVOICE']; ?>', '<?php echo LEPTON_URL; ?>/modules/bakery/send_invoice.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>&order_id=<?php echo $costumer['order_id']; ?>');">
+					<img src="<?php echo LEPTON_URL; ?>/modules/bakery/images/email<?php echo $send_invoice_icon; ?>.png" alt="<?php echo $send_invoice_txt; ?>" title="<?php echo $send_invoice_txt; ?>" border="0" /></a>
 			</td>
 <!--
 			<td  width="22">
-				<a href="<?php echo WB_URL; ?>/modules/bakery/view_order.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;order_id=<?php echo $costumer['order_id']; ?>" onclick="showOrder(this.href); return false;" title="<?php echo $TEXT['VIEW_DETAILS']; ?>">
+				<a href="<?php echo LEPTON_URL; ?>/modules/bakery/view_order.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;order_id=<?php echo $costumer['order_id']; ?>" onclick="showOrder(this.href); return false;" title="<?php echo $TEXT['VIEW_DETAILS']; ?>">
 					<img src="<?php echo THEME_URL; ?>/images/view_16.png" alt="<?php echo $MOD_BAKERY['TXT_INVOICE'].' '.$TEXT['VIEW_DETAILS']; ?>" border="0" />
 				</a>
 			</td>
 -->
 			<td width="22">
-				<a href="javascript: confirm_link('<?php echo $TEXT['ARE_YOU_SURE']; ?>', '<?php echo WB_URL; ?>/modules/bakery/delete_order.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>&order_id=<?php echo $costumer['order_id']; ?>&view=<?php echo $view; ?>');" title="<?php echo $TEXT['DELETE']; ?>">
+				<a href="javascript: confirm_link('<?php echo $TEXT['ARE_YOU_SURE']; ?>', '<?php echo LEPTON_URL; ?>/modules/bakery/delete_order.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>&order_id=<?php echo $costumer['order_id']; ?>&view=<?php echo $view; ?>');" title="<?php echo $TEXT['DELETE']; ?>">
 					<img src="<?php echo THEME_URL; ?>/images/delete_16.png" border="0" alt="<?php echo $TEXT['DELETE']; ?>" />
 				</a>
 			</td>

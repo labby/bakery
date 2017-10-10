@@ -18,14 +18,14 @@
 
 
 // Prevent this file from being accessed directly
-if (defined('WB_PATH') == false) {
+if (defined('LEPTON_PATH') == false) {
 	exit("Cannot access this file directly"); 
 }
 
 
 // Include WB template parser and create template object
-require_once(WB_PATH.'/include/phplib/template.inc');
-$tpl = new Template(WB_PATH.'/modules/bakery/templates/confirmation');
+require_once(LEPTON_PATH.'/include/phplib/template.inc');
+$tpl = new Template(LEPTON_PATH.'/modules/bakery/templates/confirmation');
 // Define how to deal with unknown {PLACEHOLDERS} (remove:=default, keep, comment)
 $tpl->set_unknowns('remove');
 // Define debug mode (0:=disabled (default), 1:=variable assignments, 2:=calls to get variable, 4:=debug internals)
@@ -37,9 +37,9 @@ if (is_string($payment_status) && is_string($payment_method)) {
 
 	// Look for payment method language file
 	if (LANGUAGE_LOADED) {
-		include(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/EN.php');
-		if (file_exists(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php')) {
-			include(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php');
+		include(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/EN.php');
+		if (file_exists(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php')) {
+			include(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php');
 		}
 	}
 

@@ -31,7 +31,7 @@ $MOD_BAKERY[$payment_method]['TXT_NOTICE'] = '
 Log in in uw PayPal account: Ga naar &quot;Mijn rekening&quot; &gt; &quot;Profiel&quot; &gt; &quot;Voorkeuren websitebetalingen&quot;<br />
 
 <b>De koper wordt automatisch teruggeleid naar webwinkel:</b> Klik de &quot;Automatisch teruggeleid&quot; radio button <i>Aan</i>.<br />
-<b>Retour URL:</b> Voer het adres in zoals getoond in het veld &quot;Retour URL&quot;:<input type="text" value="' . WB_URL . '" readonly="true" onclick="this.select();" style="width: 98%;" />
+<b>Retour URL:</b> Voer het adres in zoals getoond in het veld &quot;Retour URL&quot;:<input type="text" value="' . LEPTON_URL . '" readonly="true" onclick="this.select();" style="width: 98%;" />
 
 <b>Overdracht van betaalgegevens:</b> Klik de &quot;Overdracht van betaalgegevens&quot; radio button <i>Aan</i> en klik vervolgens op <i>Opslaan</i>.<br />
 Uw identiteitscode staat onder de Overdracht van betaalgegevens Aan/Uit radio buttons. Kopieer&amp;plak uw identiteitscode in het geel tekstveld hierboven.<br /><br />
@@ -39,7 +39,7 @@ Uw identiteitscode staat onder de Overdracht van betaalgegevens Aan/Uit radio bu
 <b>Direct betaalbericht (DBB)</b><br />
 Ga naar &quot;Mijn rekening&quot; &gt; &quot;Profiel&quot; &gt; &quot;Voorkeuren Direct betaalbericht&quot;.<br />
 Als u klikt op &quot;Instellingen voor DBB&quot; bewerken, wordt u doorgestuurd naar de configuratiepagina.<br />
-Kopieer&amp;plak het volledige adres zoals getoond in het veld &quot;Berichtgevings-URL&quot;:<input type="text" value="' . WB_URL . '/modules/bakery/payment_methods/paypal/ipn.php" readonly="true" onclick="this.select();" style="width: 98%;" />
+Kopieer&amp;plak het volledige adres zoals getoond in het veld &quot;Berichtgevings-URL&quot;:<input type="text" value="' . LEPTON_URL . '/modules/bakery/payment_methods/paypal/ipn.php" readonly="true" onclick="this.select();" style="width: 98%;" />
 Klik op de  &quot;DBB-berichten ontvangen (ingeschakeld)&quot; radio button en sla de wijzigingen op.<br />';
 
 // USED BY FILE bakery/payment_methods/paypal/gateway.php

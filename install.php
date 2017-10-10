@@ -17,7 +17,7 @@
 */
 
 
-if (defined('WB_URL')) {
+if (defined('LEPTON_URL')) {
 	$database->query("DROP TABLE IF EXISTS `".TABLE_PREFIX."mod_bakery_items`");
 	$mod_bakery = "CREATE TABLE `".TABLE_PREFIX."mod_bakery_items` ("
 			. "`item_id` INT NOT NULL AUTO_INCREMENT,"
@@ -236,11 +236,11 @@ if (defined('WB_URL')) {
 
 
 	// Set default values for general settings
-	$shop_name  = str_replace('http://', '', WB_URL);
-	$tac_url    = WB_URL.PAGES_DIRECTORY.'/';
+	$shop_name  = str_replace('http://', '', LEPTON_URL);
+	$tac_url    = LEPTON_URL.PAGES_DIRECTORY.'/';
 	$shop_email = SERVER_EMAIL;
 	// Include default EU tax zone file
-	include(WB_PATH.'/modules/bakery/eu_tax_zone.php');
+	include(LEPTON_PATH.'/modules/bakery/eu_tax_zone.php');
 	// Insert default values into table general_settings 
 	$database->query("INSERT INTO ".TABLE_PREFIX."mod_bakery_general_settings (shop_name, tac_url, shop_email, tax_group) VALUES ('$shop_name', '$tac_url', '$shop_email', '$tax_group')");
 

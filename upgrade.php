@@ -18,7 +18,7 @@
 
 
 //Prevent this file from being accessed directly
-if (defined('WB_PATH') == false) {
+if (defined('LEPTON_PATH') == false) {
 	exit("Cannot access this file directly"); 
 }
 
@@ -52,7 +52,7 @@ echo'
 // *****************************************
 
 // Get new modul version from modul info file
-$info_file = WB_PATH.'/modules/bakery/info.php';
+$info_file = LEPTON_PATH.'/modules/bakery/info.php';
 if (file_exists($info_file)) {
 	include($info_file);
 }
@@ -313,9 +313,9 @@ if ($module_version < 0.70) {
 	if (empty($settings['page_offline'])) { $page_offline = "no"; } else {$page_offline = $settings['page_offline']; }
 	if (empty($settings['offline_text'])) {
 		if (LANGUAGE_LOADED) {
-			include(WB_PATH.'/modules/bakery/languages/EN.php');
-			if (file_exists(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
-				include(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
+			include(LEPTON_PATH.'/modules/bakery/languages/EN.php');
+			if (file_exists(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
+				include(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
 			}
 		}
 		$offline_text  = $MOD_BAKERY['ERR_OFFLINE_TEXT'];
@@ -790,14 +790,14 @@ if ($module_version < 0.90) {
 
 	// Insert default settings into general settings table
 	if (LANGUAGE_LOADED) {
-		include(WB_PATH.'/modules/bakery/languages/EN.php');
-    	include(WB_PATH.'/modules/bakery/payment_methods/invoice/languages/EN.php');
-		if (file_exists(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
-			include(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
+		include(LEPTON_PATH.'/modules/bakery/languages/EN.php');
+    	include(LEPTON_PATH.'/modules/bakery/payment_methods/invoice/languages/EN.php');
+		if (file_exists(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
+			include(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
 		}
 		$payment_method = "invoice";
-		if (file_exists(WB_PATH.'/modules/bakery/payment_methods/invoice/languages/'.LANGUAGE.'.php')) {
-			include(WB_PATH.'/modules/bakery/payment_methods/invoice/languages/'.LANGUAGE.'.php');
+		if (file_exists(LEPTON_PATH.'/modules/bakery/payment_methods/invoice/languages/'.LANGUAGE.'.php')) {
+			include(LEPTON_PATH.'/modules/bakery/payment_methods/invoice/languages/'.LANGUAGE.'.php');
 		}
 	}
 
@@ -815,7 +815,7 @@ if ($module_version < 0.90) {
 
 	// General upgrade note
 	echo '
-<div style="margin: 15px 0; padding: 10px 10px 10px 60px; text-align: left; color: red; border: solid 1px red; background-color: #FFDCD9; background-image: url('.WB_URL.'/modules/bakery/images/information.gif); background-position: 15px 15px; background-repeat: no-repeat;">
+<div style="margin: 15px 0; padding: 10px 10px 10px 60px; text-align: left; color: red; border: solid 1px red; background-color: #FFDCD9; background-image: url('.LEPTON_URL.'/modules/bakery/images/information.gif); background-position: 15px 15px; background-repeat: no-repeat;">
 	<p style="font-weight: bold;">IMPORTANT UPGRADE NOTE UPGRADING TO v0.9</p>
 	<ul style="padding-left: 20px;">
 		<li style="list-style: square;"><b>Stylesheet</b>: If you keep your current Bakery stylesheets, make sure you are changing the class names from mod<strong>e</strong>_ to mod_ (mod without &quot;<strong>e</strong>&quot;, eg. mod_bakery_anything_f).</li><br />
@@ -915,7 +915,7 @@ if ($module_version < 0.97) {
 	$settingstable = $database->query("SELECT section_id, continue_url FROM ".TABLE_PREFIX."mod_bakery_page_settings");
 	while ($settings = $settingstable->fetchRow()) {
 		$section_id = $settings['section_id'];
-		$continue_url = str_replace(array(WB_URL.PAGES_DIRECTORY, PAGE_EXTENSION), array('', ''), $settings['continue_url']);
+		$continue_url = str_replace(array(LEPTON_URL.PAGES_DIRECTORY, PAGE_EXTENSION), array('', ''), $settings['continue_url']);
 		if ($database->query("UPDATE ".TABLE_PREFIX."mod_bakery_page_settings SET continue_url = '$continue_url' WHERE section_id = '$section_id'")) {
 			echo '<span class="good">Changed continue_url of section_id='.$section_id.' successfully to a link not containing domain name nor page directory</span><br />';
 		} else {
@@ -1057,11 +1057,11 @@ if ($module_version < 1.10) {
 	// Add all avaiable payment_methods to the db
 	echo'<br /><b>Adding all avaiable payment_methods to the database</b><br />';
 	
-	if (!file_exists(WB_PATH.'/modules/bakery/payment_methods/load.php')) {
+	if (!file_exists(LEPTON_PATH.'/modules/bakery/payment_methods/load.php')) {
 		echo '<span class="bad">File load.php is missing. Cannot create new database table payment_methods nor move the payment method settings. Please add your payment settings manually!</span><br />';
 	} else {
 		// Include payment methods loading file
-		include(WB_PATH.'/modules/bakery/payment_methods/load.php');
+		include(LEPTON_PATH.'/modules/bakery/payment_methods/load.php');
 
 		// Get "old" general settings
 		if ($settingstable = $database->query("SELECT * FROM ".TABLE_PREFIX."mod_bakery_general_settings")) {
@@ -1205,7 +1205,7 @@ if ($module_version < 1.30) {
 
 	// General upgrade note
 	echo '
-<div style="margin: 15px 0; padding: 10px 10px 10px 60px; text-align: left; color: red; border: solid 1px red; background-color: #FFDCD9; background-image: url('.WB_URL.'/modules/bakery/images/information.gif); background-position: 15px 15px; background-repeat: no-repeat;">
+<div style="margin: 15px 0; padding: 10px 10px 10px 60px; text-align: left; color: red; border: solid 1px red; background-color: #FFDCD9; background-image: url('.LEPTON_URL.'/modules/bakery/images/information.gif); background-position: 15px 15px; background-repeat: no-repeat;">
 	<p style="font-weight: bold;">IMPORTANT UPGRADE NOTE UPGRADING TO v1.30</p>
 	<ul style="padding-left: 20px;">
 		<li style="list-style: square;"><b>Item images</b>: Due to a new way how Bakery handles and stores images you will have to reupload <b>ALL</b> item images using the Bakery backend. Use your backup of the <code>/media/bakery</code> directory. Use speaking image file names since they are used for the image <code>&lt;alt&gt;<code> and </code>&lt;title&gt;</code> tag and shown as the Lightbox2 caption.</li><br />
@@ -1288,7 +1288,7 @@ if ($module_version < 1.40) {
 		// Upgrade note
 		if ($display_warning) {
 			echo '
-<div style="margin: 15px 0; padding: 10px 10px 10px 60px; text-align: left; color: red; border: solid 1px red; background-color: #FFDCD9; background-image: url('.WB_URL.'/modules/bakery/images/information.gif); background-position: 15px 25px; background-repeat: no-repeat;">
+<div style="margin: 15px 0; padding: 10px 10px 10px 60px; text-align: left; color: red; border: solid 1px red; background-color: #FFDCD9; background-image: url('.LEPTON_URL.'/modules/bakery/images/information.gif); background-position: 15px 25px; background-repeat: no-repeat;">
 	<p style="font-weight: bold;">IMPORTANT UPGRADE NOTES UPGRADING TO v1.40</p>
 	<p style="font-weight: bold;">Due to the new delivery notes printing feature you have to modify your invoice template slightly.</p>
 	<ol>
@@ -1347,7 +1347,7 @@ if ($module_version < 1.51) {
 
 if ($module_version < 1.55) {
 	echo '
-<div style="margin: 15px 0; padding: 10px 10px 10px 60px; text-align: left; color: red; border: solid 1px red; background-color: #FFDCD9; background-image: url('.WB_URL.'/modules/bakery/images/information.gif); background-position: 15px 25px; background-repeat: no-repeat;">
+<div style="margin: 15px 0; padding: 10px 10px 10px 60px; text-align: left; color: red; border: solid 1px red; background-color: #FFDCD9; background-image: url('.LEPTON_URL.'/modules/bakery/images/information.gif); background-position: 15px 25px; background-repeat: no-repeat;">
 	<p style="font-weight: bold;">IMPORTANT UPGRADE NOTES UPGRADING TO BAKERY v1.55</p>
 	<p style="font-weight: bold;">This upgrade note only concerns users of the DIRECTebanking.com / sofort&uuml;berweisung.de payment method.</p>
 	<p style="padding: 5px; border: 1px solid red;">As a new  payment method security feature <strong>DIRECTebanking.com</strong> / <strong>sofort&uuml;berweisung.de</strong> now supports a notification password. This password is used to verify the HTTP response notifications. All users  of this payment method  have to add a notification password otherwise the payment method will not work properly any more. </p>
@@ -1399,7 +1399,7 @@ if ($module_version < 1.60) {
 		} else { echo '<span class="ok">Database field tax_no_field exists, update not needed</span><br />'; }
 
 		// Include default EU tax zone file
-		include(WB_PATH.'/modules/bakery/eu_tax_zone.php');
+		include(LEPTON_PATH.'/modules/bakery/eu_tax_zone.php');
 
 		if (!array_key_exists('tax_group', $settings)) {
 				if ($database->query("ALTER TABLE ".TABLE_PREFIX."mod_bakery_general_settings ADD tax_group VARCHAR(255) NOT NULL DEFAULT '$tax_group' AFTER tax_no_field")) {
@@ -1525,7 +1525,7 @@ if ($module_version < 1.70) {
 	
 	
 		echo '
-	<div style="margin: 15px 0; padding: 10px 10px 10px 60px; text-align: left; color: red; border: solid 1px red; background-color: #FFDCD9; background-image: url('.WB_URL.'/modules/bakery/images/information.gif); background-position: 15px 25px; background-repeat: no-repeat;">
+	<div style="margin: 15px 0; padding: 10px 10px 10px 60px; text-align: left; color: red; border: solid 1px red; background-color: #FFDCD9; background-image: url('.LEPTON_URL.'/modules/bakery/images/information.gif); background-position: 15px 25px; background-repeat: no-repeat;">
 		<p style="font-weight: bold;">IMPORTANT UPGRADE NOTES UPGRADING TO BAKERY v1.70</p>
 		<p style="padding: 5px; border: 1px solid red;">This version features a big improvement in handling item images. It is now possible to reorder item images, add a title, alt attribute and even a image caption. The image on the top position will be used as main image.</p>
 		<p>In order to set the image settings you have to <b>open each item</b> in the Bakery backend:</p>
@@ -1578,7 +1578,7 @@ if ($module_version < 1.76) {
 	echo'<h3>Upgrading to version 1.76 or later:</h3>';
 
 	echo '
-<div style="margin: 15px 0; padding: 10px 10px 10px 60px; text-align: left; color: red; border: solid 1px red; background-color: #FFDCD9; background-image: url('.WB_URL.'/modules/bakery/images/information.gif); background-position: 15px 25px; background-repeat: no-repeat;">
+<div style="margin: 15px 0; padding: 10px 10px 10px 60px; text-align: left; color: red; border: solid 1px red; background-color: #FFDCD9; background-image: url('.LEPTON_URL.'/modules/bakery/images/information.gif); background-position: 15px 25px; background-repeat: no-repeat;">
 	<p style="font-weight: bold;">IMPORTANT UPGRADE NOTES UPGRADING TO BAKERY v1.76</p>
 	<p style="padding: 5px; border: 1px solid red;">This version features an improvement in handling item images. On resizing png images will no longer be converted to jpg thumbs.</p>
 	<p>If you are using the module snippets <b>Bakery Anyitems</b> or <b>Bakery Lastitems</b> please upgrade:</p>

@@ -19,7 +19,7 @@
 
 // Include WB config.php file and admin class
 require('../../config.php');
-require_once(WB_PATH.'/framework/class.admin.php');
+require_once(LEPTON_PATH.'/framework/class.admin.php');
 
 // Check if GET and SESSION vars are set
 if (!isset($_GET['page_id']) OR !isset($_GET['section_id']) OR !isset($_GET['order_id']) OR !is_numeric($_GET['page_id']) OR !is_numeric($_GET['section_id']) OR !is_numeric($_GET['order_id']) OR !isset($_SESSION['USER_ID']) OR !isset($_SESSION['GROUP_ID'])) {
@@ -41,9 +41,9 @@ if ($admin->get_page_permission($page_id, $action='admin') === false) {
 
 // Look for language file
 if (LANGUAGE_LOADED) {
-    require_once(WB_PATH.'/modules/bakery/languages/EN.php');
-    if (file_exists(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
-        require_once(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
+    require_once(LEPTON_PATH.'/modules/bakery/languages/EN.php');
+    if (file_exists(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
+        require_once(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
     }
 }
 
@@ -79,7 +79,7 @@ else {
 <head>
 <title><?php echo $MOD_BAKERY['TXT_PRINT'].' '.$title; ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php if (defined('DEFAULT_CHARSET')) { echo DEFAULT_CHARSET; } else { echo 'utf-8'; }?>" />
-<link href="<?php echo WB_URL; ?>/modules/bakery/backend.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo LEPTON_URL; ?>/modules/bakery/backend.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <?php
@@ -115,8 +115,8 @@ if ($query_customer->numRows() > 0) {
 		$invoice_id = $customer['invoice_id'];
 
 		// Replace invoice placeholders by values
-		$vars = array('[WB_URL]', '[ORDER_ID]', '[INVOICE_ID]', '[SHOP_NAME]', '[BANK_ACCOUNT]', '[CUSTOMER_NAME]', '[ADDRESS]', '[CUST_ADDRESS]', '[SHIPPING_ADDRESS]', '[CUST_EMAIL]', '[ITEM_LIST]', '[ORDER_DATE]', '[CURRENT_DATE]', '[TITLE]', '[DISPLAY_INVOICE]', '[DISPLAY_DELIVERY_NOTE]', '[DISPLAY_REMINDER]', '[CUST_TAX_NO]');
-		$values = array(WB_URL, $invoice_array[0], $invoice_id, $invoice_array[1], nl2br($invoice_array[2]), $invoice_array[3], $invoice_address[0], $invoice_cust_address[0], $invoice_array[6], $invoice_array[7], $invoice_array[8], $invoice_array[9], $today, $title, $display_invoice, $display_delivery_note, $display_reminder, $cust_tax_no);
+		$vars = array('[LEPTON_URL]', '[ORDER_ID]', '[INVOICE_ID]', '[SHOP_NAME]', '[BANK_ACCOUNT]', '[CUSTOMER_NAME]', '[ADDRESS]', '[CUST_ADDRESS]', '[SHIPPING_ADDRESS]', '[CUST_EMAIL]', '[ITEM_LIST]', '[ORDER_DATE]', '[CURRENT_DATE]', '[TITLE]', '[DISPLAY_INVOICE]', '[DISPLAY_DELIVERY_NOTE]', '[DISPLAY_REMINDER]', '[CUST_TAX_NO]');
+		$values = array(LEPTON_URL, $invoice_array[0], $invoice_id, $invoice_array[1], nl2br($invoice_array[2]), $invoice_array[3], $invoice_address[0], $invoice_cust_address[0], $invoice_array[6], $invoice_array[7], $invoice_array[8], $invoice_array[9], $today, $title, $display_invoice, $display_delivery_note, $display_reminder, $cust_tax_no);
 		$invoice = str_replace($vars, $values, $invoice_template);
 		
 		// Wrap invoice in a <div> and add an anchor
@@ -133,7 +133,7 @@ if ($query_customer->numRows() > 0) {
 ?>
 <br />
 <div id="button">
-<form name="doc_type" action="<?php echo WB_URL; ?>/modules/bakery/view_invoice.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;order_id=<?php echo $order_id; ?>#bottom" method="post" style="margin: 0;">
+<form name="doc_type" action="<?php echo LEPTON_URL; ?>/modules/bakery/view_invoice.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;order_id=<?php echo $order_id; ?>#bottom" method="post" style="margin: 0;">
   <table width="98%" align="center" cellpadding="0" cellspacing="0" class="mod_bakery_submit_row_b">
       <tr valign="top">
         <td height="30" align="left" style="padding-left: 12px;"><input type="button" value="<?php echo $MOD_BAKERY['TXT_PRINT']; ?>" onclick="javascript: window.print();" style="width: 220px; margin-top: 5px;" />

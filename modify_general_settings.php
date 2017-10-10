@@ -20,24 +20,24 @@
 require('../../config.php');
 
 // Include WB admin wrapper script
-require(WB_PATH.'/modules/admin.php');
+require(LEPTON_PATH.'/modules/admin.php');
 
 // Look for language file
 if (LANGUAGE_LOADED) {
-    require_once(WB_PATH.'/modules/bakery/languages/EN.php');
-    if (file_exists(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
-        require_once(WB_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
+    require_once(LEPTON_PATH.'/modules/bakery/languages/EN.php');
+    if (file_exists(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php')) {
+        require_once(LEPTON_PATH.'/modules/bakery/languages/'.LANGUAGE.'.php');
     }
 }
 
 // Look for country file
 if (LANGUAGE_LOADED) {
-	if (file_exists(WB_PATH.'/modules/bakery/languages/countries/'.LANGUAGE.'.php')) {
-		require_once(WB_PATH.'/modules/bakery/languages/countries/'.LANGUAGE.'.php');
+	if (file_exists(LEPTON_PATH.'/modules/bakery/languages/countries/'.LANGUAGE.'.php')) {
+		require_once(LEPTON_PATH.'/modules/bakery/languages/countries/'.LANGUAGE.'.php');
 	}
 }
 else {
-	require_once(WB_PATH.'/modules/bakery/languages/countries/EN.php');
+	require_once(LEPTON_PATH.'/modules/bakery/languages/countries/EN.php');
 }
 
 // Get content of general settings table
@@ -46,8 +46,8 @@ $fetch_settings = $query_settings->fetchRow();
 
 // Look for state file
 $use_states = false;
-if (file_exists(WB_PATH.'/modules/bakery/languages/states/'.stripslashes($fetch_settings['shop_country']).'.php')) {
-	require_once(WB_PATH.'/modules/bakery/languages/states/'.stripslashes($fetch_settings['shop_country']).'.php');
+if (file_exists(LEPTON_PATH.'/modules/bakery/languages/states/'.stripslashes($fetch_settings['shop_country']).'.php')) {
+	require_once(LEPTON_PATH.'/modules/bakery/languages/states/'.stripslashes($fetch_settings['shop_country']).'.php');
 	$use_states = true;
 }
 ?>
@@ -67,7 +67,7 @@ if (file_exists(WB_PATH.'/modules/bakery/languages/states/'.stripslashes($fetch_
 	}
 </script>
 
-<form name="modify" action="<?php echo WB_URL; ?>/modules/bakery/save_general_settings.php" method="post" style="margin: 0;">
+<form name="modify" action="<?php echo LEPTON_URL; ?>/modules/bakery/save_general_settings.php" method="post" style="margin: 0;">
 <input type="hidden" name="section_id" value="<?php echo $section_id; ?>" />
 <input type="hidden" name="page_id" value="<?php echo $page_id; ?>" />
 <input type="hidden" name="reload" value="false" />

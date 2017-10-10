@@ -29,7 +29,7 @@ if (!isset($_GET['attribute_id']) OR !is_numeric($_GET['attribute_id'])) {
 
 // Include WB admin wrapper script
 $update_when_modified = true; // Tells script to update when this page was last updated
-require(WB_PATH.'/modules/admin.php');
+require(LEPTON_PATH.'/modules/admin.php');
 
 
 // Delete attribute
@@ -39,9 +39,9 @@ $database->query("DELETE FROM ".TABLE_PREFIX."mod_bakery_item_attributes WHERE a
 
 // Check if there is a db error, otherwise say successful
 if ($database->is_error()) {
-	$admin->print_error($database->get_error(), WB_URL.'/modules/bakery/modify_options.php?page_id='.$page_id);
+	$admin->print_error($database->get_error(), LEPTON_URL.'/modules/bakery/modify_options.php?page_id='.$page_id);
 } else {
-	$admin->print_success($TEXT['SUCCESS'], WB_URL.'/modules/bakery/modify_options.php?page_id='.$page_id);
+	$admin->print_success($TEXT['SUCCESS'], LEPTON_URL.'/modules/bakery/modify_options.php?page_id='.$page_id);
 }
 
 // Print admin footer

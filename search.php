@@ -35,7 +35,7 @@ function bakery_search($func_vars) {
 	$result       = false;
 
 	// Get some default values
-	require_once(WB_PATH.'/modules/bakery/config.php');
+	require_once(LEPTON_PATH.'/modules/bakery/config.php');
 
 	$table_item     = TABLE_PREFIX."mod_bakery_items";
 	$table_images   = TABLE_PREFIX."mod_bakery_images";
@@ -72,7 +72,7 @@ function bakery_search($func_vars) {
 				if ($query_thumb->numRows() > 0) {
 					$thumb     = $query_thumb->fetchRow();
 					$thumb_dir = '/'.$img_dir.'/thumbs/item'.$res['item_id'].'/';
-					if (is_file(WB_PATH.MEDIA_DIRECTORY.$thumb_dir.$thumb['filename'])) {
+					if (is_file(LEPTON_PATH.MEDIA_DIRECTORY.$thumb_dir.$thumb['filename'])) {
 						$pic_link = $thumb_dir.$thumb['filename'];
 					}
 				}

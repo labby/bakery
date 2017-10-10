@@ -18,12 +18,12 @@
 
 
 // Prevent this file from being accessed directly
-if (defined('WB_PATH') == false) {
+if (defined('LEPTON_PATH') == false) {
 	exit("Cannot access this file directly"); 
 }
 
 // Get some default values
-require_once(WB_PATH.'/modules/bakery/config.php');
+require_once(LEPTON_PATH.'/modules/bakery/config.php');
 
 
 // SHOW OVERVIEW PAGE
@@ -33,8 +33,8 @@ require_once(WB_PATH.'/modules/bakery/config.php');
 if ($setting_lightbox2 == 'overview' || $setting_lightbox2 == 'all') {
 	// Load jQuery if not loaded yet
 	?>
-	<script type="text/javascript">window.jQuery || document.write('<script src="<?php echo WB_URL; ?>/modules/bakery/jquery/jquery-1.7.2.min.js"><\/script>')</script>
-	<script type="text/javascript" src="<?php echo WB_URL; ?>/modules/bakery/lightbox2/js/lightbox.js"></script>
+	<script type="text/javascript">window.jQuery || document.write('<script src="<?php echo LEPTON_URL; ?>/modules/lib_jquery/jquery-core/jquery-core.min.js"><\/script>')</script>
+	<script type="text/javascript" src="<?php echo LEPTON_URL; ?>/modules/bakery/lightbox2/js/lightbox.js"></script>
 	<script type="text/javascript">
 	//  Lightbox2 options
 	lightbox.option({
@@ -129,7 +129,7 @@ if ($num_items > 0) {
 		$item_date = gmdate(DATE_FORMAT, $item['modified_when']+TIMEZONE);
 		$item_time = gmdate(TIME_FORMAT, $item['modified_when']+TIMEZONE);
 		// Work-out the item link
-		$item_link = WB_URL.PAGES_DIRECTORY.$item['link'].PAGE_EXTENSION;
+		$item_link = LEPTON_URL.PAGES_DIRECTORY.$item['link'].PAGE_EXTENSION;
 
 
 		// Item thumb(s) and image(s)
@@ -141,10 +141,10 @@ if ($num_items > 0) {
 		$image     = '';
 
 		// Prepare thumb and image directory pathes and urls
-		$thumb_path = WB_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$item_id.'/';
-		$img_path   = WB_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/images/item'.$item_id.'/';
-		$thumb_url  = WB_URL.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$item_id.'/';
-		$img_url    = WB_URL.MEDIA_DIRECTORY.'/'.$img_dir.'/images/item'.$item_id.'/';
+		$thumb_path = LEPTON_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$item_id.'/';
+		$img_path   = LEPTON_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/images/item'.$item_id.'/';
+		$thumb_url  = LEPTON_URL.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$item_id.'/';
+		$img_url    = LEPTON_URL.MEDIA_DIRECTORY.'/'.$img_dir.'/images/item'.$item_id.'/';
 
 		// Get image data from db
 		$query_image = $database->query("SELECT * FROM ".TABLE_PREFIX."mod_bakery_images WHERE item_id = '$item_id' AND active = '1' ORDER BY position ASC");
@@ -245,11 +245,11 @@ if ($num_items > 0) {
 			// Display stock image
 			} elseif ($setting_stock_mode == 'img' && is_numeric($setting_stock_limit) && !empty($setting_stock_limit)) {
 				if ($item_stock < 1) {
-					$stock = '<img src="'.WB_URL.'/modules/bakery/images/out_of_stock.gif" alt="'.$MOD_BAKERY['TXT_OUT_OF_STOCK'].'" class="mod_bakery_main_stock_img_f" />';
+					$stock = '<img src="'.LEPTON_URL.'/modules/bakery/images/out_of_stock.gif" alt="'.$MOD_BAKERY['TXT_OUT_OF_STOCK'].'" class="mod_bakery_main_stock_img_f" />';
 				} elseif ($item_stock > $setting_stock_limit) {
-					$stock = '<img src="'.WB_URL.'/modules/bakery/images/in_stock.gif" alt="'.$MOD_BAKERY['TXT_IN_STOCK'].'" class="mod_bakery_main_stock_img_f" />';
+					$stock = '<img src="'.LEPTON_URL.'/modules/bakery/images/in_stock.gif" alt="'.$MOD_BAKERY['TXT_IN_STOCK'].'" class="mod_bakery_main_stock_img_f" />';
 				} else {
-					$stock = '<img src="'.WB_URL.'/modules/bakery/images/short_of_stock.gif" alt="'.$MOD_BAKERY['TXT_SHORT_OF_STOCK'].'" class="mod_bakery_main_stock_img_f" />';
+					$stock = '<img src="'.LEPTON_URL.'/modules/bakery/images/short_of_stock.gif" alt="'.$MOD_BAKERY['TXT_SHORT_OF_STOCK'].'" class="mod_bakery_main_stock_img_f" />';
 			}
 			// Display stock text message			
 			} elseif ($setting_stock_mode == 'text' && is_numeric($setting_stock_limit) && !empty($setting_stock_limit)) {

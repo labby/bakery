@@ -46,11 +46,11 @@ else {
 		}
 	
 		// Include ordering class and reorder the entries
-		require_once(WB_PATH.'/framework/class.order.php');
+		require_once(LEPTON_PATH.'/framework/class.order.php');
 		$order = new order(TABLE_PREFIX.'mod_bakery_items', 'position', 'item_id', 'section_id');
 		$order->clean($sID);
 
 		// Now we can print the result in green field
-		echo '<img src="'.WB_URL.'/modules/bakery/images/ajax-loader.gif" alt="" border="0" />';
+		echo '<img src="'.LEPTON_URL.'/modules/bakery/images/ajax-loader.gif" alt="" border="0" />';
 	}
 }

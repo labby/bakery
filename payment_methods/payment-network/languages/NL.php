@@ -21,7 +21,7 @@
 // ******************************
 
 // Get the current url scheme
-$url = parse_url(WB_URL);
+$url = parse_url(LEPTON_URL);
 
 // SETTINGS - USED BY BACKEND
 $MOD_BAKERY[$payment_method]['TXT_NAME'] = 'SOFORT Banking';
@@ -39,7 +39,7 @@ Copy&amp;paste de volledige url hieronder in het veld &quot;Afbreken link&quot;:
 
 <b>Nicht änderbare Eingabeparameter:</b> Activeer &quot;Bedrag&quot; und &quot;Gebruiksdoeleinde&quot;.<br /><br />
 
-<b>Berichten:</b> Voeg email berichten <u>en</u> HTTP berichten to via de <i>POST</i>-methode en voeg de onderstaande url toe:<input type='text' value='".WB_URL."/modules/bakery/payment_methods/payment-network/report.php' readonly='true' onclick='this.select();' style='width: 98%;' /><br /><br />
+<b>Berichten:</b> Voeg email berichten <u>en</u> HTTP berichten to via de <i>POST</i>-methode en voeg de onderstaande url toe:<input type='text' value='".LEPTON_URL."/modules/bakery/payment_methods/payment-network/report.php' readonly='true' onclick='this.select();' style='width: 98%;' /><br /><br />
 
 <b>Wachtwoorden en Hash-algoritme:</b> Maak een project wachtwoord en een berichten wachtwoord aan <u>en</u> activeer de input controle door middel van het hash algorithme <i>SHA1</i>.";
 

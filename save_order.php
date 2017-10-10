@@ -22,10 +22,10 @@ require('../../config.php');
 
 // Include WB admin wrapper script
 $update_when_modified = true; // Tells script to update when this page was last updated
-require(WB_PATH.'/modules/admin.php');
+require(LEPTON_PATH.'/modules/admin.php');
 
 // Include the WB functions file
-require_once(WB_PATH.'/framework/summary.functions.php');
+require_once(LEPTON_PATH.'/framework/summary.functions.php');
 
 // Validate the order_id
 $order_id = NULL;
@@ -118,20 +118,20 @@ if (defined('DEFAULT_CHARSET')) { $charset = DEFAULT_CHARSET; } else { $charset 
 
 // Include country file depending on the language
 if (LANGUAGE_LOADED) {
-    if (file_exists(WB_PATH.'/modules/bakery/languages/countries/'.LANGUAGE.'.php')) {
-        require_once(WB_PATH.'/modules/bakery/languages/countries/'.LANGUAGE.'.php');
+    if (file_exists(LEPTON_PATH.'/modules/bakery/languages/countries/'.LANGUAGE.'.php')) {
+        require_once(LEPTON_PATH.'/modules/bakery/languages/countries/'.LANGUAGE.'.php');
     }
 }
 else {
-	require_once(WB_PATH.'/modules/bakery/languages/countries/EN.php');
+	require_once(LEPTON_PATH.'/modules/bakery/languages/countries/EN.php');
 }
 
 // Set default state for countries without a state file
 $MOD_BAKERY['TXT_STATE_CODE'][1] = '';
 $MOD_BAKERY['TXT_STATE_NAME'][1] = '';
 // Include state file depending on the shop country
-if (file_exists(WB_PATH.'/modules/bakery/languages/states/'.$setting_shop_country.'.php')) {
-	require_once(WB_PATH.'/modules/bakery/languages/states/'.$setting_shop_country.'.php');
+if (file_exists(LEPTON_PATH.'/modules/bakery/languages/states/'.$setting_shop_country.'.php')) {
+	require_once(LEPTON_PATH.'/modules/bakery/languages/states/'.$setting_shop_country.'.php');
 }
 
 // Convert country code to country name
@@ -299,15 +299,15 @@ $database->query("UPDATE ".TABLE_PREFIX ."mod_bakery_customer SET $update_string
 
 // Check if there is a db error, otherwise say successful
 if ($database->is_error()) {
-	$admin->print_error($database->get_error(), WB_URL.'/modules/bakery/modify_orders.php?page_id='.$page_id);
+	$admin->print_error($database->get_error(), LEPTON_URL.'/modules/bakery/modify_orders.php?page_id='.$page_id);
 }
 else {
 	// Different targets depending on the save action
 	if (!empty($_POST['save_and_return'])) {
-		$return_url = WB_URL.'/modules/bakery/modify_order.php?page_id='.$page_id.'&section_id='.$section_id.'&order_id='.$order_id;
+		$return_url = LEPTON_URL.'/modules/bakery/modify_order.php?page_id='.$page_id.'&section_id='.$section_id.'&order_id='.$order_id;
 	}
 	else {
-		$return_url = WB_URL.'/modules/bakery/modify_orders.php?page_id='.$page_id;
+		$return_url = LEPTON_URL.'/modules/bakery/modify_orders.php?page_id='.$page_id;
 	}
 	// Print success message and return
 	$admin->print_success($TEXT['SUCCESS'], $return_url);

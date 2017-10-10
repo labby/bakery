@@ -18,16 +18,16 @@
 
 
 // Prevent this file from being accessed directly
-if (defined('WB_PATH') == false) {
+if (defined('LEPTON_PATH') == false) {
 	exit("Cannot access this file directly"); 
 }
 
 // Get some default values
-require_once(WB_PATH.'/modules/bakery/config.php');
+require_once(LEPTON_PATH.'/modules/bakery/config.php');
 
 // Include WB template parser and create template object
-require_once(WB_PATH.'/include/phplib/template.inc');
-$tpl = new Template(WB_PATH.'/modules/bakery/templates/cart');
+require_once(LEPTON_PATH.'/include/phplib/template.inc');
+$tpl = new Template(LEPTON_PATH.'/modules/bakery/templates/cart');
 // Define how to deal with unknown {PLACEHOLDERS} (remove:=default, keep, comment)
 $tpl->set_unknowns('keep');
 // Define debug mode (0:=disabled (default), 1:=variable assignments, 2:=calls to get variable, 4:=debug internals)
@@ -69,11 +69,11 @@ while ($row1 = $sql_result1->fetchRow()) {
 				$row2 = $sql_result2->fetchRow();	
 				$items[$i]['name']     = $row2[0];
 				$items[$i]['shipping'] = $row2[1];
-				$items[$i]['link']     = WB_URL.PAGES_DIRECTORY.$row2[2].PAGE_EXTENSION;
+				$items[$i]['link']     = LEPTON_URL.PAGES_DIRECTORY.$row2[2].PAGE_EXTENSION;
 
 				// Item thumbnail
 				// Default if no thumb exists
-				$items[$i]['thumb_url']    = WB_URL.'/modules/bakery/images/transparent.gif';
+				$items[$i]['thumb_url']    = LEPTON_URL.'/modules/bakery/images/transparent.gif';
 				$items[$i]['thumb_width']  = $cart_thumb_max_size;
 				$items[$i]['thumb_height'] = $cart_thumb_max_size;
 				// Get main thumb (image with position == 1)
@@ -81,10 +81,10 @@ while ($row1 = $sql_result1->fetchRow()) {
 				$main_thumb = $database->get_one("SELECT filename FROM ".TABLE_PREFIX."mod_bakery_images WHERE item_id = '{$row1['item_id']}' AND active = '1' ORDER BY position ASC LIMIT 1");
 				// Item thumb if exists
 				$thumb_dir               = '/'.$img_dir.'/thumbs/item'.$row1['item_id'].'/';
-				$items[$i]['thumb_path'] = WB_PATH.MEDIA_DIRECTORY.$thumb_dir.$main_thumb;
+				$items[$i]['thumb_path'] = LEPTON_PATH.MEDIA_DIRECTORY.$thumb_dir.$main_thumb;
 				if (is_file($items[$i]['thumb_path'])) {
 					// Thumb URL
-					$items[$i]['thumb_url'] = WB_URL.MEDIA_DIRECTORY.$thumb_dir.$main_thumb;
+					$items[$i]['thumb_url'] = LEPTON_URL.MEDIA_DIRECTORY.$thumb_dir.$main_thumb;
 					// Get thumb image size
 					$size = getimagesize($items[$i]['thumb_path']);
 					if ($size[0] > 1 && $size[1] > 1) {
@@ -254,7 +254,7 @@ for ($i = 1; $i <= sizeof($items); $i++) {
 		'ITEM_ID'			=>	$items[$i]['item_id'],
 		'ATTRIBUTES'		=>	$items[$i]['attributes'],
 		'QUANTITY'			=>	$items[$i]['quantity'],
-		'WB_URL'			=>	WB_URL,
+		'LEPTON_URL'			=>	LEPTON_URL,
 		'TEXT_DELETE'		=>	$TEXT['DELETE'],
 		'PRICE'				=>	$f_price,
 		'DISPLAY_SHIPPING'	=>	$display_shipping,

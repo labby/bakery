@@ -18,25 +18,25 @@
 
 
 // Prevent this file from being accessed directly
-if (defined('WB_PATH') == false) {
+if (defined('LEPTON_PATH') == false) {
 	exit("Cannot access this file directly");
 }
 
 // Include WB functions
-require_once(WB_PATH.'/framework/summary.functions.php');
+require_once(LEPTON_PATH.'/framework/summary.functions.php');
 
 // Get some default values
-require_once(WB_PATH.'/modules/bakery/config.php');
+require_once(LEPTON_PATH.'/modules/bakery/config.php');
 
 // Delete item access file, images and thumbs associated with the section
 $query_items = $database->query("SELECT item_id, link FROM ".TABLE_PREFIX."mod_bakery_items WHERE section_id = '$section_id'");
 if ($query_items->numRows() > 0) {
 	while ($item = $query_items->fetchRow()) {
 		// Delete item access file
-		if (is_writable(WB_PATH.PAGES_DIRECTORY.$item['link'].PAGE_EXTENSION)) { unlink(WB_PATH.PAGES_DIRECTORY.$item['link'].PAGE_EXTENSION); }
+		if (is_writable(LEPTON_PATH.PAGES_DIRECTORY.$item['link'].PAGE_EXTENSION)) { unlink(LEPTON_PATH.PAGES_DIRECTORY.$item['link'].PAGE_EXTENSION); }
 		// Delete any images if they exists
-		$image = WB_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/images/item'.$item['item_id'];
-		$thumb = WB_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$item['item_id'];
+		$image = LEPTON_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/images/item'.$item['item_id'];
+		$thumb = LEPTON_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.$item['item_id'];
 		if (is_dir($image)) { rm_full_dir($image); }
 		if (is_dir($thumb)) { rm_full_dir($thumb); }
 		// Delete item attributes in db

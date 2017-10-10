@@ -18,12 +18,12 @@
 
 
 // Prevent this file from being accessed directly
-if (defined('WB_PATH') == false) {
+if (defined('LEPTON_PATH') == false) {
 	exit("Cannot access this file directly"); 
 }
 
 // Get some default values
-require_once(WB_PATH.'/modules/bakery/config.php');
+require_once(LEPTON_PATH.'/modules/bakery/config.php');
 
 
 
@@ -33,13 +33,13 @@ require_once(WB_PATH.'/modules/bakery/config.php');
 
 // Load jQuery if not loaded yet
 ?>
-<script type="text/javascript">window.jQuery || document.write('<script src="<?php echo WB_URL; ?>/modules/bakery/jquery/jquery-1.7.2.min.js"><\/script>')</script>
+<script type="text/javascript">window.jQuery || document.write('<script src="<?php echo LEPTON_URL; ?>/modules/lib_jquery/jquery-core/jquery-core.min.js"><\/script>')</script>
 <?php
 
 // If requested include lightbox2 (css is appended to the frontend.css stylesheet)
 if ($setting_lightbox2 == 'detail' || $setting_lightbox2 == 'all') {
 	?>
-	<script type="text/javascript" src="<?php echo WB_URL; ?>/modules/bakery/lightbox2/js/lightbox.js"></script>
+	<script type="text/javascript" src="<?php echo LEPTON_URL; ?>/modules/bakery/lightbox2/js/lightbox.js"></script>
 	<script type="text/javascript">
 	//  Lightbox2 options
 	lightbox.option({
@@ -51,7 +51,7 @@ if ($setting_lightbox2 == 'detail' || $setting_lightbox2 == 'all') {
 
 // Calculate price change depending on selected item option using js and jquery
 ?>
-<script type="text/javascript" src="<?php echo WB_URL; ?>/modules/bakery/jquery/calc_price.js"></script>
+<script type="text/javascript" src="<?php echo LEPTON_URL; ?>/modules/bakery/jquery/calc_price.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 
@@ -119,7 +119,7 @@ if ($query_item->numRows() > 0) {
 				if (strlen($previous['title']) > $link_length) {
 					$previous['title'] = substr($previous['title'], 0, $link_length).'…';
 				}
-				$previous_link = '<a href="'.WB_URL.PAGES_DIRECTORY.$previous['link'].PAGE_EXTENSION.'">&laquo; '.htmlspecialchars(stripslashes($previous['title'])).'</a>';
+				$previous_link = '<a href="'.LEPTON_URL.PAGES_DIRECTORY.$previous['link'].PAGE_EXTENSION.'">&laquo; '.htmlspecialchars(stripslashes($previous['title'])).'</a>';
 			}
 		}
 		// Get next
@@ -130,7 +130,7 @@ if ($query_item->numRows() > 0) {
 			if (strlen($next['title']) > $link_length) {
 				$next['title'] = substr($next['title'], 0, $link_length).'…';
 			}
-			$next_link = '<a href="'.WB_URL.PAGES_DIRECTORY.$next['link'].PAGE_EXTENSION.'">'.htmlspecialchars(stripslashes($next['title'])).' &raquo;</a>';
+			$next_link = '<a href="'.LEPTON_URL.PAGES_DIRECTORY.$next['link'].PAGE_EXTENSION.'">'.htmlspecialchars(stripslashes($next['title'])).' &raquo;</a>';
 		}
 	}
 
@@ -155,10 +155,10 @@ if ($query_item->numRows() > 0) {
 	$image     = '';
 
 	// Prepare thumb and image directory pathes and urls
-	$thumb_path = WB_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.ITEM_ID.'/';
-	$img_path   = WB_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/images/item'.ITEM_ID.'/';
-	$thumb_url  = WB_URL.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.ITEM_ID.'/';
-	$img_url    = WB_URL.MEDIA_DIRECTORY.'/'.$img_dir.'/images/item'.ITEM_ID.'/';
+	$thumb_path = LEPTON_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.ITEM_ID.'/';
+	$img_path   = LEPTON_PATH.MEDIA_DIRECTORY.'/'.$img_dir.'/images/item'.ITEM_ID.'/';
+	$thumb_url  = LEPTON_URL.MEDIA_DIRECTORY.'/'.$img_dir.'/thumbs/item'.ITEM_ID.'/';
+	$img_url    = LEPTON_URL.MEDIA_DIRECTORY.'/'.$img_dir.'/images/item'.ITEM_ID.'/';
 
 	// Get image data from db
 	$query_image = $database->query("SELECT * FROM ".TABLE_PREFIX."mod_bakery_images WHERE item_id = '".ITEM_ID."' AND active = '1' ORDER BY position ASC");
@@ -275,11 +275,11 @@ if ($query_item->numRows() > 0) {
 		// Display stock image
 		} elseif ($setting_stock_mode == 'img' && is_numeric($setting_stock_limit) && !empty($setting_stock_limit)) {
 			if ($item_stock < 1) {
-				$stock = '<img src="'.WB_URL.'/modules/bakery/images/out_of_stock.gif" alt="'.$MOD_BAKERY['TXT_OUT_OF_STOCK'].'" class="mod_bakery_item_stock_img_f" />';
+				$stock = '<img src="'.LEPTON_URL.'/modules/bakery/images/out_of_stock.gif" alt="'.$MOD_BAKERY['TXT_OUT_OF_STOCK'].'" class="mod_bakery_item_stock_img_f" />';
 			} elseif ($item_stock > $setting_stock_limit) {
-				$stock = '<img src="'.WB_URL.'/modules/bakery/images/in_stock.gif" alt="'.$MOD_BAKERY['TXT_IN_STOCK'].'" class="mod_bakery_item_stock_img_f" />';
+				$stock = '<img src="'.LEPTON_URL.'/modules/bakery/images/in_stock.gif" alt="'.$MOD_BAKERY['TXT_IN_STOCK'].'" class="mod_bakery_item_stock_img_f" />';
 			} else {
-				$stock = '<img src="'.WB_URL.'/modules/bakery/images/short_of_stock.gif" alt="'.$MOD_BAKERY['TXT_SHORT_OF_STOCK'].'" class="mod_bakery_item_stock_img_f" />';
+				$stock = '<img src="'.LEPTON_URL.'/modules/bakery/images/short_of_stock.gif" alt="'.$MOD_BAKERY['TXT_SHORT_OF_STOCK'].'" class="mod_bakery_item_stock_img_f" />';
 		}
 		// Display stock text message			
 		} elseif ($setting_stock_mode == 'text' && is_numeric($setting_stock_limit) && !empty($setting_stock_limit)) {
@@ -305,7 +305,7 @@ if ($query_item->numRows() > 0) {
 		// Get page link
 		$query_pages = $database->query("SELECT link FROM ".TABLE_PREFIX."pages WHERE page_id = '$page_id' LIMIT 1");
 		$page = $query_pages->fetchRow();
-		$link = WB_URL.PAGES_DIRECTORY.$page['link'].PAGE_EXTENSION;
+		$link = LEPTON_URL.PAGES_DIRECTORY.$page['link'].PAGE_EXTENSION;
 		$item['full_desc'] = preg_replace($pattern,$link,$item['full_desc']);
 	}
 

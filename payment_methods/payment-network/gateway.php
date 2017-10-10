@@ -18,18 +18,18 @@
 
 
 // Prevent this file from being accessed directly
-if (defined('WB_PATH') == false) {
+if (defined('LEPTON_PATH') == false) {
 	exit("Cannot access this file directly"); 
 }
 
 // Include info file
-include(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/info.php');
+include(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/info.php');
 
 // Look for payment method language file
 if (LANGUAGE_LOADED) {
-    include(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/EN.php');
-    if (file_exists(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php')) {
-        include(WB_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php');
+    include(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/EN.php');
+    if (file_exists(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php')) {
+        include(LEPTON_PATH.'/modules/bakery/payment_methods/'.$payment_method.'/languages/'.LANGUAGE.'.php');
     }
 }
 
@@ -41,7 +41,7 @@ $security_info_url = isset($security_info[LANGUAGE]) ? $security_info[LANGUAGE] 
 
 
 	<tr>
-	  <td colspan="2"><h3 class="mod_bakery_pay_h_f"><?PHP echo $MOD_BAKERY[$payment_method]['TXT_TITLE']; ?> <img src="<?php echo WB_URL ?>/modules/bakery/payment_methods/<?php echo $payment_method ?>/<?php echo $logo ?>.png" alt="Logo <?php echo $payment_method_name ?>" width="112" height="30" /></h3></td>
+	  <td colspan="2"><h3 class="mod_bakery_pay_h_f"><?PHP echo $MOD_BAKERY[$payment_method]['TXT_TITLE']; ?> <img src="<?php echo LEPTON_URL ?>/modules/bakery/payment_methods/<?php echo $payment_method ?>/<?php echo $logo ?>.png" alt="Logo <?php echo $payment_method_name ?>" width="112" height="30" /></h3></td>
 	</tr>
 	<tr>
 	  <td colspan="2" class="mod_bakery_pay_td_f"><?PHP echo $MOD_BAKERY[$payment_method]['TXT_PAY_ONLINE_1']; ?><br />

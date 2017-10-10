@@ -37,7 +37,7 @@ $MOD_BAKERY[$payment_method]['TXT_SUCCESS'] = 'U ontvangt per email een bevestig
 $MOD_BAKERY[$payment_method]['TXT_SHIPMENT'] = 'Uw bestelling wordt zo spoedig mogelijk verzonden.';
 
 // INVOICE TEMPLATE
-$MOD_BAKERY[$payment_method]['INVOICE_TEMPLATE'] = '<img src="[WB_URL]/modules/bakery/images/logo.gif" width="690" height="75" alt="[SHOP_NAME] Logo" class="mod_bakery_logo_b" />
+$MOD_BAKERY[$payment_method]['INVOICE_TEMPLATE'] = '<img src="[LEPTON_URL]/modules/bakery/images/logo.gif" width="690" height="75" alt="[SHOP_NAME] Logo" class="mod_bakery_logo_b" />
 <br />
 <p class="mod_bakery_shop_address_b">[SHOP_NAME] | Bedrijfsnaam | Adres | Postcode/Plaats | Land</p>
 <br /><br /><br />

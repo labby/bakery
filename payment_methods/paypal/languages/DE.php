@@ -31,14 +31,14 @@ $MOD_BAKERY[$payment_method]['TXT_NOTICE'] = '
 Loggen Sie sich in Ihr PayPal Konto ein: Gehen Sie zu &quot;MeinKonto&quot; &gt; &quot;Mein Profil&quot; &gt; &quot;Verk&auml;ufer/H&auml;ndler&quot; &gt; &quot;Website-Einstellungen&quot;.<br />
 
 <b>Automatische R&uuml;ckleitung:</b> Aktivieren Sie &quot;Automatische R&uuml;ckleitung&quot;.<br />
-<b>R&uuml;ckleitungs-URL:</b> Geben Sie folgende URL als &quot;R&uuml;ckleitungs-URL&quot; an:<input type="text" value="' . WB_URL . '" readonly="true" onclick="this.select();" style="width: 98%;" /><br /><br />
+<b>R&uuml;ckleitungs-URL:</b> Geben Sie folgende URL als &quot;R&uuml;ckleitungs-URL&quot; an:<input type="text" value="' . LEPTON_URL . '" readonly="true" onclick="this.select();" style="width: 98%;" /><br /><br />
 
 <b>&Uuml;bertragung der Zahlungsdaten:</b> Aktivieren Sie &quot;&Uuml;bertragung der Zahlungsdaten&quot; und speichern Ihre Einstellung. Ihr Identit&auml;ts-Token wird unterhalb der &quot;&Uuml;bertragung der Zahlungsdaten&quot; Radio-Buttons angezeigt. Kopieren Sie Ihr Identit&auml;ts-Token ins Feld direkt oberhalb dieser gelben Box.<br /><br />
 
 <b>Sofortige Zahlungsbest&auml;tigung (IPN)</b><br />
 Gehen Sie zu &quot;MeinKonto&quot; &gt; &quot;Mein Profil&quot; &gt; &quot;Verk&auml;ufer/H&auml;ndler&quot; &gt; &quot;Benachrichtigungen über Sofortzahlungen&quot;.<br />
 Durch Klicken auf &quot;Einstellungen für sofortige Zahlungsbestätigungen w&auml;hlen&quot; gelangen Sie auf die Konfigurationsseite.<br />
-Kopieren Sie die unten stehende URL und f&uuml;gen Sie sie vollst&auml;ndig ins Feld &quot;Benachrichtigungs-URL&quot; auf der Konfigurationsseite ein:<input type="text" value="' . WB_URL . '/modules/bakery/payment_methods/paypal/ipn.php" readonly="true" onclick="this.select();" style="width: 98%;" />
+Kopieren Sie die unten stehende URL und f&uuml;gen Sie sie vollst&auml;ndig ins Feld &quot;Benachrichtigungs-URL&quot; auf der Konfigurationsseite ein:<input type="text" value="' . LEPTON_URL . '/modules/bakery/payment_methods/paypal/ipn.php" readonly="true" onclick="this.select();" style="width: 98%;" />
 Aktivieren Sie &quot;Sofortige Zahlungsbest&auml;tigungen erhalten (aktiviert)&quot; und speichern Ihre Einstellung.<br />';
 
 // USED BY FILE bakery/payment_methods/paypal/gateway.php

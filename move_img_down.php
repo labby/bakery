@@ -30,17 +30,17 @@ if (!isset($_GET['img_id']) OR !is_numeric($_GET['img_id']) OR !isset($_GET['ite
 }
 
 // Include WB admin wrapper script
-require(WB_PATH.'/modules/admin.php');
+require(LEPTON_PATH.'/modules/admin.php');
 
 // Include the ordering class
-require(WB_PATH.'/framework/class.order.php');
+require(LEPTON_PATH.'/framework/class.order.php');
 
 // Create new order object and reorder
 $order = new order($table, 'position', $id_field, 'item_id');
 if ($order->move_down($id)) {
-	$admin->print_success($TEXT['SUCCESS'], WB_URL.'/modules/bakery/modify_item.php?page_id='.$page_id.'&section_id='.$section_id.'&item_id='.$item_id.'#images');
+	$admin->print_success($TEXT['SUCCESS'], LEPTON_URL.'/modules/bakery/modify_item.php?page_id='.$page_id.'&section_id='.$section_id.'&item_id='.$item_id.'#images');
 } else {
-	$admin->print_error($TEXT['ERROR'], WB_URL.'/modules/bakery/modify_item.php?page_id='.$page_id.'&section_id='.$section_id.'&item_id='.$item_id.'#images');
+	$admin->print_error($TEXT['ERROR'], LEPTON_URL.'/modules/bakery/modify_item.php?page_id='.$page_id.'&section_id='.$section_id.'&item_id='.$item_id.'#images');
 }
 
 // Print admin footer
