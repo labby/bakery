@@ -141,8 +141,8 @@ if ($query_item->numRows() > 0) {
 	$uid = $item['modified_by'];
 	
 	// Workout date and time of last modified item
-	$item_date = gmdate(DATE_FORMAT, $item['modified_when']+TIMEZONE);
-	$item_time = gmdate(TIME_FORMAT, $item['modified_when']+TIMEZONE);
+	$item_date = gmdate(DATE_FORMAT, $item['modified_when']);
+	$item_time = gmdate(TIME_FORMAT, $item['modified_when']);
 
 
 

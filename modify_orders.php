@@ -170,7 +170,7 @@ if ($query_customer->numRows() > 0) {
 			<td>
 			<a href="<?php echo LEPTON_URL; ?>/modules/bakery/modify_order.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;order_id=<?php echo $costumer['order_id']; ?>" title="<?php echo $MOD_BAKERY['TXT_EDIT_ORDER']; ?>"><?php echo stripslashes($costumer['cust_last_name'])." ".stripslashes($costumer['cust_first_name']); ?></a>
 			</td>
-			<td width="135"><?php echo gmdate(DATE_FORMAT.', '.TIME_FORMAT, $costumer['order_date']+TIMEZONE); ?></td>
+			<td width="135"><?php echo gmdate(DATE_FORMAT.', '.TIME_FORMAT, $costumer['order_date']); ?></td>
 			<td width="22">
 			<?php
 

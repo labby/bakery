@@ -135,7 +135,7 @@ if ($query_items->numRows() > 0) {
 		?>
 		<tr class="row_<?php echo $row; ?>" height="20">
 			<td width="7%" align="right" nowrap="nowrap"><?php echo $item['sku']; ?></td>
-			<td width="115" align="center"><?php echo gmdate(DEFAULT_DATE_FORMAT, $item['modified_when']+TIMEZONE); ?></td>
+			<td width="115" align="center"><?php echo gmdate(DEFAULT_DATE_FORMAT, $item['modified_when']); ?></td>
 			<td align="left"><a href="<?php echo LEPTON_URL; ?>/modules/bakery/modify_item.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;item_id=<?php echo $item['item_id']; ?>" title="<?php echo $TEXT['MODIFY']; ?>"><?php echo $item['title']; ?></a></td>
 			<td width="30" align="right"><?php echo $item['price']; ?></td>
 			<td width="30" align="right"><?php echo $item['shipping']; ?></td>

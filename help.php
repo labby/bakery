@@ -212,7 +212,7 @@ if ($general_settings['stock_mode'] == "number") {
     <td>IH</td>
     <td class="mod_bakery_placeholders_column_b">IF</td>
     <td>Item modification date</td>
-    <td class="mod_bakery_placeholders_items_b"><?php echo (isset($item['modified_when']) ? gmdate(DATE_FORMAT, $item['modified_when']+TIMEZONE) : '&nbsp;'); ?></td>
+    <td class="mod_bakery_placeholders_items_b"><?php echo (isset($item['modified_when']) ? gmdate(DATE_FORMAT, $item['modified_when']) : '&nbsp;'); ?></td>
   </tr>
   <tr valign="top">
     <td>[DESCRIPTION]</td>
@@ -684,7 +684,7 @@ if ($general_settings['stock_mode'] == "number") {
     <td>IH</td>
     <td class="mod_bakery_placeholders_column_b">IF</td>
     <td>Item modification time</td>
-    <td class="mod_bakery_placeholders_items_b"><?php echo (isset($item['modified_when']) ? gmdate(TIME_FORMAT, $item['modified_when']+TIMEZONE) : '&nbsp;'); ?></td>
+    <td class="mod_bakery_placeholders_items_b"><?php echo (isset($item['modified_when']) ? gmdate(TIME_FORMAT, $item['modified_when']) : '&nbsp;'); ?></td>
   </tr>
   <tr valign="top">
     <td>[TITLE]</td>

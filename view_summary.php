@@ -954,7 +954,7 @@ $invoice_item_list = $tpl_ip->get('invoice_print');
 $query_customer = $database->query("SELECT order_date FROM ".TABLE_PREFIX."mod_bakery_customer WHERE order_id = '{$_SESSION['bakery']['order_id']}'");
 if ($query_customer->numRows() > 0) {
 	$customer   = $query_customer->fetchRow();
-	$order_date = gmdate(DEFAULT_DATE_FORMAT.', '.DEFAULT_TIME_FORMAT, $customer['order_date']+TIMEZONE);
+	$order_date = gmdate(DEFAULT_DATE_FORMAT.', '.DEFAULT_TIME_FORMAT, $customer['order_date']);
 }
 
 // Get bank account from db for invoice

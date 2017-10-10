@@ -126,8 +126,8 @@ if ($num_items > 0) {
 		$price     = number_format(stripslashes($item['price']), 2, $setting_dec_point, $setting_thousands_sep);
 		$uid       = $item['modified_by']; // User who last modified the item
 		// Workout date and time of last modified item
-		$item_date = gmdate(DATE_FORMAT, $item['modified_when']+TIMEZONE);
-		$item_time = gmdate(TIME_FORMAT, $item['modified_when']+TIMEZONE);
+		$item_date = gmdate(DATE_FORMAT, $item['modified_when']);
+		$item_time = gmdate(TIME_FORMAT, $item['modified_when']);
 		// Work-out the item link
 		$item_link = LEPTON_URL.PAGES_DIRECTORY.$item['link'].PAGE_EXTENSION;
 

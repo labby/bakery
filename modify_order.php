@@ -71,7 +71,7 @@ if ($query_customer->numRows() > 0) {
 	extract($customer);
 
 	// Make human readable form of the order date
-	$order_date = gmdate(DEFAULT_DATE_FORMAT.', '.DEFAULT_TIME_FORMAT, $order_date + TIMEZONE);
+	$order_date = gmdate(DEFAULT_DATE_FORMAT.', '.DEFAULT_TIME_FORMAT, $order_date );
 ?>
 
 
