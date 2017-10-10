@@ -147,7 +147,7 @@ while ($row1 = $sql_result1->fetchRow()) {
 			// Get item name and shipping from db items table
 			if ($field == 'item_id') {
 				$sql_result2 = $database->query("SELECT title, shipping, description FROM ".TABLE_PREFIX."mod_bakery_items WHERE item_id = '$row1[item_id]'");
-				$row2 = $sql_result2->fetchRow();	
+				$row2 = $sql_result2->fetchRow( PDO::FETCH_BOTH );	
 				$items[$i]['name']        = $row2[0];
 				$items[$i]['shipping']    = $row2[1];
 				$items[$i]['description'] = $row2[2];
@@ -246,7 +246,7 @@ $country_key       = array_keys($MOD_BAKERY['TXT_COUNTRY_CODE'], $cust_country);
 $cust_country_name = $MOD_BAKERY['TXT_COUNTRY_NAME'][$country_key[0]];
 // Convert country to uppercase
 if (function_exists('mb_strtoupper')) {
-	$cust_country_name = mb_strtoupper(entities_to_umlauts($cust_country_name, $charset), $charset);
+	$cust_country_name = mb_strtoupper($cust_country_name, $charset);
 }
 
 // Retain state code for sales tax calculation
@@ -254,7 +254,7 @@ $cust_state_code = $cust_state;
 // Convert state code to state name
 if ($state_key = array_keys($MOD_BAKERY['TXT_STATE_CODE'], $cust_state)) {
 	$cust_state = $MOD_BAKERY['TXT_STATE_NAME'][$state_key[0]];
-	$cust_state = entities_to_umlauts($cust_state, $charset);
+	// $cust_state = entities_to_umlauts($cust_state, $charset);
 }
 
 // Join customer first and last name
