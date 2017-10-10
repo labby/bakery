@@ -25,7 +25,7 @@ require(WB_PATH.'/modules/admin.php');
 
 // Loop through the orders... 
 foreach ($_POST['status'] as $order_id => $status) {
-	$status = $admin->add_slashes(strip_tags($status));
+	$status = addslashes(strip_tags($status));
 	// ...and update status
 	$database->query("UPDATE ".TABLE_PREFIX."mod_bakery_customer SET status = '$status' WHERE order_id = '$order_id'");
 

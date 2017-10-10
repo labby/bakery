@@ -32,7 +32,7 @@ if (isset($_POST['cat'])) {
 
 // Loop through the items... 
 foreach ($_POST['stock'] as $item_id => $stock) {
-	$stock = $admin->add_slashes(strip_tags($stock));
+	$stock = addslashes(strip_tags($stock));
 	$active = isset($_POST['active'][$item_id]) ? 1 : 0;
 	// ...and update items
 	$database->query("UPDATE ".TABLE_PREFIX."mod_bakery_items SET stock = '$stock', active = '$active' WHERE item_id = '$item_id'");

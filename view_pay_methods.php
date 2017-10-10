@@ -31,7 +31,7 @@ $tpl->set_unknowns('remove');
 $tpl->debug = 0;
 
 // Include WB functions file
-require_once(WB_PATH.'/framework/functions.php');
+require_once(WB_PATH.'/framework/summary.functions.php');
 
 // Assign page filename for tracking with Google Analytics _trackPageview() function
 global $ga_page;

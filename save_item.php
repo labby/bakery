@@ -32,7 +32,7 @@ require(WB_PATH.'/modules/bakery/pngthumb.php');
 // Get some default values
 require_once(WB_PATH.'/modules/bakery/config.php');
 // Include WB functions file
-require(WB_PATH.'/framework/functions.php');
+require(WB_PATH.'/framework/summary.functions.php');
 // Include WB admin wrapper script
 $update_when_modified = true; // Tells script to update when this page was last updated
 require(WB_PATH.'/modules/admin.php');
@@ -57,18 +57,18 @@ $old_section_id    = strip_tags($admin->get_post('section_id'));
 $new_section_id    = strip_tags($admin->get_post('new_section_id'));
 $action            = strip_tags($admin->get_post('action'));
 
-$title             = $admin->add_slashes(strip_tags($admin->get_post('title')));
-$sku               = $admin->add_slashes(strip_tags($admin->get_post('sku')));
-$stock             = $admin->add_slashes(strip_tags($admin->get_post('stock')));
-$price             = $admin->add_slashes(strip_tags($admin->get_post('price')));
-$shipping          = $admin->add_slashes(strip_tags($admin->get_post('shipping')));
-$tax_rate          = $admin->add_slashes(strip_tags($admin->get_post('tax_rate')));
+$title             = addslashes(strip_tags($admin->get_post('title')));
+$sku               = addslashes(strip_tags($admin->get_post('sku')));
+$stock             = addslashes(strip_tags($admin->get_post('stock')));
+$price             = addslashes(strip_tags($admin->get_post('price')));
+$shipping          = addslashes(strip_tags($admin->get_post('shipping')));
+$tax_rate          = addslashes(strip_tags($admin->get_post('tax_rate')));
 $active            = strip_tags($admin->get_post('active'));
-$definable_field_0 = $admin->add_slashes(strip_tags($admin->get_post('definable_field_0')));
-$definable_field_1 = $admin->add_slashes(strip_tags($admin->get_post('definable_field_1')));
-$definable_field_2 = $admin->add_slashes(strip_tags($admin->get_post('definable_field_2')));
-$description       = $admin->add_slashes(strip_tags($admin->get_post('description')));
-$full_desc         = $admin->add_slashes($admin->get_post('full_desc'));
+$definable_field_0 = addslashes(strip_tags($admin->get_post('definable_field_0')));
+$definable_field_1 = addslashes(strip_tags($admin->get_post('definable_field_1')));
+$definable_field_2 = addslashes(strip_tags($admin->get_post('definable_field_2')));
+$description       = addslashes(strip_tags($admin->get_post('description')));
+$full_desc         = addslashes($admin->get_post('full_desc'));
 
 $images = array();
 if (!empty($_POST['images'])) {
@@ -90,11 +90,11 @@ $quality      = strip_tags($admin->get_post('quality'));
 $maxheight    = strip_tags($admin->get_post('maxheight'));
 $maxwidth     = strip_tags($admin->get_post('maxwidth'));
 
-$attribute_id = $admin->add_slashes(strip_tags($admin->get_post('attribute_id')));
-$ia_operator  = $admin->add_slashes(strip_tags($admin->get_post('ia_operator')));
-$ia_price     = $admin->add_slashes(strip_tags($admin->get_post('ia_price')));
+$attribute_id = addslashes(strip_tags($admin->get_post('attribute_id')));
+$ia_operator  = addslashes(strip_tags($admin->get_post('ia_operator')));
+$ia_price     = addslashes(strip_tags($admin->get_post('ia_price')));
 $ia_price     = empty($ia_price) ? 0 : $ia_price;
-$assign_id    = $admin->add_slashes(strip_tags($admin->get_post('assign_id')));
+$assign_id    = addslashes(strip_tags($admin->get_post('assign_id')));
 
 // Validate the title field
 if (empty($admin->get_post('title'))) {

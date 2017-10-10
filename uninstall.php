@@ -45,7 +45,7 @@ $database->query("DROP TABLE ".TABLE_PREFIX."mod_bakery_page_settings");
 $database->query("DROP TABLE ".TABLE_PREFIX."mod_bakery_payment_methods");
 
 // Include WB functions file
-require_once(WB_PATH.'/framework/functions.php');
+require_once(WB_PATH.'/framework/summary.functions.php');
 
 $directory = WB_PATH.PAGES_DIRECTORY.$module_pages_directory;
 if (is_dir($directory)) {

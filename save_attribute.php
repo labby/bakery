@@ -27,14 +27,14 @@ require(WB_PATH.'/modules/admin.php');
 if (!empty($_POST['attribute_name'])) {
 	// Insert new attribute name into db
 	if (empty($_POST['attribute_id'])) {
-		$option_id = $admin->add_slashes(strip_tags($_POST['option_id']));
-		$attribute_name = $admin->add_slashes(strip_tags($_POST['attribute_name']));
+		$option_id = addslashes(strip_tags($_POST['option_id']));
+		$attribute_name = addslashes(strip_tags($_POST['attribute_name']));
 		$database->query("INSERT INTO ".TABLE_PREFIX."mod_bakery_attributes (option_id, attribute_name) VALUES ('$option_id', '$attribute_name')");
 	}
 	// Update attribute name
 	else {
-		$option_id = $admin->add_slashes(strip_tags($_POST['option_id']));
-		$attribute_name = $admin->add_slashes(strip_tags($_POST['attribute_name']));
+		$option_id = addslashes(strip_tags($_POST['option_id']));
+		$attribute_name = addslashes(strip_tags($_POST['attribute_name']));
 		$attribute_id = $_POST['attribute_id'];
 		$database->query("UPDATE ".TABLE_PREFIX."mod_bakery_attributes SET option_id = '$option_id', attribute_name = '$attribute_name' WHERE attribute_id = '$attribute_id'");
 	}

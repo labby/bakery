@@ -18,7 +18,7 @@ else {
 		die(header('Location: ../../index.php'));
 	
 	// Sanitize variable
-	$action = $admin->add_slashes($_POST['action']);
+	$action = addslashes($_POST['action']);
 	// We just get the array here, and few lines below we sanitize it
 	$row = $_POST['row'];	
 	$sID = $database->get_one("SELECT section_id FROM ".TABLE_PREFIX."mod_bakery_items WHERE item_id = ".intval($row[0]));
@@ -40,7 +40,7 @@ else {
 		$i = 1;
 		foreach ($row as $recID) {
 			// Sanitize array
-			$recID = $admin->add_slashes($recID);
+			$recID = addslashes($recID);
 			$database->query("UPDATE ".TABLE_PREFIX."mod_bakery_items SET position = ".$i." WHERE item_id = ".$recID." ");
 			$i++;
 		}

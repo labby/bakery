@@ -40,7 +40,7 @@ $offline_text = $MOD_BAKERY['ERR_OFFLINE_TEXT'];
 $continue_url = $page_id;
 
 // Layout
-$header = $admin->add_slashes('<div class="mod_bakery_main_div_cart_bt_f">
+$header = addslashes('<div class="mod_bakery_main_div_cart_bt_f">
 <form action="[SHOP_URL]" method="post">
 <input type="submit" name="view_cart" class="mod_bakery_bt_cart_f" value="[VIEW_CART]" />
 </form>
@@ -48,7 +48,7 @@ $header = $admin->add_slashes('<div class="mod_bakery_main_div_cart_bt_f">
 <table cellpadding="5" cellspacing="0" border="0" width="98%">
 <tr>
 ');
-$item_loop = $admin->add_slashes('<td class="mod_bakery_main_td_f">
+$item_loop = addslashes('<td class="mod_bakery_main_td_f">
 [THUMB]
 <br />
 <a href="[LINK]"><span class="mod_bakery_main_title_f">[TITLE]</span></a>
@@ -66,7 +66,7 @@ $item_loop = $admin->add_slashes('<td class="mod_bakery_main_td_f">
 <input type="submit" name="add_to_cart" class="mod_bakery_bt_add_f" value="[ADD_TO_CART]" />
 </form>
 </td>');
-$footer = $admin->add_slashes('</tr>
+$footer = addslashes('</tr>
 </table>
 <table cellpadding="0" cellspacing="0" border="0" width="98%" style="display: [DISPLAY_PREVIOUS_NEXT_LINKS]">
 <tr>
@@ -78,8 +78,8 @@ $footer = $admin->add_slashes('</tr>
 <td width="35%" align="right">[NEXT_PAGE_LINK]</td>
 </tr>
 </table>');
-$item_header = $admin->add_slashes('<center>');
-$item_footer = $admin->add_slashes('[IMAGE]
+$item_header = addslashes('<center>');
+$item_footer = addslashes('[IMAGE]
 <form action="[SHOP_URL]" method="post">
 <table border="0" cellspacing="0" cellpadding="5" class="mod_bakery_item_table_f">
 <tr>

@@ -23,18 +23,18 @@ require('../../config.php');
 $update_when_modified = true; // Tells script to update when this page was last updated
 require(WB_PATH.'/modules/admin.php');
 // Include WB functions file
-require_once(WB_PATH.'/framework/functions.php');
+require_once(WB_PATH.'/framework/summary.functions.php');
 
 // Remove any tags and add slashes
 $reload = $_POST['reload'] == 'true' ? true : false;
 
-$shop_name       = $admin->add_slashes(strip_tags($_POST['shop_name']));
-$shop_email      = $admin->add_slashes(strip_tags($_POST['shop_email']));
-$pages_directory = $admin->add_slashes(strip_tags($_POST['pages_directory']));
-$tac_url         = $admin->add_slashes(strip_tags($_POST['tac_url']));
-$shop_country    = $admin->add_slashes(strip_tags($_POST['shop_country']));
-$shop_state      = isset($_POST['shop_state']) ? $admin->add_slashes(strip_tags($_POST['shop_state'])) : '';
-$shipping_form   = $admin->add_slashes(strip_tags($_POST['shipping_form']));
+$shop_name       = addslashes(strip_tags($_POST['shop_name']));
+$shop_email      = addslashes(strip_tags($_POST['shop_email']));
+$pages_directory = addslashes(strip_tags($_POST['pages_directory']));
+$tac_url         = addslashes(strip_tags($_POST['tac_url']));
+$shop_country    = addslashes(strip_tags($_POST['shop_country']));
+$shop_state      = isset($_POST['shop_state']) ? addslashes(strip_tags($_POST['shop_state'])) : '';
+$shipping_form   = addslashes(strip_tags($_POST['shipping_form']));
 
 $company_field = isset($_POST['company_field']) ? 'show'    : 'hide';
 $tax_no_field  = isset($_POST['tax_no_field'])  ? 'show'    : 'hide';
@@ -49,29 +49,29 @@ $skip_cart           = isset($_POST['skip_cart'])           ? 'yes' : 'no';
 $out_of_stock_orders = isset($_POST['out_of_stock_orders']) ? 1 : 0;
 $use_captcha         = isset($_POST['use_captcha'])         ? 'yes' : 'no';
 
-$definable_field_0 = $admin->add_slashes(strip_tags($_POST['definable_field_0']));
-$definable_field_1 = $admin->add_slashes(strip_tags($_POST['definable_field_1']));
-$definable_field_2 = $admin->add_slashes(strip_tags($_POST['definable_field_2']));
-$stock_mode        = $admin->add_slashes(strip_tags($_POST['stock_mode']));
-$stock_limit       = $admin->add_slashes(strip_tags($_POST['stock_limit']));
+$definable_field_0 = addslashes(strip_tags($_POST['definable_field_0']));
+$definable_field_1 = addslashes(strip_tags($_POST['definable_field_1']));
+$definable_field_2 = addslashes(strip_tags($_POST['definable_field_2']));
+$stock_mode        = addslashes(strip_tags($_POST['stock_mode']));
+$stock_limit       = addslashes(strip_tags($_POST['stock_limit']));
 
-$shop_currency = $admin->add_slashes(strip_tags($_POST['shop_currency']));
-$dec_point     = $admin->add_slashes(strip_tags($_POST['dec_point']));
-$thousands_sep = $admin->add_slashes(strip_tags($_POST['thousands_sep']));
-$tax_rate      = $admin->add_slashes(strip_tags($_POST['tax_rate']));
-$tax_rate1     = $admin->add_slashes(strip_tags($_POST['tax_rate1']));
-$tax_rate2     = $admin->add_slashes(strip_tags($_POST['tax_rate2']));
-$tax_group     = $admin->add_slashes(strip_tags($_POST['tax_group']));
+$shop_currency = addslashes(strip_tags($_POST['shop_currency']));
+$dec_point     = addslashes(strip_tags($_POST['dec_point']));
+$thousands_sep = addslashes(strip_tags($_POST['thousands_sep']));
+$tax_rate      = addslashes(strip_tags($_POST['tax_rate']));
+$tax_rate1     = addslashes(strip_tags($_POST['tax_rate1']));
+$tax_rate2     = addslashes(strip_tags($_POST['tax_rate2']));
+$tax_group     = addslashes(strip_tags($_POST['tax_group']));
 $tax_included  = isset($_POST['tax_included']) ? 'included' : 'excluded';
-$tax_by        = $admin->add_slashes(strip_tags($_POST['tax_by']));
+$tax_by        = addslashes(strip_tags($_POST['tax_by']));
 
-$tax_rate_shipping = $admin->add_slashes(strip_tags($_POST['tax_rate_shipping']));
-$free_shipping     = $admin->add_slashes(strip_tags($_POST['free_shipping']));
+$tax_rate_shipping = addslashes(strip_tags($_POST['tax_rate_shipping']));
+$free_shipping     = addslashes(strip_tags($_POST['free_shipping']));
 $free_shipping_msg = isset($_POST['free_shipping_msg']) ? 'show' : 'hide';
-$shipping_method   = $admin->add_slashes(strip_tags($_POST['shipping_method']));
-$shipping_domestic = $admin->add_slashes(strip_tags($_POST['shipping_domestic']));
-$shipping_abroad   = $admin->add_slashes(strip_tags($_POST['shipping_abroad']));
-$shipping_zone     = $admin->add_slashes(strip_tags($_POST['shipping_zone']));
+$shipping_method   = addslashes(strip_tags($_POST['shipping_method']));
+$shipping_domestic = addslashes(strip_tags($_POST['shipping_domestic']));
+$shipping_abroad   = addslashes(strip_tags($_POST['shipping_abroad']));
+$shipping_zone     = addslashes(strip_tags($_POST['shipping_zone']));
 $zone_countries    = isset($_POST['zone_countries']) ? implode(',', $_POST['zone_countries']) : '';
 
 

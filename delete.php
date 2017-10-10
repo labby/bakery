@@ -23,7 +23,7 @@ if (defined('WB_PATH') == false) {
 }
 
 // Include WB functions
-require_once(WB_PATH.'/framework/functions.php');
+require_once(WB_PATH.'/framework/summary.functions.php');
 
 // Get some default values
 require_once(WB_PATH.'/modules/bakery/config.php');

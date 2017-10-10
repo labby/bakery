@@ -32,7 +32,7 @@ require(WB_PATH.'/modules/admin.php');
 // Get some default values
 require_once(WB_PATH.'/modules/bakery/config.php');
 // Include WB functions file
-require_once(WB_PATH.'/framework/functions.php');
+require_once(WB_PATH.'/framework/summary.functions.php');
 
 // Get item details
 $query_details = $database->query("SELECT * FROM ".TABLE_PREFIX."mod_bakery_items WHERE item_id = '$item_id'");

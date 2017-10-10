@@ -25,7 +25,7 @@ $update_when_modified = true; // Tells script to update when this page was last 
 require(WB_PATH.'/modules/admin.php');
 
 // Include the WB functions file
-require_once(WB_PATH.'/framework/functions.php');
+require_once(WB_PATH.'/framework/summary.functions.php');
 
 // Validate the order_id
 $order_id = NULL;
@@ -92,7 +92,7 @@ foreach ($_POST as $field => $value) {
 		// Convert applicable fields into vars
 		$$field = $value;
 		// Prepare update string
-		$value     = $admin->add_slashes($value);
+		$value     = addslashes($value);
 		$updates[] = "$field = '$value'";
 	}
 }

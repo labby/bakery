@@ -202,8 +202,8 @@ foreach ($forms as $form) {
 // If all fields correct, write them into db
 foreach ($_POST as $field => $value) {
 	if ($field != 'save_form' && $field != 'cust_confirm_email') {
-		$field = $admin->add_slashes(strip_tags($field));
-		$value = $admin->add_slashes(strip_tags($value));
+		$field = addslashes(strip_tags($field));
+		$value = addslashes(strip_tags($value));
 		$updates[] = "$field = '$value'";
 	}
 }

@@ -28,13 +28,13 @@ $friendly = array('&lt;', '&gt;', '?php');
 $raw = array('<', '>', '');
 
 $page_offline = isset($_POST['page_offline']) ? "yes" : "no";
-$offline_text = $admin->add_slashes(strip_tags($_POST['offline_text']));
-$continue_url = $admin->add_slashes(strip_tags($_POST['continue_url']));
-$header = $admin->add_slashes(str_replace($friendly, $raw, $_POST['header']));
-$item_loop = $admin->add_slashes(str_replace($friendly, $raw, $_POST['item_loop']));
-$footer = $admin->add_slashes(str_replace($friendly, $raw, $_POST['footer']));
-$item_header = $admin->add_slashes(str_replace($friendly, $raw, $_POST['item_header']));
-$item_footer = $admin->add_slashes(str_replace($friendly, $raw, $_POST['item_footer']));
+$offline_text = addslashes(strip_tags($_POST['offline_text']));
+$continue_url = addslashes(strip_tags($_POST['continue_url']));
+$header = addslashes(str_replace($friendly, $raw, $_POST['header']));
+$item_loop = addslashes(str_replace($friendly, $raw, $_POST['item_loop']));
+$footer = addslashes(str_replace($friendly, $raw, $_POST['footer']));
+$item_header = addslashes(str_replace($friendly, $raw, $_POST['item_header']));
+$item_footer = addslashes(str_replace($friendly, $raw, $_POST['item_footer']));
 $items_per_page = $_POST['items_per_page'];
 $num_cols = $_POST['num_cols'];
 if (extension_loaded('gd') AND function_exists('imageCreateFromJpeg')) {

@@ -23,7 +23,7 @@ if (defined('WB_PATH') == false) {
 }
 
 // Include WB functions file
-require_once(WB_PATH.'/framework/functions.php');
+require_once(WB_PATH.'/framework/summary.functions.php');
 
 // Include WB template parser
 require_once(WB_PATH.'/include/phplib/template.inc');

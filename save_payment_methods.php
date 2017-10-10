@@ -25,8 +25,8 @@ require(WB_PATH.'/modules/admin.php');
 
 
 // Remove any tags and add slashes
-$update_payment_method = $admin->add_slashes(strip_tags($_POST['update_payment_method']));
-$modify_payment_method = $admin->add_slashes(strip_tags($_POST['modify_payment_method']));
+$update_payment_method = addslashes(strip_tags($_POST['update_payment_method']));
+$modify_payment_method = addslashes(strip_tags($_POST['modify_payment_method']));
 $reload = $_POST['reload'] == 'true' ? true : false;
 
 
@@ -41,8 +41,8 @@ foreach ($_POST['all_payment_methods'] as $pm_id) {
 
 // Write fields into db
 foreach ($_POST['update'] as $field => $value) {
-	$field = $admin->add_slashes(strip_tags($field));
-	$value = ($update_payment_method == "invoice" && $field == "value_4") ? $admin->add_slashes($value) : $admin->add_slashes(strip_tags($value));
+	$field = addslashes(strip_tags($field));
+	$value = ($update_payment_method == "invoice" && $field == "value_4") ? addslashes($value) : addslashes(strip_tags($value));
 	$updates[] = "$field = '$value'";
 }
 $update_string = implode($updates,", ");

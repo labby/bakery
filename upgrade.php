@@ -803,7 +803,7 @@ if ($module_version < 0.90) {
 
 	$email_subject_invoice = $MOD_BAKERY[$payment_method]['EMAIL_SUBJECT_CUSTOMER'];
 	$email_invoice = $MOD_BAKERY[$payment_method]['EMAIL_BODY_CUSTOMER'];
-	$invoice = $admin->add_slashes($MOD_BAKERY[$payment_method]['INVOICE_TEMPLATE']);
+	$invoice = addslashes($MOD_BAKERY[$payment_method]['INVOICE_TEMPLATE']);
 
 	if ($database->query("UPDATE ".TABLE_PREFIX."mod_bakery_general_settings SET email_subject_invoice = '$email_subject_invoice', email_invoice = '$email_invoice', invoice = '$invoice'")) {
 		echo '<span class="good">Added default general settings successfully</span><br />';

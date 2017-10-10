@@ -39,11 +39,11 @@ if (LANGUAGE_LOADED) {
 // Get some default values
 require_once(WB_PATH.'/modules/bakery/config.php');
 // Include WB functions file
-require_once(WB_PATH.'/framework/functions.php');
+require_once(WB_PATH.'/framework/summary.functions.php');
 
 // Include core functions of WB 2.7 to edit the optional module CSS files (frontend.css, backend.css)
-if (file_exists(WB_PATH.'/framework/module.functions.php') && file_exists(WB_PATH.'/modules/edit_module_files.php')) {
-	include_once(WB_PATH.'/framework/module.functions.php');
+if (file_exists(WB_PATH.'/framework/summary.module_edit_css.php') && file_exists(WB_PATH.'/modules/edit_module_files.php')) {
+	include_once(WB_PATH.'/framework/summary.module_edit_css.php');
 }
 
 // Delete empty Database records
