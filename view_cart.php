@@ -66,7 +66,7 @@ while ($row1 = $sql_result1->fetchRow()) {
 			// Get item name, shipping. link and main image from db items table
 			if ($field == "item_id") {
 				$sql_result2 = $database->query("SELECT title, shipping, link FROM ".TABLE_PREFIX."mod_bakery_items WHERE item_id = '".$row1['item_id']."'");
-				$row2 = $sql_result2->fetchRow();	
+				$row2 = $sql_result2->fetchRow( PDO::FETCH_BOTH );	
 				$items[$i]['name']     = $row2[0];
 				$items[$i]['shipping'] = $row2[1];
 				$items[$i]['link']     = LEPTON_URL.PAGES_DIRECTORY.$row2[2].PAGE_EXTENSION;
