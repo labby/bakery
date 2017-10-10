@@ -151,7 +151,7 @@ $module_pages_directory = $database->get_one("SELECT pages_directory FROM ".TABL
 $module_pages_directory = '/'.$module_pages_directory.'/';
 
 // Work-out what the link should be
-$item_link = $module_pages_directory.page_filename($title).PAGE_SPACER.$item_id;
+$item_link = $module_pages_directory.save_filename($title).PAGE_SPACER.$item_id;
 // Replace triple page spacer by one page spacer
 $item_link = str_replace(PAGE_SPACER.PAGE_SPACER.PAGE_SPACER, PAGE_SPACER, $item_link);
 
@@ -457,7 +457,7 @@ if ($action == 'duplicate') {
 	// GET NEW ITEM LINK
 
 	// Work-out what the link should be
-	$item_link = $module_pages_directory.page_filename($title).PAGE_SPACER.$item_id;
+	$item_link = $module_pages_directory.save_filename($title).PAGE_SPACER.$item_id;
 	// Replace triple page spacer by one page spacer
 	$item_link = str_replace(PAGE_SPACER.PAGE_SPACER.PAGE_SPACER, PAGE_SPACER, $item_link);
 
