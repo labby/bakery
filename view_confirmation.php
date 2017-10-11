@@ -23,7 +23,7 @@ if (defined('LEPTON_PATH') == false) {
 }
 
 
-// Include WB template parser and create template object
+// Include template parser and create template object
 require_once(LEPTON_PATH.'/include/phplib/template.inc');
 $tpl = new Template(LEPTON_PATH.'/modules/bakery/templates/confirmation');
 // Define how to deal with unknown {PLACEHOLDERS} (remove:=default, keep, comment)

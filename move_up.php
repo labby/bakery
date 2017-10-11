@@ -28,7 +28,7 @@ if (!isset($_GET['item_id']) OR !is_numeric($_GET['item_id'])) {
 	$table = TABLE_PREFIX.'mod_bakery_items';
 }
 
-// Include WB admin wrapper script
+// Include admin wrapper script
 require(LEPTON_PATH.'/modules/admin.php');
 
 // Include the ordering class

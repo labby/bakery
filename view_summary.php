@@ -22,10 +22,10 @@ if (defined('LEPTON_PATH') == false) {
 	exit('Cannot access this file directly'); 
 }
 
-// Include WB functions file
+// Include functions file
 require_once(LEPTON_PATH.'/framework/summary.functions.php');
 
-// Include WB template parser
+// Include template parser
 require_once(LEPTON_PATH.'/include/phplib/template.inc');
 
 // Create template object for screen output

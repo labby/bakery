@@ -13,7 +13,7 @@
  *
  */
 
-// Include WB config.php file, WB admin class and mollie class
+// Include config.php file, WB admin class and mollie class
 require('../../../../config.php');
 require_once LEPTON_PATH.'/framework/class.admin.php';
 require_once dirname(__FILE__).'/info.php';

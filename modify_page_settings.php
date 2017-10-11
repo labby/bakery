@@ -19,7 +19,7 @@
 
 require('../../config.php');
 
-// Include WB admin wrapper script
+// Include admin wrapper script
 require(LEPTON_PATH.'/modules/admin.php');
 // Get some default values
 require_once(LEPTON_PATH.'/modules/bakery/config.php');

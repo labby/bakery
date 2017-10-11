@@ -17,7 +17,7 @@
 */
 
 
-// include WB config.php file and admin class
+// Include config.php file and admin class
 require('../../config.php');
 require_once(LEPTON_PATH.'/framework/class.admin.php');
 

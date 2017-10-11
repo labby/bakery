@@ -29,7 +29,7 @@ if (!isset($_GET['page_id']) OR !isset($_GET['section_id']) OR !isset($_GET['ord
 	$order_id   = $_GET['order_id'];
 }
 
-// Include WB admin wrapper script
+// Include admin wrapper script
 require(LEPTON_PATH.'/modules/admin.php');
 
 // Look for language file

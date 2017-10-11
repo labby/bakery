@@ -22,12 +22,6 @@ if (defined('LEPTON_PATH') == false) {
 	exit("Cannot access this file directly"); 
 }
 
-// Make use of the skinable backend themes of WB > 2.7
-// Check if THEME_URL is supported otherwise use ADMIN_URL
-if (!defined('THEME_URL')) {
-	define('THEME_URL', ADMIN_URL);
-}
-
 //Look for language File
 if (LANGUAGE_LOADED) {
     require_once(LEPTON_PATH.'/modules/bakery/languages/EN.php');
@@ -38,7 +32,7 @@ if (LANGUAGE_LOADED) {
 
 // Get some default values
 require_once(LEPTON_PATH.'/modules/bakery/config.php');
-// Include WB functions file
+// Include functions file
 require_once(LEPTON_PATH.'/framework/summary.functions.php');
 
 // Include core functions of WB 2.7 to edit the optional module CSS files (frontend.css, backend.css)
@@ -174,14 +168,14 @@ if ($query_items->numRows() > 0) {
 			
 			<td style="width: 10%" align="center">
 				<a href="javascript: confirm_link('<?php echo $TEXT['ARE_YOU_SURE']; ?>', '<?php echo LEPTON_URL; ?>/modules/bakery/delete_item.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>&item_id=<?php echo $post['item_id']; ?>');" title="<?php echo $TEXT['DELETE']; ?>">
-					<img src="<?php echo THEME_URL; ?>/images/delete_16.png" border="0" alt="[x]" />
+					<img src="<?php echo LEPTON_URL; ?>/modules/lib_lepton/backend_images/delete_16.png" border="0" alt="[x]" />
 				</a>
 			</td>
 			
 			<td style="width: 18px" class="move_up">
 			<?php if ($post['position'] != 1) { ?>
 				<a href="<?php echo LEPTON_URL; ?>/modules/bakery/move_up.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;item_id=<?php echo $post['item_id']; ?>" title="<?php echo $TEXT['MOVE_UP']; ?>">
-					<img src="<?php echo THEME_URL; ?>/images/up_16.png" border="0" alt="/\" />
+					<img src="<?php echo LEPTON_URL; ?>/modules/lib_lepton/backend_images/up_16.png" border="0" alt="/\" />
 				</a>
 			<?php } ?>
 			</td>
@@ -189,7 +183,7 @@ if ($query_items->numRows() > 0) {
 			<td style="width: 118px" class="move_down">
 			<?php if ($post['position'] != $num_items) { ?>
 				<a href="<?php echo LEPTON_URL; ?>/modules/bakery/move_down.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;item_id=<?php echo $post['item_id']; ?>" title="<?php echo $TEXT['MOVE_DOWN']; ?>">
-					<img src="<?php echo THEME_URL; ?>/images/down_16.png" border="0" alt="\/" />
+					<img src="<?php echo LEPTON_URL; ?>/modules/lib_lepton/backend_images/down_16.png" border="0" alt="\/" />
 				</a>
 			<?php } ?>
 			</td>

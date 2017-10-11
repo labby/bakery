@@ -44,7 +44,7 @@ $database->query("DROP TABLE ".TABLE_PREFIX."mod_bakery_general_settings");
 $database->query("DROP TABLE ".TABLE_PREFIX."mod_bakery_page_settings");
 $database->query("DROP TABLE ".TABLE_PREFIX."mod_bakery_payment_methods");
 
-// Include WB functions file
+// Include functions file
 require_once(LEPTON_PATH.'/framework/summary.functions.php');
 
 $directory = LEPTON_PATH.PAGES_DIRECTORY.$module_pages_directory;

@@ -23,7 +23,7 @@ $max_width = 600;
 
 
 
-// Include WB admin wrapper script
+// Include admin wrapper script
 require('../../config.php');
 require(LEPTON_PATH.'/modules/admin.php');
 

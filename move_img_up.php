@@ -29,7 +29,7 @@ if (!isset($_GET['img_id']) OR !is_numeric($_GET['img_id']) OR !isset($_GET['ite
 	$table    = TABLE_PREFIX.'mod_bakery_images';
 }
 
-// Include WB admin wrapper script
+// Include admin wrapper script
 require(LEPTON_PATH.'/modules/admin.php');
 
 // Include the ordering class

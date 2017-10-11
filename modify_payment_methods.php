@@ -19,7 +19,7 @@
 
 require('../../config.php');
 
-// Include WB admin wrapper script
+// Include admin wrapper script
 require(LEPTON_PATH.'/modules/admin.php');
 
 // Look for language file

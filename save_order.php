@@ -20,7 +20,7 @@
 
 require('../../config.php');
 
-// Include WB admin wrapper script
+// Include admin wrapper script
 $update_when_modified = true; // Tells script to update when this page was last updated
 require(LEPTON_PATH.'/modules/admin.php');
 

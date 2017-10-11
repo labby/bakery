@@ -18,12 +18,6 @@
 
 require('../../config.php');
 
-// Make use of the skinable backend themes of WB > 2.7
-// Check if THEME_URL is supported otherwise use ADMIN_URL
-if (!defined('THEME_URL')) {
-	define('THEME_URL', ADMIN_URL);
-}
-
 // Look for language File
 if (LANGUAGE_LOADED) {
 	require_once(LEPTON_PATH.'/modules/bakery/languages/EN.php');
@@ -46,7 +40,7 @@ if (isset($_GET['from']) AND $_GET['from'] == 'add_item') {
 }
 
 
-// Include WB admin wrapper script
+// Include admin wrapper script
 require(LEPTON_PATH.'/modules/admin.php');
 
 
@@ -408,14 +402,14 @@ if ($show_item_mover) {
 		  <td align="right">
 		  <?php if ($image['position'] != 1) { ?>
 		    <a href="<?php echo LEPTON_URL; ?>/modules/bakery/move_img_up.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;item_id=<?php echo $item_id; ?>&amp;img_id=<?php echo $img_id; ?>" title="<?php echo $TEXT['MOVE_UP']; ?>">
-		      <img src="<?php echo THEME_URL; ?>/images/up_16.png" border="0" alt="/\" />
+		      <img src="<?php echo LEPTON_URL; ?>/modules/lib_lepton/backend_images/up_16.png" border="0" alt="/\" />
 		    </a>
 		  <?php } ?>
 		  </td>
 		  <td align="left">
 		  <?php if ($image['position'] != $top_img) { ?>
 		    <a href="<?php echo LEPTON_URL; ?>/modules/bakery/move_img_down.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;item_id=<?php echo $item_id; ?>&amp;img_id=<?php echo $img_id; ?>" title="<?php echo $TEXT['MOVE_DOWN']; ?>">
-		      <img src="<?php echo THEME_URL; ?>/images/down_16.png" border="0" alt="\/" />
+		      <img src="<?php echo LEPTON_URL; ?>/modules/lib_lepton/backend_images/down_16.png" border="0" alt="\/" />
 		    </a>
 		  <?php } ?>
 		  </td>
@@ -566,12 +560,12 @@ if ($query_items_attributes->numRows() > 0) {
 	  <td>&nbsp;</td>
 	  <td align="center" width="22">
 		<a href="<?php echo LEPTON_URL; ?>/modules/bakery/modify_item.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;item_id=<?php echo $item_id; ?>&amp;attribute_id=<?php echo $option['attribute_id']; ?>#options" title="<?php echo $TEXT['MODIFY']; ?>">
-			<img src="<?php echo THEME_URL; ?>/images/modify_16.png" alt="<?php echo $TEXT['MODIFY'].' '.$MOD_BAKERY['TXT_OPTION_NAME']; ?>" border="0" />
+			<img src="<?php echo LEPTON_URL; ?>/modules/lib_lepton/backend_images/modify_16.png" alt="<?php echo $TEXT['MODIFY'].' '.$MOD_BAKERY['TXT_OPTION_NAME']; ?>" border="0" />
 		</a>
 	  </td>
 	  <td align="left" width="22">
 		<a href="javascript: confirm_link('<?php echo $TEXT['ARE_YOU_SURE']; ?>', '<?php echo LEPTON_URL; ?>/modules/bakery/delete_item_attribute.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>&item_id=<?php echo $item_id; ?>&attribute_id=<?php echo $option['attribute_id'] ?>');" title="<?php echo $TEXT['DELETE']; ?>">
-			<img src="<?php echo THEME_URL; ?>/images/delete_16.png" border="0" alt="<?php echo $TEXT['DELETE'].' '.$MOD_BAKERY['TXT_OPTION_NAME']; ?>" />
+			<img src="<?php echo LEPTON_URL; ?>/modules/lib_lepton/backend_images/delete_16.png" border="0" alt="<?php echo $TEXT['DELETE'].' '.$MOD_BAKERY['TXT_OPTION_NAME']; ?>" />
 		</a>
 	  </td>
 	</tr>

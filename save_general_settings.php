@@ -19,10 +19,10 @@
 
 require('../../config.php');
 
-// Include WB admin wrapper script
+// Include admin wrapper script
 $update_when_modified = true; // Tells script to update when this page was last updated
 require(LEPTON_PATH.'/modules/admin.php');
-// Include WB functions file
+// Include functions file
 require_once(LEPTON_PATH.'/framework/summary.functions.php');
 
 // Remove any tags and add slashes

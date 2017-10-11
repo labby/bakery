@@ -22,7 +22,7 @@ if (defined('LEPTON_PATH') == false) {
 	exit("Cannot access this file directly"); 
 }
 
-// Include WB template parser and create template object
+// Include template parser and create template object
 require_once(LEPTON_PATH.'/include/phplib/template.inc');
 $tpl = new Template(LEPTON_PATH.'/modules/bakery/templates/pay_methods');
 // Define how to deal with unknown {PLACEHOLDERS} (remove:=default, keep, comment)
@@ -30,7 +30,7 @@ $tpl->set_unknowns('remove');
 // Define debug mode (0:=disabled (default), 1:=variable assignments, 2:=calls to get variable, 4:=debug internals)
 $tpl->debug = 0;
 
-// Include WB functions file
+// Include functions file
 require_once(LEPTON_PATH.'/framework/summary.functions.php');
 
 // Assign page filename for tracking with Google Analytics _trackPageview() function

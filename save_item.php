@@ -31,9 +31,9 @@ require(LEPTON_PATH.'/modules/bakery/resize_img.php');
 require(LEPTON_PATH.'/modules/bakery/pngthumb.php');
 // Get some default values
 require_once(LEPTON_PATH.'/modules/bakery/config.php');
-// Include WB functions file
+// Include functions file
 require(LEPTON_PATH.'/framework/summary.functions.php');
-// Include WB admin wrapper script
+// Include admin wrapper script
 $update_when_modified = true; // Tells script to update when this page was last updated
 require(LEPTON_PATH.'/modules/admin.php');
 

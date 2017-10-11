@@ -22,7 +22,7 @@ if (defined('LEPTON_PATH') == false) {
 	exit("Cannot access this file directly");
 }
 
-// Include WB functions
+// Include functions
 require_once(LEPTON_PATH.'/framework/summary.functions.php');
 
 // Get some default values

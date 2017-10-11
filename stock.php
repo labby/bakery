@@ -19,14 +19,8 @@
 
 require('../../config.php');
 
-// Include WB admin wrapper script
+// Include admin wrapper script
 require(LEPTON_PATH.'/modules/admin.php');
-
-// Make use of the skinable backend themes of WB > 2.7
-// Check if THEME_URL is supported otherwise use ADMIN_URL
-if (!defined('THEME_URL')) {
-	define('THEME_URL', ADMIN_URL);
-}
 
 // Look for language file
 if (LANGUAGE_LOADED) {
@@ -143,12 +137,12 @@ if ($query_items->numRows() > 0) {
 			<td width="20" align="center"><input type="checkbox" name="active[<?php echo $item['item_id']; ?>]" value="1"<?php if ($item['active'] == '1') {echo ' checked="checked"';} ?> /></td>
 			<td width="20" align="center">
 				<a href="<?php echo LEPTON_URL; ?>/modules/bakery/modify_item.php?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section_id; ?>&amp;item_id=<?php echo $item['item_id']; ?>" title="<?php echo $TEXT['MODIFY']; ?>">
-					<img src="<?php echo THEME_URL; ?>/images/modify_16.png" border="0" alt="<?php echo $TEXT['MODIFY']; ?>" />
+					<img src="<?php echo LEPTON_URL; ?>/modules/lib_lepton/backend_images/modify_16.png" border="0" alt="<?php echo $TEXT['MODIFY']; ?>" />
 				</a>
 			</td>
 			<td width="20" align="right">
 				<a href="javascript: confirm_link('<?php echo $TEXT['ARE_YOU_SURE']; ?>', '<?php echo LEPTON_URL; ?>/modules/bakery/delete_item.php?page_id=<?php echo $page_id; ?>&section_id=<?php echo $section_id; ?>&item_id=<?php echo $item['item_id']; ?>');" title="<?php echo $TEXT['DELETE']; ?>">
-					<img src="<?php echo THEME_URL; ?>/images/delete_16.png" border="0" alt="<?php echo $TEXT['DELETE']; ?>" />
+					<img src="<?php echo LEPTON_URL; ?>/modules/lib_lepton/backend_images/delete_16.png" border="0" alt="<?php echo $TEXT['DELETE']; ?>" />
 				</a>
 			</td>
 		</tr>
