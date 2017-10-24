@@ -1,7 +1,7 @@
 <?php
 
 /*
-  Module developed for the Open Source Content Management System WebsiteBaker (http://websitebaker.org), adapted for LEPTON CMS
+  Module developed for the Open Source Content Management System WebsiteBaker, adapted for LEPTON CMS (https://lepton-cms.org)
   Copyright (C) 2007 - 2016, Christoph Marti
 
   LICENCE TERMS:
