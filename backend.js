@@ -1,6 +1,6 @@
 /*
   Javascript routines for WebsiteBaker module Bakery
-  Copyright (C) 2007 - 2017, Christoph Marti
+  Copyright (C) 2007 - 2017, Christoph Marti, Aldus, erpe
 
   This Javascript routines are free software. You can redistribute it and/or modify it 
   under the terms of the GNU General Public License - version 2 or later, 

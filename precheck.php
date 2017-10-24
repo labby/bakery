@@ -1,8 +1,8 @@
 <?php
 
 /*
-  Module developed for the Open Source Content Management System WebsiteBaker (http://websitebaker.org)
-  Copyright (C) 2007 - 2017, Christoph Marti
+  Module developed for the Open Source Content Management System WebsiteBaker (http://websitebaker.org), adapted for LEPTON CMS
+  Copyright (C) 2007 - 2017, Christoph Marti, Aldus, erpe
 
   LICENCE TERMS:
   This module is free software. You can redistribute it and/or modify it 
@@ -27,16 +27,7 @@ $PRECHECK = array();
  * Specify required WebsiteBaker version
  * You need to provide at least the Version number (Default operator:= >=)
  */
-$PRECHECK['WB_VERSION'] = array('VERSION' => '2.7', 'OPERATOR' => '>=');
-#$PRECHECK['WB_VERSION'] = array('VERSION' => '2.7');
-
-
-/**
- * Specify required PHP version
- * You need to provide at least the Version number (Default operator:= >=)
- */
-#$PRECHECK['PHP_VERSION'] = array('VERSION' => '5.2.4');
-$PRECHECK['PHP_VERSION'] = array('VERSION' => '4.3.11', 'OPERATOR' => '>=');
+$PRECHECK['VERSION'] = array('VERSION' => '3.0.0', 'OPERATOR' => '>=');
 
 
 /**
