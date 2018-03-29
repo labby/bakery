@@ -2,7 +2,7 @@
 
 /*
   Module developed for the Open Source Content Management System WebsiteBaker, adapted for LEPTON CMS (https://lepton-cms.org)
-  Copyright (C) 2007 - 2017, Christoph Marti, Aldus, erpe
+  Copyright (C) 2007 - 2018, Christoph Marti, Aldus, erpe
 
   LICENCE TERMS:
   This module is free software. You can redistribute it and/or modify it 
@@ -16,12 +16,10 @@
   GNU General Public License for more details.
 */
 
-
-
 $module_directory   = 'bakery';
 $module_name        = 'Bakery';
 $module_function    = 'page';
-$module_version     = '2.0.0';
+$module_version     = '2.0.0.1';
 $module_platform    = '3.x';
 $module_author      = 'Christoph Marti, Aldus, erpe';
 $module_guid		= '617ca1fa-742b-47ef-be62-b1a7aa4914d9';

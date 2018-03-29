@@ -2,7 +2,7 @@
 
 /*
   Module developed for the Open Source Content Management System WebsiteBaker, adapted for LEPTON CMS (https://lepton-cms.org)
-  Copyright (C) 2007 - 2017, Christoph Marti, Aldus, erpe
+  Copyright (C) 2007 - 2018, Christoph Marti, Aldus, erpe
   NL version by Ruud
 
   LICENCE TERMS:
